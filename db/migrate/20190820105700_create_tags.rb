@@ -1,8 +1,8 @@
 class CreateTags < ActiveRecord::Migration[5.2]
   def change
     create_table :tags do |t|
+      t.references :document, foreign_key: true
       t.string :name
-      t.references :media, foreign_key: true
 
       t.timestamps
     end

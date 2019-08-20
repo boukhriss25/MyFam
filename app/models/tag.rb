@@ -1,4 +1,3 @@
 class Tag < ApplicationRecord
-  belongs_to :media
-  validates :name, presence: true
+  belongs_to :document
 end
