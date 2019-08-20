@@ -156,18 +156,20 @@ convos = Conversation.where(id: (n..o))
   end
 end
 
-c = Conversation.first.id
-5.times do
-  d = User.first.id
-  5.times do
-  Subscription.create(
-    conversation_id: "#{c}".to_i,
-    user_id: "#{d}".to_i
-    )
-    d += 1
-  end
-  c += 1
-end
+
+
+# c = Conversation.first.id
+# 5.times do
+#   d = User.first.id
+#   5.times do
+#   Subscription.create(
+#     conversation_id: "#{c}".to_i,
+#     user_id: "#{d}".to_i
+#     )
+#     d += 1
+#   end
+#   c += 1
+# end
 
 puts 'Cleaning database of all messages...'
 Message.destroy_all

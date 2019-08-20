@@ -1,5 +1,7 @@
 class FamiliesController < ApplicationController
   def index
+    @memberships = Membership.where(user: current_user)
+    @families = @memberships.family
   end
 
   def show
