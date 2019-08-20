@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_162407) do
+ActiveRecord::Schema.define(version: 2019_08_20_105700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 2019_08_19_162407) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_conversations_on_family_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "family_id"
+    t.bigint "user_id"
+    t.bigint "folder_id"
+    t.string "content"
+    t.string "doc_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_documents_on_family_id"
+    t.index ["folder_id"], name: "index_documents_on_folder_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -34,19 +47,6 @@ ActiveRecord::Schema.define(version: 2019_08_19_162407) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "media", force: :cascade do |t|
-    t.bigint "family_id"
-    t.bigint "user_id"
-    t.bigint "folder_id"
-    t.string "content"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["family_id"], name: "index_media_on_family_id"
-    t.index ["folder_id"], name: "index_media_on_folder_id"
-    t.index ["user_id"], name: "index_media_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 2019_08_19_162407) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.bigint "document_id"
     t.string "name"
-    t.bigint "media_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["media_id"], name: "index_tags_on_media_id"
+    t.index ["document_id"], name: "index_tags_on_document_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,19 +93,21 @@ ActiveRecord::Schema.define(version: 2019_08_19_162407) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "conversations", "families"
-  add_foreign_key "media", "families"
-  add_foreign_key "media", "folders"
-  add_foreign_key "media", "users"
+  add_foreign_key "documents", "families"
+  add_foreign_key "documents", "folders"
+  add_foreign_key "documents", "users"
   add_foreign_key "memberships", "families"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "subscriptions", "conversations"
   add_foreign_key "subscriptions", "users"
-  add_foreign_key "tags", "media", column: "media_id"
+  add_foreign_key "tags", "documents"
 end
