@@ -1,6 +1,5 @@
 <div class="simpleform p-3">
-<%= simple_form_for @conversation do |f| %>
-  <%= f.input:name  %>
-  <%= f.input: %>
+<%= simple_form_for [@family, @conversation] do |f| %>
+  <%= f.input :name  %>
   <% end %>
 </div>
