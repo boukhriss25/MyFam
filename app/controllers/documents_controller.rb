@@ -13,7 +13,4 @@ class DocumentsController < ApplicationController
 
   def destroy
   end
-
-  def search
-  end
 end

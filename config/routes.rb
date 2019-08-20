@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :families do
-    resources :conversations
-    resources :documents, only: [:new, :create, :index, :show] do
-      collection do
-        get 'search'
-      end
+    resources :conversations do
+      resources :messages, only: [:index, :new, :create]
     end
-
+    resources :documents, only: [:new, :create, :index, :show] do
+      resources :tags, only: [:index, :show, :new, :create]
+      resources :folders
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
