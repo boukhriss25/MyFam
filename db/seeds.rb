@@ -21,13 +21,6 @@ User.create(
 )
 
 User.create(
-  email: "rita@gmail.com",
-  password: "password",
-  username: "Rita",
-  # remote_avatar_url: avatars
-)
-
-User.create(
   email: "mehdi@gmail.com",
   password: "password",
   username: "Mehdi",
@@ -45,6 +38,62 @@ User.create(
   email: "wendela@gmail.com",
   password: "password",
   username: "Wendela",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "rita@gmail.com",
+  password: "password",
+  username: "Rita",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "bob@gmail.com",
+  password: "password",
+  username: "Bob",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "ellyn@gmail.com",
+  password: "password",
+  username: "Ellyn",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "inou@gmail.com",
+  password: "password",
+  username: "Inou",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "avalon@gmail.com",
+  password: "password",
+  username: "Avalon",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "claire@gmail.com",
+  password: "password",
+  username: "Claire",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "nico@gmail.com",
+  password: "password",
+  username: "Nico",
+  # remote_avatar_url: avatars
+)
+
+User.create(
+  email: "armani@gmail.com",
+  password: "password",
+  username: "Armani",
   # remote_avatar_url: avatars
 )
 
@@ -83,80 +132,120 @@ Conversation.destroy_all
 puts 'Initiating conversation seed...'
 
 convo_names = [
-  "cousins",
-  "uncles",
-  "dad's birthday",
+  "Cousins",
+  "Uncles",
+  "Dad's birthday",
+  "OMG Puppies!",
   "Trip to Peru",
-  "Jennifer",
   "William",
   "Arnold",
+  "Lucas' 30th",
   "Ellyn",
+  "Shopping",
   "Thomas",
   "Tim",
   "Lucas",
+  "Grandmas will",
   "Graduation party",
   "Career plans",
   "Restaurant recommendations",
   "Music chat"
 ]
 
-i = Family.first.id
-5.times do
+families = Family.all
+
+families.each do |f|
   Conversation.create(
     name: "Main chat",
-    family_id: "#{i}".to_i
+    family: f
   )
-  i += 1
-end
-
-15.times do
-  Conversation.create(
-    name: convo_names.sample,
-    family: Family.all.sample,
-  )
+  sample = convo_names.sample(rand(3..6))
+  sample.each do |s|
+    Conversation.create(
+      name: s,
+      family: f
+    )
+  end
 end
 
 puts 'Cleaning database of all memberships...'
 Membership.destroy_all
 puts 'Initiating membership seed...'
 
-x = Family.first.id
-5.times do
-  y = User.first.id
-  5.times do
+fams = Family.all
+users = User.all
+
+fams.each do |f|
+  sample = users.sample(rand(6..8))
+  sample.each do |s|
     Membership.create(
-      user_id: "#{y}".to_i,
-      family_id: "#{x}".to_i
+      user: s,
+      family: f
     )
-    y += 1
   end
-  x += 1
 end
 
-10.times do
-  Membership.all.sample.destroy
-end
+# x = Family.first.id
+# 5.times do
+#   y = User.first.id
+#   12.times do
+#     Membership.create(
+#       user_id: "#{y}".to_i,
+#       family_id: "#{x}".to_i
+#     )
+#     y += 1
+#   end
+#   x += 1
+# end
+
+# 10.times do
+#   Membership.all.sample.destroy
+# end
 
 puts 'Cleaning database of all subscriptions...'
 Subscription.destroy_all
 puts 'Initiating subscription seed...'
 
-n = Conversation.first.id
-o = Conversation.last.id
-convos = Conversation.where(id: (n..o))
 
-20.times do
-  a = User.first.id
-  5.times do
+convos = Conversation.where.not(name: "Main chat")
+
+convos.each do |c|
+  users = c.family.users
+  sample = users.sample(rand(2..5))
+  sample.each do |s|
     Subscription.create(
-      user_id: "#{a}".to_i,
-      conversation: convos.sample
+      user: s,
+      conversation: c
     )
-    a += 1
   end
 end
 
+main_convos = Conversation.where(name: "Main chat")
 
+main_convos.each do |c|
+  family_users = c.family.users
+  family_users.each do |u|
+    Subscription.create(
+      user: u,
+      conversation: c
+    )
+  end
+end
+
+# n = Conversation.first.id
+# o = Conversation.last.id
+# convos = Conversation.where(id: (n..o))
+
+# 20.times do
+#   a = User.first.id
+#   5.times do
+#     Subscription.create(
+#       user_id: "#{a}".to_i,
+#       conversation: convos.sample
+#     )
+#     a += 1
+#   end
+# end
 
 # c = Conversation.first.id
 # 5.times do
@@ -175,21 +264,34 @@ puts 'Cleaning database of all messages...'
 Message.destroy_all
 puts 'Initiating messages seed...'
 
-50.times do
-  Message.create(
-    user: User.all.sample,
-    conversation: Conversation.all.sample,
-    content: Faker::Marketing.buzzwords
-  )
+chats = Conversation.all
+
+chats.each do |c|
+  users = c.family.users
+  rand(1..20).times do
+    Message.create(
+      user: users.sample,
+      conversation: c,
+      content: Faker::Marketing.buzzwords
+    )
+  end
 end
 
-10.times do
-  Message.create(
-    user: User.all.sample,
-    conversation: Conversation.all.sample,
-    content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing palstave deflation inspissating completively scunge. Saplessness heavenless vivifying vignettist unguiculated coprophagist loutish isolator interindependence claromontanus noncircumspect keek interjaculating dedans. Archdiocesan raymond pinturicchio janina kwame disuniting frapping decoy"
-  )
-end
+# 50.times do
+#   Message.create(
+#     user: User.all.sample,
+#     conversation: Conversation.all.sample,
+#     content: Faker::Marketing.buzzwords
+#   )
+# end
+
+# 10.times do
+#   Message.create(
+#     user: User.all.sample,
+#     conversation: Conversation.all.sample,
+#     content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing palstave deflation inspissating completively scunge. Saplessness heavenless vivifying vignettist unguiculated coprophagist loutish isolator interindependence claromontanus noncircumspect keek interjaculating dedans. Archdiocesan raymond pinturicchio janina kwame disuniting frapping decoy"
+#   )
+# end
 
 
 
