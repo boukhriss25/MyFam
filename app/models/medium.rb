@@ -3,6 +3,6 @@ class Medium < ApplicationRecord
   belongs_to :user
   belongs_to :folder, optional: true
   has_many :tags
-  validates :content, prsence: true
+  validates :content, presence: true
   validates :type, presence: true
 end
