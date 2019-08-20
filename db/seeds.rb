@@ -30,7 +30,7 @@ User.create(
 User.create(
   email: "mehdi@gmail.com",
   password: "password",
-  username: "Mehdi,",
+  username: "Mehdi",
   # remote_avatar_url: avatars
 )
 

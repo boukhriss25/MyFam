@@ -4,8 +4,9 @@ These are all of my families:
 <br>
 
 <% @families.each do |f| %>
-- <%= link_to f.name, family_path(f) %>
+<%= link_to f.name, family_path(f) %>
 <br>
 <% end %>
-<br>
 Yay!
+<br>
+<%= link_to "Create New Family", new_family_path %>

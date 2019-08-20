@@ -5,6 +5,9 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    @users = @family.users
+    @user_convos = current_user.conversations.where(family: @family)
+    @all_convos = @family.conversations
   end
 
   def new
@@ -13,16 +16,28 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
-
+    @membership = Membership.new(user: current_user, family: @family)
+    if @family.save && @membership.save
+      redirect_to family_path(@family)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    if @family.update(family_params)
+      redirect_to family_path(@family)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @family.destroy
+    redirect_to families_path
   end
 
   private
