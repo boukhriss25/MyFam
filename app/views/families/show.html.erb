@@ -1,2 +1,39 @@
 <h1>Families#show</h1>
-<p>Find me in app/views/families/show.html.erb</p>
+<h2>
+<%= @family.name %>
+</h2>
+
+This is the family I am currently in, woohoo!
+<br>
+<%= link_to 'Back to Families', families_path %>
+<br>
+<%= link_to 'Edit Family', edit_family_path(@family) %>
+<br>
+<%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
+<br><br>
+<h1>Family members:</h1>
+<% @users.each do |m| %>
+<%= m.username %>
+<br>
+<% end %>
+<h1>All conversations in this family:</h1>
+<% @all_convos.each do |c| %>
+<%= c.name %>
+<br> -- Family:
+<%= c.family.name %>
+<br> -- Number of users:
+<%= c.users.count %>
+<br>
+<% end %>
+<h1>Your conversations in this family:</h1>
+<% @user_convos.each do |c| %>
+<%= c.name %>
+(<%= c.family.name %>)
+<br>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

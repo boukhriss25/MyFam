@@ -1,6 +1,12 @@
 <h1>Families#index</h1>
-<p>Find me in app/views/families/index.html.erb</p>
+
+These are all of my families:
+<br>
 
 <% @families.each do |f| %>
-<%= f.name %>
+<%= link_to f.name, family_path(f) %>
+<br>
 <% end %>
+Yay!
+<br>
+<%= link_to "Create New Family", new_family_path %>
