@@ -11,24 +11,27 @@ This is the family I am currently in, woohoo!
 <br>
 <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
 <br><br>
-<h1>Family members:</h1>
+<h1><%= @family.name %> family members:</h1>
 <% @users.each do |m| %>
 <%= m.username %>
 <br>
 <% end %>
-<h1>All conversations in this family:</h1>
+<h1>All
+<%= @family.name %> conversations:</h1>
 <% @all_convos.each do |c| %>
 <%= c.name %>
 <br> -- Family:
 <%= c.family.name %>
 <br> -- Number of users:
 <%= c.users.count %>
+<br> -- Number of messages:
+<%= c.messages.count %>
 <br>
 <% end %>
-<h1>Your conversations in this family:</h1>
+<h1>Your personal conversations in
+<%= @family.name %>:</h1>
 <% @user_convos.each do |c| %>
 <%= c.name %>
-(<%= c.family.name %>)
 <br>
 <% end %>
 <br>
