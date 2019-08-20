@@ -8,12 +8,15 @@ class ConversationsController < ApplicationController
   end
 
   def new
+    @family = Family.find(params[:family_id])
     @conversation = Conversation.new
   end
 
   def create
+    @family = Family.find(params[:family_id])
     @conversation = Conversation.new(conversation_params)
-    redirect_to family_conversations_path(@conversation)
+    @conversation.family = @family
+    redirect_to family_conversations_path
   end
 
   def edit
