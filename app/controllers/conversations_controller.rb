@@ -1,7 +1,9 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
   def index
-    @conversations = Conversation.all
+    # @family = Family.find(params[:family_id])
+    # @user_convos = current_user.conversations.where(family: @family)
+    @conversations = Conversation.where(family_id: params[:family_id])
   end
 
   def show
@@ -16,7 +18,11 @@ class ConversationsController < ApplicationController
     @family = Family.find(params[:family_id])
     @conversation = Conversation.new(conversation_params)
     @conversation.family = @family
-    redirect_to family_conversations_path
+    if @conversation.save
+      redirect_to family_conversations_path
+    else
+      render :new
+    end
   end
 
   def edit

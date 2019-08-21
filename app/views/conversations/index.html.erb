@@ -1,41 +1,7 @@
 <h1>Conversations#index</h1>
 <p>Find me in app/views/conversations/index.html.erb</p>
 
-<div class="row">
-  <div class="col-12 col-md-3">
-    <div class="mb-3">
-      <%= link_to new_family_conversation_path, class: "btn btn-primary" do %>
-        Create a room
-      <% end %>
-    </div>
 
-    <% if @conversations.present? %>
-      <nav class="nav flex-column">
-        <% @conversations.each do |conversation| %>
-          <%= link_to conversation.name, new_family_conversation_path(conversation), class: "nav-link room-nav-link" %>
-        <% end %>
-      </nav>
-    <% else %>
-      <div class="text-muted">
-        The are no rooms
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col">
-    <div class="alert alert-primary">
-      <h4 class="alert-heading">
-        Welcome to the RailsChatTutorial!
-      </h4>
-
-      <p>
-        We need to talk.
-      </p>
-
-      <hr />
-
-      <p>
-        You can create or join a room from the sidebar.
-      </p>
-    </div>
-</div>
+<% @conversations.each do |conv| %>
+<h3><%= conv.name  %></h3>
+<% end  %>
