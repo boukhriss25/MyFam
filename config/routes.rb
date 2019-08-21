@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :conversations do
       resources :messages, only: [:index, :new, :create]
     end
+    resources :memberships, only: [:new, :create]
     resources :documents, only: [:new, :create, :index, :show] do
       resources :tags, only: [:index, :show, :new, :create]
       resources :folders

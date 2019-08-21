@@ -1,19 +1,78 @@
-<h1>Families#show</h1>
-<h2><%= @family.name %> Dashboard</h2>
+<div class="container">
+  <div class="main-content">
+    <h6 class="mb-0">welcome to the</h6>
+    <h2><%= @family.name %> Clan</h2>
+    <br>
+    <div class="cards">
+      <div>
+        <div class="card">
+          <%= link_to family_conversations_path(@family) do %>
+            <%= image_tag("chat-logo.png") %>
+          <% end %>
+        </div>
+        <%= link_to "Chat", family_conversations_path(@family) %>
+      </div>
+      <div>
+        <div class="card">
+          <%= link_to family_documents_path(@family) do %>
+            <%= image_tag("folder-logo.png") %>
+          <% end %>
+        </div>
+        <%= link_to "Media", family_documents_path(@family) %>
+      </div>
+      <div>
+        <div class="card">
+          <%= link_to edit_family_path(@family) do %>
+            <%= image_tag("settings-logo.png") %>
+          <% end %>
+        </div>
+        <%= link_to "Manage", edit_family_path(@family) %>
+      </div>
+    </div>
 
-This is the family I am currently in, woohoo!
+    <br>
+    <%#= form_tag documents_path, method: :get do %>
+        <%#= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "browse"%>
+<!--           <button name="button" type="submit" class="btn btn-flat">
+            <i class="fas fa-search"></i> Browse
+          </button> -->
+          <%# end %>
+
+  </div>
+</div>
+
+
+
+
+
+
+
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
 <%= link_to 'Back to Families', families_path %>
 <br>
-<%= link_to 'Edit Family', edit_family_path(@family) %>
-<br>
-<%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
-<br><br>
-<h1><%= @family.name %> family members:</h1>
-<% @users.each do |m| %>
-<%= m.username %>
-<br>
-<% end %>
 <h1>All
 <%= @family.name %> conversations:</h1>
 <% @all_convos.each do |c| %>
@@ -32,9 +91,4 @@ This is the family I am currently in, woohoo!
 <%= c.name %>
 <br>
 <% end %>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>

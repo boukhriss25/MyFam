@@ -6,6 +6,7 @@
 
 .card {
   color: black;
+  border-style: none;
   img {
     border-radius: 3px;
     object-fit: cover;
@@ -15,9 +16,4 @@
 
 a {
   color: black;
-}
-
-.main-content {
-  padding: 30px 60px;
-  text-align: center;
 }
