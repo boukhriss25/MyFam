@@ -1,9 +1,10 @@
 class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show, :edit, :update, :destroy]
   def index
-    # @family = Family.find(params[:family_id])
-    # @user_convos = current_user.conversations.where(family: @family)
+    @family = Family.find(params[:family_id])
     @conversations = Conversation.where(family_id: params[:family_id])
+    @subscription = Subscription.new
+    @subscriptions = Subscription.where(user: current_user)
   end
 
   def show
@@ -18,7 +19,8 @@ class ConversationsController < ApplicationController
     @family = Family.find(params[:family_id])
     @conversation = Conversation.new(conversation_params)
     @conversation.family = @family
-    if @conversation.save
+    @subscription = Subscription.new(user: current_user, conversation: @conversation)
+    if @subscription.save && @conversation.save
       redirect_to family_conversations_path
     else
       render :new
@@ -26,10 +28,12 @@ class ConversationsController < ApplicationController
   end
 
   def edit
+    @family = Family.find(params[:family_id])
   end
 
   def update
     @conversation.update(conversation_params)
+    redirect_to family_conversation_path(@conversation)
   end
 
   def destroy
