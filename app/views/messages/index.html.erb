@@ -1,2 +1,10 @@
 <h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h2>These are all the messages of the main chat inside of conversations</h2>
+
+<% @messages.each do |message| %>
+<%= message.content %>
+<% end %>
+
+<%= link_to "Create new message", new_family_conversation_message_path, class: "nav-link room-nav-link" %>
+
+
