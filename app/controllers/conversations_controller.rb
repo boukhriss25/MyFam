@@ -7,6 +7,9 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @messages = Message.where(conversation_id: params[:id])
+    @family = @conversation.family
+    @message = Message.new
   end
 
   def new
