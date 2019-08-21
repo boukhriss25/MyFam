@@ -1,13 +1,12 @@
 <div class="container">
   <div class="main-content">
 
-  <h1>Select a Fam</h1>
+  <h1>select Fam</h1>
 
   <div class="cards">
     <% @families.each do |f| %>
-    <div class="outer">
-      <div class="card square-avatar">
-        <%#= link_to f.avatar, family_path(f) %>
+    <div>
+      <div class="card">
         <%= link_to family_path(f) do %>
           <%= image_tag("big-happy-family.jpg") %>
         <% end %>
@@ -15,13 +14,13 @@
         <%= link_to f.name, family_path(f) %>
     </div>
     <% end %>
-    <div class="outer">
-    <div class="card square-avatar">
+    <div>
+    <div class="card">
       <%= link_to new_family_path do %>
         <%= image_tag("plus_sign.jpg") %>
       <% end %>
     </div>
-    <%= link_to "Create New Fam", new_family_path %>
+    <%= link_to "Add Fam", new_family_path %>
     </div>
   </div>
   </div>
