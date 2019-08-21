@@ -21,6 +21,11 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    # raise
+    # Membership.where(user: params[:user], family: @family).destroy
+    # @membership = Membership.where(user: params[:user], family_id: params[:family_id])
+    @membership.destroy
+    redirect_to edit_family_path(@family)
   end
 
   private
