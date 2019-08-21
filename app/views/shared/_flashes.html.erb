@@ -1,11 +1,12 @@
 <% if notice %>
   <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <%= notice %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <span><strong>Yay!</strong> 🎉 you successfully added a user in to your family. </span>
+  <a data-dismiss="alert" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
   </div>
 <% end %>
+
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <%= alert %>
@@ -14,3 +15,5 @@
     </button>
   </div>
 <% end %>
+
+
