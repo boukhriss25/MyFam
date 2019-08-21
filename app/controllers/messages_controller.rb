@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  # before_action :set_message, only:
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -15,10 +14,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  # def set_message
-   # @message = Message.find(params[:id])
- # end
 
   def message_params
     params.require(:message).permit(:content, :conversation_id, :user_id)
