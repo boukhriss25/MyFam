@@ -4,7 +4,8 @@ class ConversationsController < ApplicationController
     @family = Family.find(params[:family_id])
     @conversations = Conversation.where(family_id: params[:family_id])
     @subscription = Subscription.new
-    @subscriptions = Subscription.where(user: current_user)
+    @subscriptions = Subscription.where(user: current_user).select do |subsc| Conversation.find(subsc.conversation_id).family_id == @family.id
+    end
   end
 
   def show

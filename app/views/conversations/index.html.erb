@@ -1,25 +1,27 @@
-
-<h1><%= @family.name %>Conversations</h1>
-
-<% @conversations.each do |conv| %>
-<h3><%= conv.name  %> <%= conv.id %></h3>
-
-  <%= simple_form_for [@family, conv, @subscription] do |f| %>
-    <%= f.button :submit %>
-  <% end %>
-
-<% end %>
-
-
+<h2>My Conversations</h2>
+<br>
 <% if @subscriptions.nil? %>
-  <p>pas de sub</p>
+  <p>No Subscriptions</p>
 <% else %>
   <% @subscriptions.each do |sub| %>
-  <%= sub.conversation.family.name %>
-    <%= sub.conversation.name %>
-    <%= sub.user.email %>
+    <%= link_to sub.conversation.name, family_conversation_path(@family.id, sub.conversation.id)  %>
+    <% message = Message.where(conversation_id: sub.conversation.id).last %>
+    <br>
+    <%= message.content %>
     <br>
   <% end %>
 <% end %>
 
+<br>
+
+<h2> Other <%= @family.name %> conversations</h2>
+<br>
+<% @conversations.each do |conv| %>
+<p class ="convos"><%= conv.name  %></p>
+
+  <%= simple_form_for [@family, conv, @subscription] do |f| %>
+    <%= f.button :submit,  'Join Conversation',class: "join-conv" %>
+  <% end %>
+
+<% end %>
 
