@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
 avatars = "https://kitt.lewagon.com/placeholder/users/random"
@@ -185,23 +178,6 @@ fams.each do |f|
   end
 end
 
-# x = Family.first.id
-# 5.times do
-#   y = User.first.id
-#   12.times do
-#     Membership.create(
-#       user_id: "#{y}".to_i,
-#       family_id: "#{x}".to_i
-#     )
-#     y += 1
-#   end
-#   x += 1
-# end
-
-# 10.times do
-#   Membership.all.sample.destroy
-# end
-
 puts 'Cleaning database of all subscriptions...'
 Subscription.destroy_all
 puts 'Initiating subscription seed...'
@@ -232,34 +208,6 @@ main_convos.each do |c|
   end
 end
 
-# n = Conversation.first.id
-# o = Conversation.last.id
-# convos = Conversation.where(id: (n..o))
-
-# 20.times do
-#   a = User.first.id
-#   5.times do
-#     Subscription.create(
-#       user_id: "#{a}".to_i,
-#       conversation: convos.sample
-#     )
-#     a += 1
-#   end
-# end
-
-# c = Conversation.first.id
-# 5.times do
-#   d = User.first.id
-#   5.times do
-#   Subscription.create(
-#     conversation_id: "#{c}".to_i,
-#     user_id: "#{d}".to_i
-#     )
-#     d += 1
-#   end
-#   c += 1
-# end
-
 puts 'Cleaning database of all messages...'
 Message.destroy_all
 puts 'Initiating messages seed...'
@@ -268,7 +216,7 @@ chats = Conversation.all
 
 chats.each do |c|
   users = c.family.users
-  rand(1..20).times do
+  rand(1..10).times do
     Message.create(
       user: users.sample,
       conversation: c,
@@ -277,21 +225,26 @@ chats.each do |c|
   end
 end
 
-# 50.times do
-#   Message.create(
-#     user: User.all.sample,
-#     conversation: Conversation.all.sample,
-#     content: Faker::Marketing.buzzwords
-#   )
-# end
+chats.each do |c|
+  users = c.family.users
+  1.times do
+    Message.create(
+      user: users.sample,
+      conversation: c,
+      content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing palstave deflation inspissating completively scunge. Saplessness heavenless vivifying vignettist disuniting frapping decoy"
+    )
+  end
+end
 
-# 10.times do
-#   Message.create(
-#     user: User.all.sample,
-#     conversation: Conversation.all.sample,
-#     content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing palstave deflation inspissating completively scunge. Saplessness heavenless vivifying vignettist unguiculated coprophagist loutish isolator interindependence claromontanus noncircumspect keek interjaculating dedans. Archdiocesan raymond pinturicchio janina kwame disuniting frapping decoy"
-#   )
-# end
-
+chats.each do |c|
+  users = c.family.users
+  rand(1..7).times do
+    Message.create(
+      user: users.sample,
+      conversation: c,
+      content: Faker::Marketing.buzzwords
+    )
+  end
+end
 
 
