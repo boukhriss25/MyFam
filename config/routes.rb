@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :families do
     resources :conversations do
+      resources :subscriptions, only:[:index, :new, :create]
       resources :messages, only: [:index, :new, :create]
     end
     resources :memberships, only: [:new, :create]

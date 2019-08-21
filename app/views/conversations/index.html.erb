@@ -1,3 +1,36 @@
+
+<h1><%= @family.name %>Conversations</h1>
+
+<% @conversations.each do |conv| %>
+<h3><%= conv.name  %> <%= conv.id %></h3>
+
+  <%= simple_form_for [@family, conv, @subscription] do |f| %>
+    <%= f.button :submit %>
+  <% end %>
+
+<% end %>
+
+
+<% if @subscriptions.nil? %>
+  <p>pas de sub</p>
+<% else %>
+  <% @subscriptions.each do |sub| %>
+  <%= sub.conversation.family.name %>
+    <%= sub.conversation.name %>
+    <%= sub.user.email %>
+    <br>
+  <% end %>
+<% end %>
+
+
+
+
+
+<!-- <% current_user.subscriptions.each do |sub| %>
+<%= sub.conversation.name %>
+<br>
+<% end %> -->
+=======
 <div class="row">
   <div class="col-12 col-md-3">
     <div class="mb-3">
@@ -12,3 +45,4 @@
         <% end %>
       </nav>
   </div>
+>>>>>>> master
