@@ -1,14 +1,25 @@
-<div class="row">
-  <div class="col-12 col-md-3">
-    <div class="mb-3">
-      <%= link_to new_family_conversation_path, class: "btn btn-primary" do %>
-        Create a room
-      <% end %>
-    </div>
 
-      <nav class="nav flex-column">
-        <% @conversations.each do |conversation| %>
-          <%= link_to conversation.name, family_conversation_path(conversation), class: "nav-link room-nav-link" %>
-        <% end %>
-      </nav>
-  </div>
+<h1><%= @family.name %>Conversations</h1>
+
+<% @conversations.each do |conv| %>
+<h3><%= conv.name  %> <%= conv.id %></h3>
+
+  <%= simple_form_for [@family, conv, @subscription] do |f| %>
+    <%= f.button :submit %>
+  <% end %>
+
+<% end %>
+
+
+<% if @subscriptions.nil? %>
+  <p>pas de sub</p>
+<% else %>
+  <% @subscriptions.each do |sub| %>
+  <%= sub.conversation.family.name %>
+    <%= sub.conversation.name %>
+    <%= sub.user.email %>
+    <br>
+  <% end %>
+<% end %>
+
+

@@ -25,6 +25,8 @@ class FamiliesController < ApplicationController
   end
 
   def edit
+    @users = @family.users
+    @membership = Membership.new
   end
 
   def update
