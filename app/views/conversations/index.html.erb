@@ -1,3 +1,4 @@
+
 <h1><%= @family.name %>Conversations</h1>
 
 <% @conversations.each do |conv| %>
@@ -29,3 +30,19 @@
 <%= sub.conversation.name %>
 <br>
 <% end %> -->
+=======
+<div class="row">
+  <div class="col-12 col-md-3">
+    <div class="mb-3">
+      <%= link_to new_family_conversation_path, class: "btn btn-primary" do %>
+        Create a room
+      <% end %>
+    </div>
+
+      <nav class="nav flex-column">
+        <% @conversations.each do |conversation| %>
+          <%= link_to conversation.name, family_conversation_path(conversation), class: "nav-link room-nav-link" %>
+        <% end %>
+      </nav>
+  </div>
+>>>>>>> master

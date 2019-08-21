@@ -1,13 +1,27 @@
-<h6>Families#index</h6>
-<h4>Home</h4>
+<div class="container">
+  <div class="main-content">
 
-<h1>Select a Fam</h1>
-<br>
+  <h1>select Fam</h1>
 
-<% @families.each do |f| %>
-<%= link_to f.name, family_path(f) %>
-<br>
-<% end %>
-
-<br>
-<%= link_to "Create New Fam", new_family_path %>
+  <div class="cards">
+    <% @families.each do |f| %>
+    <div>
+      <div class="card">
+        <%= link_to family_path(f) do %>
+          <%= image_tag("big-happy-family.jpg") %>
+        <% end %>
+      </div>
+        <%= link_to f.name, family_path(f) %>
+    </div>
+    <% end %>
+    <div>
+    <div class="card">
+      <%= link_to new_family_path do %>
+        <%= image_tag("plus_sign.jpeg") %>
+      <% end %>
+    </div>
+    <%= link_to "Add Fam", new_family_path %>
+    </div>
+  </div>
+  </div>
+</div>

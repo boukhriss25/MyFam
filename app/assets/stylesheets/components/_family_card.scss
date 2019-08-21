@@ -1,0 +1,19 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.card {
+  color: black;
+  border-style: none;
+  img {
+    border-radius: 3px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+a {
+  color: black;
+}

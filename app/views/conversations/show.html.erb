@@ -2,3 +2,8 @@
 <p>Find me in app/views/conversations/show.html.erb</p>
 
 <h2><%= @conversation.name %></h2>
+<% @messages.each do |message| %>
+<%= message.content %>
+<% end %>
+
+<%= render 'messages/form', message: @message %>
