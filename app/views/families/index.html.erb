@@ -1,12 +1,13 @@
-<h1>Families#index</h1>
+<h6>Families#index</h6>
+<h4>Home</h4>
 
-These are all of my families:
+<h1>Select a Fam</h1>
 <br>
 
 <% @families.each do |f| %>
 <%= link_to f.name, family_path(f) %>
 <br>
 <% end %>
-Yay!
+
 <br>
-<%= link_to "Create New Family", new_family_path %>
+<%= link_to "Create New Fam", new_family_path %>

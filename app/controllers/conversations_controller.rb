@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 
   private
 
-  def set_horse
+  def set_conversation
     @conversation = Conversation.find(params[:id])
   end
 
