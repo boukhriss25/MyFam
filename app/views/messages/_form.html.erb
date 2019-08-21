@@ -1,5 +1,5 @@
 <div class="simpleform p-3">
-<%= simple_form_for [@conversation, @message] do |f| %>
+<%= simple_form_for :messages, url: family_conversation_messages_path, method: :post do |f| %>
   <%= f.input :content  %>
   <%= f.button :submit %>
   <% end %>

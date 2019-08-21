@@ -24,6 +24,6 @@ class MessagesController < ApplicationController
  # end
 
   def message_params
-    params.require(:message).permit(:content, :conversation_id, :user_id)
+    params.require(:message).permit(messages[:content], :conversation_id, :user_id)
   end
 end
