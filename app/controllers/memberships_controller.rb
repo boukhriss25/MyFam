@@ -16,7 +16,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to family_path(@family)
     else
-      render 'edit_family_path(@family)'
+      render :new
     end
   end
 
