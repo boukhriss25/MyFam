@@ -14,9 +14,12 @@ class MembershipsController < ApplicationController
     @membership = Membership.new(membership_params)
     @membership.family = @family
     if @membership.save
-      redirect_to family_path(@family)
+      redirect_to edit_family_path(@family)
+      flash[:success] = @membership.errors.full_messages.join(", ")
     else
-      render :new
+      @users = @family.users
+      flash[:notice] = @membership.errors.full_messages.join(", ")
+      render "families/edit"
     end
   end
 
