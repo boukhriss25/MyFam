@@ -43,7 +43,7 @@ class ConversationsController < ApplicationController
 
   def destroy
     @conversation.destroy
-    redirect_to family_conversations_path(@conversation)
+    redirect_to family_conversations_path(params[:family_id])
   end
 
   private

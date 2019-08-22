@@ -2,11 +2,19 @@
 
 <div class="container">
   <div class="container d-flex conv-show-title">
-    <h2 class="conversation-name"><%= @conversation.name %></h2>
-    <%= link_to "Edit",edit_family_conversation_path  %>
-    <%= link_to "Delete", family_conversation_path(@conversation),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
+    <div>
+      <h4 class="conversation-name"><%= @conversation.name %></h4>
+    </div>
+    <div>
+      <%= link_to edit_family_conversation_path(@family, @conversation) do %>
+       <%= image_tag "settings-icon.png", :class=>"icons" %>
+      <% end %>
+      <%= link_to family_conversation_path(@family, @conversation),
+        method: :delete,
+        data: { confirm: "Are you sure?" } do %>
+         <%= image_tag "delete-icon.png", :class=>"icons" %>
+        <% end %>
+    </div>
   </div>
   <div class="container-messages">
     <% @messages.each do |message| %>
