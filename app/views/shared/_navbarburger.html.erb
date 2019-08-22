@@ -1,4 +1,37 @@
-<nav class="navbarhome">
+<nav class="navbarburger d-flex my-auto" style="justify-content: space-between;">
   <span class="navbar-brand mb-0"></span>
-  <p style="text-align: center;">MyFam</p>
+
+  <button onclick="goBack()"><i class="fas fa-angle-left"></i></button>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+  <p>MyFam</p>
+
+  <div class="btn-group">
+    <button class="navbar-toggler toggler-example" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+      class="fas fa-bars fa-1x"></i></span></button>
+
+      <div class="dropdown-menu dropdown-menu-right pl-2">
+        <p class="mb-2" style="color:black;"> SWITCH FAM </p>
+
+        <% current_user.families.each do |fam| %>
+        <p style="color: black; font-size: 14px;"><%= link_to fam.name, family_path(fam) %></p>
+        <% end %>
+
+        <br>
+        <br>
+        <br>
+
+        <i class="far fa-copyright d-flex dropdown-item mr-3" style="font-size: 12px;">
+          <p>2019 MyFam, Inc. All rights reserved.</p>
+        </i>
+      </div>
+    </div>
+  </div>
 </nav>
+
