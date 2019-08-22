@@ -5,7 +5,7 @@
 
   <h1>Select a Fam</h1>
 
-  <div class="cards">
+  <div id="indexcard" class="cards">
     <% @families.each do |f| %>
     <div>
       <div class="card">
@@ -17,9 +17,9 @@
     </div>
     <% end %>
     <div>
-    <div class="card">
+    <div id="addfam" class="card">
       <%= link_to new_family_path do %>
-        <%= image_tag("plus_sign.jpeg") %>
+        <h1>+</h1>
       <% end %>
     </div>
     <%= link_to "Add Fam", new_family_path %>

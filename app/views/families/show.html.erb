@@ -1,11 +1,11 @@
-<%= render 'shared/navbarburger' %>
+<%= render 'shared/navbarburger'%>
 
 <div class="container">
   <div class="main-content">
     <h6 class="mb-0">welcome to the</h6>
     <h2><%= @family.name %> Fam</h2>
     <br>
-    <div class="cards">
+    <div id="showcard" class="cards">
       <div>
         <div class="card">
           <%= link_to family_conversations_path(@family) do %>
