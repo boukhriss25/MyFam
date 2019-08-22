@@ -14,21 +14,30 @@
     <div class="border p-2">
     <h5>members:</h5>
     <% @users.each do |u| %>
-      <%= u.username %> -
-      <%= link_to 'bin', membership_path(user: u), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= u.username %>&nbsp&nbsp
+      <% if u != current_user %>
+        <%= link_to membership_path(user: u), method: :delete, data: {confirm: "Are you sure?"} do %>
+          <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
+        <% end %>
+      <% end %>
       <br>
     <% end %>
     </div>
     <div class="mt-4">
       <h6>Add a new member</h6>
-    <%= simple_form_for [@family, @membership] do |f| %>
-      <%= f.input :user_id, label: "enter user :id" %>
-      <%= f.button :submit, class: "btn btn-info"%>
-    <% end %>
+    <div class="search-form-control form-group">
+        <%= form_tag family_memberships_path(@family), method: :post do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "email"%>
+          <button name="button" type="submit" class="btn btn-info mt-3">Add User</button>
+          <% end %>
+        </div>
     </div>
     <div class="pb-5">
-    <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
-    <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
+    <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4 mr-4" %>
+    <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
     </div>
   </div>
 </div>

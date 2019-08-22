@@ -11,8 +11,13 @@ class MembershipsController < ApplicationController
 
   def create
     @family = Family.find(params[:family_id])
-    @membership = Membership.new(membership_params)
-    @membership.family = @family
+    if params[:query].present?
+      @user = User.find_by(email: params[:query])
+      @membership = Membership.new(user: @user, family: @family)
+    # else
+    #   @membership = Membership.new(membership_params)
+    #   @membership.family = @family
+    end
     if @membership.save
       redirect_to edit_family_path(@family)
       flash[:success] = @membership.errors.full_messages.join(", ")
@@ -27,12 +32,20 @@ class MembershipsController < ApplicationController
     @family = Family.find(params[:id])
     @membership = Membership.find_by(user: params[:user].to_i, family_id: params[:id].to_i)
     @membership.destroy
-    redirect_to edit_family_path(@family)
+    if @membership.user == current_user
+      redirect_to families_path
+    else
+      redirect_to edit_family_path(@family)
+    end
   end
 
   private
 
-  def membership_params
-    params.require(:membership).permit(:user_id)
-  end
+  # def membership_params
+  #   params.require(:membership).permit(:user_id)
+  # end
+
+  # def find_user
+  #   User.find(membership_params)
+  # end
 end
