@@ -32,6 +32,7 @@ class ConversationsController < ApplicationController
   end
 
   def edit
+    @users = @conversation.users
     @family = Family.find(params[:family_id])
   end
 
