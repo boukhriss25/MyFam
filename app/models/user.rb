@@ -14,6 +14,6 @@ class User < ApplicationRecord
 
 
   def default_avatar
-    self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/v1566486677/fj2ly83omwurmjxi2ltu.png" unless self.avatar.present?
+    self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/b_rgb:eefbfc,o_60/v1566486677/fj2ly83omwurmjxi2ltu.png" unless self.avatar.present?
   end
 end
