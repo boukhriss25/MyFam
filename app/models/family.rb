@@ -5,4 +5,9 @@ class Family < ApplicationRecord
   has_many :users, through: :memberships
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
+
+  DEFAULT_AVATAR = "f5psjysh6j1nsoxzqgyx"
+  def avatar
+    read_attribute('avatar') || DEFAULT_AVATAR
+  end
 end
