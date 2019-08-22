@@ -14,11 +14,7 @@ class MembershipsController < ApplicationController
     if params[:query].present?
       @user = User.find_by(email: params[:query])
       @membership = Membership.new(user: @user, family: @family)
-    # else
-    #   @membership = Membership.new(membership_params)
-    #   @membership.family = @family
-    end
-    if @membership.save
+      @membership.save
       redirect_to edit_family_path(@family)
       flash[:success] = @membership.errors.full_messages.join(", ")
     else
@@ -41,9 +37,9 @@ class MembershipsController < ApplicationController
 
   private
 
-  # def membership_params
-  #   params.require(:membership).permit(:user_id)
-  # end
+  def membership_params
+    params.require(:membership).permit(:user_id)
+  end
 
   # def find_user
   #   User.find(membership_params)
