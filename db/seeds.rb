@@ -52,7 +52,7 @@ User.create(
   email: "ellyn@gmail.com",
   password: "password",
   username: "Ellyn",
-  remote_avatar_url: avatars
+  # remote_avatar_url: avatars
 )
 
 User.create(
@@ -66,14 +66,14 @@ User.create(
   email: "avalon@gmail.com",
   password: "password",
   username: "Avalon",
-  remote_avatar_url: avatars
+  # remote_avatar_url: avatars
 )
 
 User.create(
   email: "claire@gmail.com",
   password: "password",
   username: "Claire",
-  remote_avatar_url: avatars
+  # remote_avatar_url: avatars
 )
 
 User.create(
@@ -94,8 +94,6 @@ puts 'Cleaning database of all families...'
 Family.destroy_all
 puts 'Initiating family seed...'
 
-# default_avatar = "default-family.jpg"
-
 Family.create(
   name: "Lövgren",
   # remote_avatar_url: avatars
@@ -103,22 +101,22 @@ Family.create(
 
 Family.create(
   name: "Warren",
-  # remote_avatar_url: avatars
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491071/elwu1wlra10q4ollpnfz.jpg"
 )
 
 Family.create(
   name: "Idrissi",
-  # remote_avatar_url: avatars
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491054/kdnxg1nmkevtv5xmv1te.jpg"
 )
 
 Family.create(
   name: "Boukhriss",
-  # remote_avatar_url: avatars
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491046/zo9cqniyyec8qsuwhxpp.jpg"
 )
 
 Family.create(
   name: "Sanchez",
-  # remote_avatar_url: avatars
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491078/qwkw0ovyfokg2ssdcvw8.jpg"
 )
 
 puts 'Cleaning database of all conversations...'
