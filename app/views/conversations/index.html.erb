@@ -1,27 +1,43 @@
-<h2>My Conversations</h2>
-<br>
-<% if @subscriptions.nil? %>
-  <p>No Subscriptions</p>
-<% else %>
-  <% @subscriptions.each do |sub| %>
-    <%= link_to sub.conversation.name, family_conversation_path(@family.id, sub.conversation.id)  %>
-    <% message = Message.where(conversation_id: sub.conversation.id).last %>
-    <br>
-    <%= message.content %>
-    <br>
+<div class="container">
+
+
+  <h4 class="title">My Conversations</h4>
+  <% if @subscriptions.nil? %>
+    <p>No Subscriptions</p>
+  <% else %>
+    <% @subscriptions.each do |sub| %>
+      <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
+        <div class="card-product">
+          <div class="conv-name pt-2">
+            <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            <%= sub.conversation.name %>
+          </div>
+          <div class="card-body d-flex">
+            <% message = Message.where(conversation_id: sub.conversation.id).last %>
+            <%= message.content %>
+            <p class="ml-auto"><i class="arrow right"></i></p>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
 
-<br>
+  <h4 class="title"> Other Conversations</h4>
+    <% @conversations.each do |conv| %>
+      <div class="card-product">
+        <div class="conv-name pt-2">
+          <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+          <%= conv.name  %>
+        </div>
+        <div class="card-body d-flex">
+          <%= simple_form_for [@family, conv, @subscription] do |f| %>
+            <%= f.button :submit,  'Join Conversation',class: "join-conv" %>
+          <% end %>
+        </div>
+      </div>
 
-<h2> Other <%= @family.name %> conversations</h2>
-<br>
-<% @conversations.each do |conv| %>
-<p class ="convos"><%= conv.name  %></p>
-
-  <%= simple_form_for [@family, conv, @subscription] do |f| %>
-    <%= f.button :submit,  'Join Conversation',class: "join-conv" %>
   <% end %>
 
-<% end %>
+</div>
 

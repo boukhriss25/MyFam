@@ -1,6 +1,33 @@
-
-.convos{
+.conv-name{
   font-size: 20px;
-  font-style: bold;
+  padding-left: 2px;
+}
+.card-body{
+  font-size: 16px;
+  padding: 0px 50px;
+  color: #999999;
 }
 
+.title{
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.join-conv{
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 5px;
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  }
