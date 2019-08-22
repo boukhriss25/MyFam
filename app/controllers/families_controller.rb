@@ -27,6 +27,7 @@ class FamiliesController < ApplicationController
   def edit
     @users = @family.users
     @membership = Membership.new
+    # @user = User.new
   end
 
   def update

@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :families, through: :memberships
   has_many :conversations, through: :subscriptions
+  mount_uploader :avatar, PhotoUploader
 end
