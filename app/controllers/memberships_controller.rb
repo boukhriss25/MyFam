@@ -15,10 +15,10 @@ class MembershipsController < ApplicationController
     @membership.family = @family
     if @membership.save
       redirect_to edit_family_path(@family)
-      flash[:success] = @membership.errors.full_messages.join(", ")
+      flash[:success] = "Added user successfully"
     else
       @users = @family.users
-      flash[:notice] = @membership.errors.full_messages.join(", ")
+      flash[:alert] = @membership.errors.full_messages.join(", ")
       render "families/edit"
     end
   end
