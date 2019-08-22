@@ -10,9 +10,10 @@ class User < ApplicationRecord
   has_many :families, through: :memberships
   has_many :conversations, through: :subscriptions
   mount_uploader :avatar, AvatarUploader
+  after_create :default_avatar
 
-  DEFAULT_AVATAR = "f5psjysh6j1nsoxzqgyx"
-  def avatar
-    read_attribute('avatar') || DEFAULT_AVATAR
+
+  def default_avatar
+    self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/v1566486677/fj2ly83omwurmjxi2ltu.png" unless self.avatar.present?
   end
 end
