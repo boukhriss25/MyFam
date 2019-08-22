@@ -7,25 +7,25 @@
     <br>
     <div id="showcard" class="cards">
       <div>
-        <div class="card">
+        <div class="card option">
           <%= link_to family_conversations_path(@family) do %>
-            <%= image_tag("chat-logo.png") %>
+            <%= image_tag("new-chat-logo.png") %>
           <% end %>
         </div>
         <%= link_to "Chat", family_conversations_path(@family) %>
       </div>
       <div>
-        <div class="card">
+        <div class="card option">
           <%= link_to family_documents_path(@family) do %>
-            <%= image_tag("folder-logo.png") %>
+            <%= image_tag("new-folder-logo.png") %>
           <% end %>
         </div>
         <%= link_to "Media", family_documents_path(@family) %>
       </div>
       <div>
-        <div class="card">
+        <div class="card option">
           <%= link_to edit_family_path(@family) do %>
-            <%= image_tag("settings-logo.png") %>
+            <%= image_tag("new-settings-logo.png") %>
           <% end %>
         </div>
         <%= link_to "Manage", edit_family_path(@family) %>
