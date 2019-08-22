@@ -1,43 +1,51 @@
+<%= render 'shared/navbarnew' %>
 <div class="container">
   <div class="pt-2">
     <div>
 
-    <h5>Manage the <%= @family.name %> fam</h5>
-    <%= simple_form_for @family do |f| %>
-      <%= f.input :name, label: "edit name" %>
-      <%= f.input :avatar, label: "upload image" %>
-      <%= f.input :avatar_cache, as: :hidden %>
-      <%= f.button :submit, class: "btn btn-info"%>
-    <% end %>
+      <div class="simpleformnew">
+        <h5>Manage the <%= @family.name %> fam</h5>
+        <%= simple_form_for @family do |f| %>
+        <%= f.input :name, label: "edit name" %>
+        <%= f.input :avatar, label: "upload image" %>
+        <%= f.input :avatar_cache, as: :hidden %>
+        <%= f.button :submit, class: "btn btn-info"%>
+        <% end %>
+      </div>
     </div>
     <br>
     <div class="border p-2">
-    <h5>members:</h5>
-    <% @users.each do |u| %>
+      <h5>members:</h5>
+      <% @users.each do |u| %>
       <%= u.username %>&nbsp&nbsp
       <% if u != current_user %>
-        <%= link_to membership_path(user: u), method: :delete, data: {confirm: "Are you sure?"} do %>
-          <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
-        <% end %>
+      <%= link_to membership_path(user: u), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
+      <% end %>
       <% end %>
       <br>
-    <% end %>
+      <% end %>
     </div>
-    <div class="mt-4">
-      <h6>Add a new member</h6>
-    <div class="search-form-control form-group">
-        <%= form_tag family_memberships_path(@family), method: :post do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "email"%>
-          <button name="button" type="submit" class="btn btn-info mt-3">Add User</button>
-          <% end %>
+    <div class="simpleformnew">
+      <div class="mt-4">
+        <h6>Add a new member</h6>
+        <div class="search-form-control form-group">
+          <%= form_tag family_memberships_path(@family), method: :post do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            placeholder: "email"%>
+            <button name="button" type="submit" class="btn btn-info mt-3">Add User</button>
+            <% end %>
+          </div>
         </div>
-    </div>
-    <div class="pb-5">
-    <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4 mr-4" %>
-    <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+      </div>
+
+      <div class="simpleformghost">
+      <div class="pb-5">
+        <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4 mr-4" %>
+        <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+      </div>
+      </div>
     </div>
   </div>
-</div>
