@@ -4,5 +4,5 @@ class Family < ApplicationRecord
   has_many :documents
   has_many :users, through: :memberships
   validates :name, presence: true
-  mount_uploader :avatar, PhotoUploader
+  mount_uploader :avatar, AvatarUploader
 end
