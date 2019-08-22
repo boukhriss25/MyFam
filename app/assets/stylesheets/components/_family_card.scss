@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
+  background-color: transparent;
 
   #addfam {
     border-style: solid 1px;
@@ -12,30 +13,27 @@
     h1 {
       color: #FF4747;
       font-size: 62px;
-      justify-content: center;
-      text-align: center;
-  }
-}
-}
-
-.cards{
-
-  #indexcard {
-    border-style: solid 1px;
+      margin-top: 16px;
+      text-decoration: none;
+    }
   }
 }
 
 .card {
   color: black;
+  background-color: transparent;
+
   img {
     border-radius: 3px;
     object-fit: cover;
     width: 100%;
   }
 
+  #showcard {
+    border-style: none;
+  }
 }
 
 a {
   color: black;
 }
-
