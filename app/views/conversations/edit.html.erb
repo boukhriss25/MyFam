@@ -1,4 +1,33 @@
 <div class="container">
-  <div class="main-content">
-    <h2>Manage <%= @family.name %></h2>
-    <%= render 'form', conversation: @conversation %>
+  <div class="pt-2">
+    <div>
+
+    <h5>Manage <%= @conversation.name %> </h5>
+    <%= simple_form_for [@family, @conversation] do |f| %>
+      <%= f.input :name, label: "Edit name" %>
+      <%= f.button :submit, class: "btn btn-info"%>
+    <% end %>
+    </div>
+    <br>
+    <div class="border p-2">
+    <h5>members:</h5>
+    <% @users.each do |u| %>
+      <%= u.username %>
+      <br>
+      <% end %>
+      <br>
+    </div>
+    <div class="mt-4">
+      <h6>Add a new member</h6>
+    <div class="search-form-control form-group">
+        <%= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "email"%>
+          <%= hidden_field_tag :add_user, value:  1 %>
+          <button name="button" type="submit" class="btn btn-info mt-3">Add User</button>
+          <% end %>
+        </div>
+    </div>
+
