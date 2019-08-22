@@ -6,10 +6,10 @@
       <% @messages.each do |message| %>
       <div class="message">
         <div class="message-info">
-          <p><strong><%= message.user.email %></strong></p>
+          <p><strong><%= message.user.username %></strong></p>
           <p><%= message.created_at %></p>
         </div>
-        <p><%= message.content %></p>
+        <%= message.content %>
       </div>
       <% end %>
   </div>
