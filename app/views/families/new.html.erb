@@ -1,8 +1,14 @@
-<h1>Families#new</h1>
+<%= render 'shared/navbarnew' %>
 
+<div class="container mt-5">
+<h5>Create a new fam</h5>
+
+<div class="simpleformnew mt-3">
 <%= simple_form_for @family do |f| %>
   <%= f.input :name %>
-  <%#= f.input :avatar %>
-  <%#= f.input :avatar_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-info"%>
+  <%= f.input :avatar %>
+  <%= f.input :avatar_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-info btn-block"%>
 <% end %>
+</div>
+</div>

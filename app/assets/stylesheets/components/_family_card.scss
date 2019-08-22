@@ -2,15 +2,35 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
+  background-color: transparent;
+
+  #addfam {
+    border-style: solid 1px;
+    border-color: #FF4747;
+    height: 120px;
+    width: 120px;
+
+    h1 {
+      color: #FF4747;
+      font-size: 62px;
+      margin-top: 16px;
+      text-decoration: none;
+    }
+  }
 }
 
 .card {
   color: black;
-  border-style: none;
+  background-color: transparent;
+
   img {
     border-radius: 3px;
     object-fit: cover;
     width: 100%;
+  }
+
+  #showcard {
+    border-style: none;
   }
 }
 
