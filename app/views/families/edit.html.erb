@@ -26,8 +26,9 @@
       <%= f.button :submit, class: "btn btn-info"%>
     <% end %>
     </div>
+    <div class="pb-5">
+    <%= link_to 'Leave Family', membership_path(current_user.memberships.where(family: @family)), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
     <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
-    <%#= link_to 'Leave Family', membership_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-dark" %>
-
+    </div>
   </div>
 </div>

@@ -8,6 +8,7 @@
     <% message = Message.where(conversation_id: sub.conversation.id).last %>
     <br>
     <%= message.content %>
+    <%= sub.conversation.family.name %>
     <br>
   <% end %>
 <% end %>
