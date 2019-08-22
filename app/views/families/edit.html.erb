@@ -15,7 +15,7 @@
     <h5>members:</h5>
     <% @users.each do |u| %>
       <%= u.username %> -
-      <%= link_to 'bin', membership_path(u.memberships.where(family: @family)), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= link_to 'bin', membership_path(user: u), method: :delete, data: {confirm: "Are you sure?"} %>
       <br>
     <% end %>
     </div>
@@ -27,7 +27,7 @@
     <% end %>
     </div>
     <div class="pb-5">
-    <%= link_to 'Leave Family', membership_path(current_user.memberships.where(family: @family)), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
+    <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
     <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-5" %>
     </div>
   </div>
