@@ -1,4 +1,5 @@
 <%= render 'shared/navbarburger'%>
+
 <div class="container">
   <div class="container d-flex conv-show-title">
     <h2 class="conversation-name"><%= @conversation.name %></h2>
@@ -8,15 +9,25 @@
       data: { confirm: "Are you sure?" } %>
   </div>
   <div class="container-messages">
-      <% @messages.each do |message| %>
-      <div class="message">
-        <div class="message-info">
-          <p><strong><%= message.user.username %></strong></p>
-          <p><%= message.created_at %></p>
+    <% @messages.each do |message| %>
+      <% if message.user == current_user %>
+        <div class="my-message">
+          <div class="message-info my-msg-info">
+            <p class="my-msg-username"><strong><%= message.user.username %></strong></p>
+            <p class="my-msg-time"><%= message.created_at %></p>
+          </div>
+          <%= message.content %>
         </div>
-        <%= message.content %>
-      </div>
-      <% end %>
+        <% else %>
+          <div class="other-messages">
+            <div class="message-info">
+              <p><%= message.user.username %></p>
+              <p><%= message.created_at %></p>
+            </div>
+          <%= message.content %>
+          </div>
+        <% end %>
+    <% end %>
   </div>
 
   <div class="message-input">
