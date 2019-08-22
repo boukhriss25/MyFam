@@ -10,90 +10,91 @@ User.create(
   email: "amine@gmail.com",
   password: "password",
   username: "Amine",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "mehdi@gmail.com",
   password: "password",
   username: "Mehdi",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "glen@gmail.com",
   password: "password",
   username: "Glen",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "wendela@gmail.com",
   password: "password",
   username: "Wendela",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "rita@gmail.com",
   password: "password",
   username: "Rita",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "bob@gmail.com",
   password: "password",
   username: "Bob",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "ellyn@gmail.com",
   password: "password",
   username: "Ellyn",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "inou@gmail.com",
   password: "password",
   username: "Inou",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "avalon@gmail.com",
   password: "password",
   username: "Avalon",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "claire@gmail.com",
   password: "password",
   username: "Claire",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "nico@gmail.com",
   password: "password",
   username: "Nico",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 User.create(
   email: "armani@gmail.com",
   password: "password",
   username: "Armani",
-  # remote_avatar_url: avatars
+  remote_avatar_url: avatars
 )
 
 puts 'Cleaning database of all families...'
 Family.destroy_all
 puts 'Initiating family seed...'
 
+# default_avatar = "default-family.jpg"
 
 Family.create(
   name: "Lövgren",

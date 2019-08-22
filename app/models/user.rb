@@ -10,4 +10,9 @@ class User < ApplicationRecord
   has_many :families, through: :memberships
   has_many :conversations, through: :subscriptions
   mount_uploader :avatar, AvatarUploader
+
+  DEFAULT_AVATAR = "f5psjysh6j1nsoxzqgyx"
+  def avatar
+    read_attribute('avatar') || DEFAULT_AVATAR
+  end
 end
