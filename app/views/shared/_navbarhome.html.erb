@@ -1,4 +1,18 @@
 <nav class="navbarhome mb-3">
-  <span class="navbar-brand d-flex my-auto"></span>
-  <p class="pl-2">MyFam</p>
+<!--     <p class="pl-2">MyFam</p>-->
+  <div class="logo-myfam">
+    <%= link_to families_path do %>
+      <%= image_tag "logomyfam.png", :class=>"icons" %>
+    <% end %>
+  </div>
+
+
+  <div class="login-navbar">
+  <% if user_signed_in? == false %>
+    <%= link_to "Login", new_user_session_path, class: "btn"%>
+    <% else %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn"%>
+    <% end %>
+  </div>
+
 </nav>

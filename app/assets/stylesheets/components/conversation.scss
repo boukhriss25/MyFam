@@ -15,7 +15,7 @@
   padding: 10px;
   margin: 20px 0;
   margin-right: 70px;
-  background-color: white;
+  background-color: #F0F0F0;
 
   .message-info {
     display: flex;
@@ -45,3 +45,12 @@
   }
 }
 
+.conversations-and-icon-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversations-and-icon-new h4 {
+  padding: 5px;
+}

@@ -1,6 +1,7 @@
 <nav class="navbarburger d-flex my-auto mb-3" style="justify-content: space-between;">
-  <span class="navbar-brand mb-0"></span>
-
+<!--   <span class="navbar-brand mb-0"></span>
+ -->
+ <div>
   <button onclick="goBack()"><i class="fas fa-angle-left"></i></button>
 
   <script>
@@ -8,8 +9,15 @@
       window.history.back();
     }
   </script>
+</div>
 
-  <p>MyFam</p>
+  <div class="logo-myfam">
+    <%= link_to families_path do %>
+      <%= image_tag "logomyfam.png", :class=>"icons" %>
+    <% end %>
+  </div>
+
+
 
   <div class="btn-group">
     <button class="navbar-toggler toggler-example" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
@@ -27,9 +35,9 @@
         <br>
         <br>
 
-        <i class="far fa-copyright d-flex dropdown-item mr-3" style="font-size: 12px;">
+        <!-- <i class="far fa-copyright d-flex dropdown-item mr-3" style="font-size: 12px;">
           <p>2019 MyFam, Inc. All rights reserved.</p>
-        </i>
+        </i> -->
       </div>
     </div>
   </div>
