@@ -1,8 +1,13 @@
-<h1>Documents#index</h1>
-<p>Find me in app/views/documents/index.html.erb</p>
+<%= render 'shared/navbarburger'%>
+
+<div class="container doc">
+  <%= image_tag "comingsoon.jpg"%>
 
 
 <%@documents.each do |doc| %>
 <%= doc.content %>
 <%= doc.doc_type %>
 <%end %>
+
+
+</div>
