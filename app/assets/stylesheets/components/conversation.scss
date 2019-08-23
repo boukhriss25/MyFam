@@ -24,6 +24,13 @@
 }
 .conv-show-title{
   justify-content: space-between;
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .icons{
