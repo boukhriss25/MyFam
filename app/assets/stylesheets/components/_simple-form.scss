@@ -1,4 +1,19 @@
 
-.form-control-label {
-  // display: none;
+.simpleform-msg {
+  .form-control-label {
+    display: none;
+  }
 }
+
+.message-input form {
+  position: relative;
+
+  textarea {
+    padding-right: 25px;
+  }
+
+  .btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }

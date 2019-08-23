@@ -1,20 +1,16 @@
 <%= render 'shared/navbarburger'%>
 
 <div class="container">
-  <div class="container d-flex conv-show-title">
+  <div class="conv-show-title">
       <img class="avatar" alt="avatar" src="https://cdn3.iconfinder.com/data/icons/toolbar-people/512/user_group_man_people_users_male-512.png" />
       <h4 class="conversation-name"><%= @conversation.name %></h4>
     <div>
       <%= link_to edit_family_conversation_path(@family, @conversation) do %>
        <%= image_tag "settings-icon.png", :class=>"icons" %>
       <% end %>
-      <%= link_to family_conversation_path(@family, @conversation),
-        method: :delete,
-        data: { confirm: "Are you sure?" } do %>
-         <%= image_tag "delete-icon.png", :class=>"icons" %>
-        <% end %>
     </div>
   </div>
+
   <div class="container-messages">
     <% @messages.each do |message| %>
       <% if message.user == current_user %>
