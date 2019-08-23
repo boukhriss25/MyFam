@@ -1,9 +1,16 @@
 <%= render 'shared/navbarburger'%>
 
-<div class="container">
-  <div class="main-content">
-    <h3>New Conversation</h3>
-    <%= render 'form', conversation: @conversation %>
-    <h6>You can add other members in the edit section of the conversation</h6>
+<div class="index-wrapper">
+  <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
+
+  <div class="container mt-5">
+    <h5>Create a new conversation</h5>
+
+    <div class="simpleformnew mt-3">
+      <%= simple_form_for [@family, @conversation] do |f| %>
+      <%= f.input :name %>
+      <%= f.button :submit, class: "btn btn-info btn-block"%>
+      <% end %>
+    </div>
   </div>
 </div>
