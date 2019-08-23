@@ -1,37 +1,36 @@
 <%= render 'shared/navbarhome' %>
 
-<div id="imgbg" class= "index-wrapper" style="background-image: url(<%= image_path 'indexbg.png' %>);">
+  <div class="index-wrapper">
+    <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
+    <div class="container">
+      <div class="main-content mt-5">
 
-  <div class="container">
-    <div class="main-content mt-5">
+        <h1 class="mb-4">Select a Fam</h1>
 
-      <h1 class="mb-4">Select a Fam</h1>
-
-      <div id="indexcard" class="cards">
-        <% @families.each do |f| %>
-        <div>
-          <div class="card">
-            <%= link_to family_path(f) do %>
-            <%= cl_image_tag f.avatar %>
-            <%#= image_tag("big-happy-family.jpg") %>
-            <% end %>
+        <div id="indexcard" class="cards">
+          <% @families.each do |f| %>
+          <div>
+            <div class="card">
+              <%= link_to family_path(f) do %>
+              <%= cl_image_tag f.avatar %>
+              <%#= image_tag("big-happy-family.jpg") %>
+              <% end %>
+            </div>
+            <%= link_to f.name, family_path(f) %>
           </div>
-          <%= link_to f.name, family_path(f) %>
-        </div>
-        <% end %>
-        <div>
-          <div id="addfam" class="card">
-            <%= link_to new_family_path do %>
-            <h1 style="text-decoration: none;">+</h1>
-            <% end %>
+          <% end %>
+          <div>
+            <div id="addfam" class="card">
+              <%= link_to new_family_path do %>
+              <h1 style="text-decoration: none;">+</h1>
+              <% end %>
+            </div>
+            <%= link_to "Add Fam", new_family_path %>
           </div>
-          <%= link_to "Add Fam", new_family_path %>
         </div>
       </div>
     </div>
+
   </div>
 
-</div>
-
 <%#= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
-
