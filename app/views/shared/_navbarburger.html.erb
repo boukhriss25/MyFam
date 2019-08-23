@@ -26,7 +26,9 @@
       <div class="dropdown-menu dropdown-menu-right p-3">
         <div id="log-bar" class="d-flex pb-2" style="justify-content: space-between; align-items: center;">
           <div id="burger-avatar">
+            <%= link_to edit_user_registration_path do %>
             <%= cl_image_tag current_user.avatar %>
+            <% end %>
           </div>
           <div>
             <p class="mb-2" style="color:black; font-size: 20px">
@@ -51,7 +53,6 @@
         <% end %>
         </div>
         <div class="">
-        <p class="pt-1 pb-1" style="color:black; font-size: 20px"><%= link_to "Account", edit_user_registration_path %></p>
         <p style="color:black; font-size: 20px">Settings</p>
 
         </div>
