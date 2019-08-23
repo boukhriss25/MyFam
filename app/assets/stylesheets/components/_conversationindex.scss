@@ -1,11 +1,18 @@
 .conv-name{
   font-size: 20px;
   padding-left: 2px;
+  display: flex;
 }
+
+.conv-name-inside {
+  flex: grow;
+}
+
 .card-body{
   font-size: 16px;
   padding: 0px 50px;
   color: #999999;
+
 }
 
 // .title{
@@ -30,4 +37,9 @@
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+}
+
+.last-msg-convo {
+  display: flex;
+  justify-content: space-between;
 }
