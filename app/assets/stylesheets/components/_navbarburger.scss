@@ -8,7 +8,10 @@
     margin: auto;
     color: #5A5A5A;
   }
-
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 i {
@@ -21,5 +24,8 @@ i {
 
 .btn-group {
   background-color: #F7F5FB;
+}
 
+.dropdown-menu {
+  background-color: #ECF6FE;
 }
