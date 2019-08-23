@@ -1,10 +1,9 @@
-<nav class="navbarburger d-flex my-auto mb-3" style="justify-content: space-between;">
+<nav class="navbarburger d-flex my-auto mb-3 pl-3 pr-3" style="justify-content: space-between;">
 <!--   <span class="navbar-brand mb-0"></span>
  -->
  <div>
-  <button onclick="goBack()"><i class="fas fa-chevron-left"></i></button>
-
-  <script>
+  <div onclick="goBack()"><i class="fas fa-chevron-left"></i></div>
+ <script>
     function goBack() {
       window.history.back();
     }
@@ -20,10 +19,10 @@
 
 
   <div class="btn-group">
-    <button class="navbar-toggler toggler-example" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
+    <button class="navbar-toggler toggler-example burger-nav" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
     aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
       class="fas fa-bars fa-1x"></i></span></button>
-
+    
       <div class="dropdown-menu dropdown-menu-right p-3">
         <div id="log-bar" class="d-flex" style="justify-content: space-between;">
           <div>

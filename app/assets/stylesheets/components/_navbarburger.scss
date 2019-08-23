@@ -3,6 +3,7 @@
   color: black;
   // height: 50px;
   width: 100%;
+  align-items: center;
 
   p {
     margin: auto;
@@ -13,13 +14,11 @@
     text-decoration: none;
     color: black;
   }
-
+  
   button {
     font-size: 24px;
     vertical-align: middle;
     color: #5A5A5A;
-    margin-top: auto;
-    margin-bottom: auto;
   }
 }
 
@@ -27,8 +26,6 @@ i {
   font-size: 24px;
   vertical-align: middle;
   color: #5A5A5A;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 .btn-group {
@@ -57,4 +54,8 @@ i {
 #burger-fam-name {
   flex-grow: 1;
   padding-left: 16px;
+}
+
+.burger-nav {
+  padding: 0px;
 }
