@@ -5,13 +5,13 @@
     <div>
 
     <div class="simpleformnew">
-      <h5>Manage <%= @conversation.name %> </h5>
+      <h5>Manage - <%= @conversation.name %> </h5>
       <%= simple_form_for [@family, @conversation] do |f| %>
-        <%= f.input :name, label: "Edit name" %>
-        <%= f.button :submit, class: "btn btn-info"%>
+        <%= f.input :name, label: "edit name" %>
+        <%= f.button :submit, "Update", class: "btn btn-info"%>
       <% end %>
       <br>
-      <div class="border p-2">
+      <div class="border p-2 members">
       <h5>members:</h5>
       <% @users.each do |u| %>
         <%= u.username %>
@@ -21,13 +21,13 @@
       </div>
       <div class="mt-4">
         <h6>Add a new member</h6>
-        <div class="search-form-control form-group">
+        <div class="form-group">
           <%= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
           <%= select_tag :query, options_from_collection_for_select(@members, "email", "email"),
           class: "form-control",
             placeholder: "email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
-            <button name="button" type="submit" class="btn btn-info">Add User</button>
+            <button name="button" type="submit" class="btn btn-info mt-3">Add</button>
             <% end %>
         </div>
       </div>
