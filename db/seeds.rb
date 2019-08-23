@@ -4,6 +4,17 @@ avatars = "https://kitt.lewagon.com/placeholder/users/random"
 
 puts 'Cleaning database of all users...'
 User.destroy_all
+puts 'Cleaning database of all families...'
+Family.destroy_all
+puts 'Cleaning database of all conversations...'
+Conversation.destroy_all
+puts 'Cleaning database of all memberships...'
+Membership.destroy_all
+puts 'Cleaning database of all subscriptions...'
+Subscription.destroy_all
+puts 'Cleaning database of all messages...'
+Message.destroy_all
+
 puts 'Initiating users seed...'
 
 User.create(
@@ -90,8 +101,6 @@ User.create(
   remote_avatar_url: avatars
 )
 
-puts 'Cleaning database of all families...'
-Family.destroy_all
 puts 'Initiating family seed...'
 
 Family.create(
@@ -101,12 +110,12 @@ Family.create(
 
 Family.create(
   name: "Warren",
-  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491071/elwu1wlra10q4ollpnfz.jpg"
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566550247/pue3rtdpuy1s9usmgibu.jpg"
 )
 
 Family.create(
   name: "Idrissi",
-  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491054/kdnxg1nmkevtv5xmv1te.jpg"
+  remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566550262/miinvpjmcluayej8kskj.png"
 )
 
 Family.create(
@@ -119,8 +128,6 @@ Family.create(
   remote_avatar_url: "https://res.cloudinary.com/glenwarren/image/upload/v1566491078/qwkw0ovyfokg2ssdcvw8.jpg"
 )
 
-puts 'Cleaning database of all conversations...'
-Conversation.destroy_all
 puts 'Initiating conversation seed...'
 
 convo_names = [
@@ -160,8 +167,6 @@ families.each do |f|
   end
 end
 
-puts 'Cleaning database of all memberships...'
-Membership.destroy_all
 puts 'Initiating membership seed...'
 
 fams = Family.all
@@ -177,10 +182,7 @@ fams.each do |f|
   end
 end
 
-puts 'Cleaning database of all subscriptions...'
-Subscription.destroy_all
 puts 'Initiating subscription seed...'
-
 
 convos = Conversation.where.not(name: "Main chat")
 
@@ -207,8 +209,6 @@ main_convos.each do |c|
   end
 end
 
-puts 'Cleaning database of all messages...'
-Message.destroy_all
 puts 'Initiating messages seed...'
 
 chats = Conversation.all
@@ -221,6 +221,7 @@ chats.each do |c|
       conversation: c,
       content: Faker::Marketing.buzzwords
     )
+    sleep(rand(1..2))
   end
 end
 
@@ -230,8 +231,9 @@ chats.each do |c|
     Message.create(
       user: users.sample,
       conversation: c,
-      content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing palstave deflation inspissating completively scunge. Saplessness heavenless vivifying vignettist disuniting frapping decoy"
+      content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing inspissating completively scunge. Saplessness heavenless vivifying vignettist disuniting frapping decoy"
     )
+    sleep(rand(1..2))
   end
 end
 
@@ -243,6 +245,7 @@ chats.each do |c|
       conversation: c,
       content: Faker::Marketing.buzzwords
     )
+    sleep(rand(1..2))
   end
 end
 
