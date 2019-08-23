@@ -22,23 +22,40 @@
     <button class="navbar-toggler toggler-example burger-nav" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
     aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
       class="fas fa-bars fa-1x"></i></span></button>
-
-      <div class="dropdown-menu dropdown-menu-right">
-        <div class="pb-2">
-          <%= current_user.username %> -
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: ""%>
+    
+      <div class="dropdown-menu dropdown-menu-right p-3">
+        <div id="log-bar" class="d-flex" style="justify-content: space-between;">
+          <div>
+            <p class="mb-2" style="color:black; font-size: 28px"><%= current_user.username %></p>
+          </div>
+          <div>
+            <p class="mb-2" style="color:black; font-size: 28px">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: ""%></p>
+          </div>
         </div>
         <div class="border-bottom border-top pb-4 pt-2">
+          <div class="text-align-center">
 
-        <p class="mb-2" style="color:black;"> SWITCH FAM </p>
+
+        <p class="mb-2" style="color:black; font-size: 28px">Fams </p>
+          </div>
 
         <% current_user.families.each do |fam| %>
-        <p style="color: black; font-size: 14px;"><%= link_to fam.name, family_path(fam) %></p>
+        <div class="d-flex justify-content-center pt-1 pb-1">
+          <div id="burger-avatar">
+            <%= link_to family_path(fam) do %>
+            <%= cl_image_tag fam.avatar %>
+            <% end %>
+          </div>
+          <div id="burger-fam-name">
+        <p style="color: black; font-size: 24px;"><%= link_to fam.name, family_path(fam) %></p>
+          </div>
+        </div>
         <% end %>
         </div>
         <div class="">
-        <p class="border-bottom pt-1 pb-1" style="color:black; font-size: 16px"><%= link_to "Account", edit_user_registration_path %></p>
-        <p class="border-bottom pt-1 pb-1" style="color:black; font-size: 16px">Settings</p>
+        <p class="border-bottom pt-1 pb-1" style="color:black; font-size: 28px"><%= link_to "Account", edit_user_registration_path %></p>
+        <p class="border-bottom pt-1 pb-1" style="color:black; font-size: 28px">Settings</p>
 
         </div>
         <br>

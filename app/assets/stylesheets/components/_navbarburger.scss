@@ -1,7 +1,7 @@
 .navbarburger {
   background-color: transparent;
   color: black;
-  height: 50px;
+  // height: 50px;
   width: 100%;
   align-items: center;
 
@@ -14,9 +14,13 @@
     text-decoration: none;
     color: black;
   }
-
+  
+  button {
+    font-size: 24px;
+    vertical-align: middle;
+    color: #5A5A5A;
+  }
 }
-
 
 i {
   font-size: 24px;
@@ -30,6 +34,26 @@ i {
 
 .dropdown-menu {
   background-color: #ECF6FE;
+  min-width: 300px;
+}
+
+#log-bar {
+  margin-left: none;
+  margin-right: none;
+}
+
+#burger-avatar {
+  img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  }
+}
+
+#burger-fam-name {
+  flex-grow: 1;
+  padding-left: 16px;
 }
 
 .burger-nav {
