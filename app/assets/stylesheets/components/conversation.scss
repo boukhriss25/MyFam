@@ -1,4 +1,5 @@
 
+
 .container-messages p {
   margin-bottom: 5px;
 }
@@ -63,4 +64,9 @@
 
 .conversations-and-icon-new h4 {
   padding: 5px;
+}
+
+.container-messages {
+  height: 76vh;
+  overflow-x: scroll;
 }
