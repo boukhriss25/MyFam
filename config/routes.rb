@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'families#index'
-
+  resources :subscriptions, only:[:destroy]
   resources :families do
     resources :conversations do
       resources :subscriptions, only:[:index, :new, :create]
