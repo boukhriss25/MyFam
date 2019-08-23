@@ -1,9 +1,17 @@
 <%= render 'shared/navbarburger'%>
 
 <div class="container">
+  <div class="conversations-and-icon-new">
+    <h4 class="title">My Conversations</h4>
+    <div class="new-chat">
+      <%= link_to new_family_conversation_path(@family, @conversation) do %>
+        <%= image_tag "new_chat.png", :class=>"icons" %>
+      <% end %>
+    </div>
+  </div>
 
-  <h4 class="title">My Conversations</h4>
-  <%= link_to "New", new_family_conversation_path  %>
+
+
   <% if @subscriptions.nil? %>
     <p>No Subscriptions</p>
   <% else %>

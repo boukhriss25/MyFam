@@ -22,15 +22,15 @@
         <div class="my-message">
           <div class="message-info my-msg-info">
             <p class="my-msg-username"><strong><%= message.user.username %></strong></p>
-            <p class="my-msg-time"><%= message.created_at %></p>
+            <p class="my-msg-time"><%= message.created_at.strftime("%I:%M %p") %></p>
           </div>
           <%= message.content %>
         </div>
         <% else %>
           <div class="other-messages">
             <div class="message-info">
-              <p><%= message.user.username %></p>
-              <p><%= message.created_at %></p>
+              <p><strong><%= message.user.username %></strong></p>
+              <p><%= message.created_at.strftime("%I:%M %p") %></p>
             </div>
           <%= message.content %>
           </div>
