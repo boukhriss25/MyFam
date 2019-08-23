@@ -14,6 +14,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
+    # @family = Family.find(params[:family_id])
+    @subscription = Subscription.find_by(user: params[:user].to_i, conversation_id: params[:id].to_i)
+    @subscription.destroy
+    redirect_to family_conversations_path(@subscription.conversation.family)
   end
 
   private
