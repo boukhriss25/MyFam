@@ -24,24 +24,27 @@
       class="fas fa-bars fa-1x"></i></span></button>
 
       <div class="dropdown-menu dropdown-menu-right p-3">
-        <div id="log-bar" class="d-flex pb-2" style="justify-content: space-between; align-items: center;">
-          <div id="burger-avatar">
-            <%= link_to edit_user_registration_path do %>
+        <div id="log-bar" class="pb-2">
+        <div id="tools-icon">
+        <%= link_to edit_user_registration_path do %>
+          <i class="fas fa-tools"></i>
+          <% end %>
+        </div>
+        <div class="burger-avatar" id="user-avatar">
             <%= cl_image_tag current_user.avatar %>
-            <% end %>
           </div>
-          <div>
-            <p class="mb-2" style="color:black; font-size: 20px">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: ""%></p>
+          <div id="log-out">
+            <button id="logout-btn"><p style="font-size: 10px">
+            <%= link_to "logout", destroy_user_session_path, method: :delete, class: ""%></p></button>
           </div>
         </div>
-        <div class="border-bottom border-top pb-4 pt-2">
+        <div class="border-top pt-2">
           <div class="text-align-center">
           </div>
 
         <% current_user.families.each do |fam| %>
         <div class="d-flex justify-content-center pt-1 pb-1">
-          <div id="burger-avatar">
+          <div class="burger-avatar">
             <%= link_to family_path(fam) do %>
             <%= cl_image_tag fam.avatar %>
             <% end %>
@@ -49,12 +52,11 @@
           <div id="burger-fam-name">
         <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
           </div>
+          <div class="unread pt-2 pb-2">
+            <p style="color: black; font-size: 16px;"><%= link_to "#{rand(1..28)} unread", family_conversations_path(fam) %></p>
+          </div>
         </div>
         <% end %>
-        </div>
-        <div class="">
-        <p style="color:black; font-size: 20px">Settings</p>
-
         </div>
 
 
