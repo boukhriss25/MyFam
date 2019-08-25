@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'families#index'
+  root to: 'pages#home'
   resources :subscriptions, only:[:destroy]
   resources :families do
     resources :conversations do
