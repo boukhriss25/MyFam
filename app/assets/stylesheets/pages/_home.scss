@@ -1,11 +1,42 @@
 // Specific CSS for your home-page
 
-// body {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100vh;
-// }
+.homecontainer {
 
-// .main {
-//   flex: auto;
-// }
+  .icons {
+    margin-top: 22px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 52px !important;
+    height: 52px !important;
+  }
+  h1 {
+    text-align: center;
+  }
+}
+
+.home-content {
+  padding: 15px;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  h5 {
+    color: #5A5A5A;
+    margin-top: 18px;
+  }
+
+  p {
+    color: #5A5A5A;
+  }
+
+  .btn {
+    margin-top: 32px;
+    color: white;
+    background-color: #FF4747;
+    border-color: #FF4747;
+    border-radius: 5px;
+    margin-top: 72px;
+    text-decoration: none;
+  }
+}

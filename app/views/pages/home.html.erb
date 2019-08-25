@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="homecontainer">
+  <div class="logo-myfam" style="position: center;">
+    <%= image_tag "logomyfam.png", :class=>"icons" %>
+  </div>
+<h1 style="font-size: 36px;">MyFam</h1>
+<hr>
+
+<div class="home-content">
+<h5>Simple. Secure. Reliable messaging.</h5>
+<p style="margin-top: 24px;">With MyFam, you'll get ..... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste illum eaque aliquam molestias at, rem!</p>
+
+<%= link_to "Sign up", new_user_registration_path, class: "btn btn-basic btn-block" %>
+
+<p style="font-size: 12px; margin-top: 20px;"> ALREADY HAVE AN ACCOUNT? <%= link_to "LOG IN", new_user_session_path%></p>
+
+
+</div>
+</div>
