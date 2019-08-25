@@ -221,7 +221,7 @@ chats.each do |c|
       conversation: c,
       content: Faker::Marketing.buzzwords
     )
-    sleep(rand(1..2))
+    # sleep(rand(1..2))
   end
 end
 
@@ -233,7 +233,7 @@ chats.each do |c|
       conversation: c,
       content: "Pantologic andvari mommsen gregariousness transformable rectocele turnbuckle phosphine mazing inspissating completively scunge. Saplessness heavenless vivifying vignettist disuniting frapping decoy"
     )
-    sleep(rand(1..2))
+    # sleep(rand(1..2))
   end
 end
 
@@ -245,7 +245,7 @@ chats.each do |c|
       conversation: c,
       content: Faker::Marketing.buzzwords
     )
-    sleep(rand(1..2))
+    # sleep(rand(1..2))
   end
 end
 

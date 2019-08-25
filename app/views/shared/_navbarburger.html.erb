@@ -52,6 +52,9 @@
           <div id="burger-fam-name">
         <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
           </div>
+          <div class="unread pt-2 pb-2">
+            <p style="color: black; font-size: 16px;"><%= link_to "#{rand(1..28)} unread", family_conversations_path(fam) %></p>
+          </div>
         </div>
         <% end %>
         </div>
