@@ -9,7 +9,8 @@ class SubscriptionsController < ApplicationController
     end
     @subscription.conversation = @conversation
     if @subscription.save
-      redirect_to family_conversation_path(@family, @conversation)
+      redirect_to edit_family_conversation_path(@family, @conversation)
+      # redirect_to family_conversation_path(@family, @conversation)
     end
   end
 
