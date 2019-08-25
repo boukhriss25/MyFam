@@ -32,9 +32,14 @@
         </div>
       </div>
       <br>
-      <div class="simpleformghost mb-2">
-        <%= link_to 'Leave Conversation',subscription_path(user: current_user),
+      <div class="simpleformghost pb-5">
+        <% unless @conversation.users.count == 1 %>
+          <%= link_to 'Leave Conversation', subscription_path(user: current_user),
            method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-info" %>
+        <% end %>
+        <% if @conversation.users.count == 1 %>
+          <%= link_to 'Delete Conversation', family_conversation_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+        <% end %>
       </div>
     </div>
   </div>

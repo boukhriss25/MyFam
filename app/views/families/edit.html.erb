@@ -46,8 +46,12 @@
 
       <div class="simpleformghost">
       <div class="pb-5">
+        <% unless @family.users.count == 1 %>
         <%= link_to 'Leave Family', membership_path(user: current_user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4 mr-4" %>
+        <% end %>
+        <% if @family.users.count == 1 %>
         <%= link_to 'Delete Family', family_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+        <% end %>
       </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ class ConversationsController < ApplicationController
     @conversation.family = @family
     @subscription = Subscription.new(user: current_user, conversation: @conversation)
     if @subscription.save && @conversation.save
-      redirect_to family_conversations_path
+      redirect_to edit_family_conversation_path(@family, @conversation)
     else
       render :new
     end
