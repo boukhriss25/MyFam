@@ -19,6 +19,9 @@ class TagsController < ApplicationController
     @document = Document.find(params[:document_id])
     @tag.document = @document
     if @tag.save
+      if @untagged = @document.tags.find_by(name: "untagged")
+        @untagged.destroy
+      end
       redirect_to family_document_path(@family, @document)
     else
       render "documents/show"
@@ -30,6 +33,7 @@ class TagsController < ApplicationController
     @document = @tag.document
     @family = @tag.document.family
     @tag.destroy
+    Tag.create(document: @document, name: "untagged") if @document.tags.count.zero?
     redirect_to family_document_path(@family, @document)
   end
 
