@@ -18,6 +18,8 @@ class FamiliesController < ApplicationController
     @family = Family.new(family_params)
     @membership = Membership.new(user: current_user, family: @family)
     if @family.save && @membership.save
+      @conversation = Conversation.create(family: @family, name: "Main chat")
+      Subscription.create(user: current_user, conversation: @conversation)
       redirect_to family_path(@family)
     else
       render :new
