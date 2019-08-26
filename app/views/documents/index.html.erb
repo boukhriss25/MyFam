@@ -1,9 +1,19 @@
 <%= render 'shared/navbarburger'%>
+<div class="container">
 
-<%@documents.each do |doc| %>
-<%= doc.content %>
-<%= doc.doc_type %>
-<%end %>
+<div class="simpleformnew mt-3">
+  <%= simple_form_for [@family, @document] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :content_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-info"%>
+  <% end %>
+</div>
+<div>
+<% @documents.each do |doc| %>
+<br>
+<%= cl_image_tag doc.content %>
+<% end %>
+</div>
 
 
 </div>

@@ -8,10 +8,10 @@ class TagsController < ApplicationController
   end
 
   def new
-
     @tag = Tag.new
   end
 
   def create
+
   end
 end

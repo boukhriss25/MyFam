@@ -1,2 +1,14 @@
-<h1>Documents#show</h1>
-<p>Find me in app/views/documents/show.html.erb</p>
+<%= render 'shared/navbarburger'%>
+
+<div class="new-doc">
+<%= cl_image_tag @document.content %>
+</div>
+<div class="add-hashtag">
+  <div class="simpleformnew mt-3">
+    <%= simple_form_for [@family, @document, @tag] do |f| %>
+    <%= f.input :name, label: "Add a tag to your upload" %>
+    <%= f.button :submit, "Submit", class: "btn btn-info"%>
+    <% end %>
+  </div>
+
+</div>
