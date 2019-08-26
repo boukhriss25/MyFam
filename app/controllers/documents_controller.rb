@@ -3,14 +3,12 @@ class DocumentsController < ApplicationController
   before_action :set_family, only: [:index, :show, :create, :destroy]
 
   def index
-    @documents = Document.where(family_id: params[:family_id])
-    @tags = []
-    @documents.each do |doc|
-      doc.tags.each do |tag|
-        @tags << tag.name
-      end
+    if params[:query].present?
+      @tags = Tag.where(name: params[:query])
+      @documents = @tags.map { |t| t.document }
+    else
+      @documents = Document.where(family_id: params[:family_id])
     end
-    @tags = @tags.uniq
     @document = Document.new
   end
 
