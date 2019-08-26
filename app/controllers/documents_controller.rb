@@ -3,7 +3,12 @@ class DocumentsController < ApplicationController
   before_action :set_family, only: [:index, :show, :create, :destroy]
 
   def index
-    @documents = Document.where(family_id: params[:family_id])
+    if params[:query].present?
+      @tags = Tag.where(name: params[:query])
+      @documents = @tags.map { |t| t.document }
+    else
+      @documents = Document.where(family_id: params[:family_id])
+    end
     @document = Document.new
   end
 
