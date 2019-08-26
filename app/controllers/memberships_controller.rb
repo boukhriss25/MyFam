@@ -15,6 +15,7 @@ class MembershipsController < ApplicationController
       @user = User.find_by(email: params[:query])
       @membership = Membership.new(user: @user, family: @family)
       @membership.save
+      Subscription.new(user:, conversation:)
       redirect_to edit_family_path(@family)
       flash[:success] = "Added user successfully"
     else
