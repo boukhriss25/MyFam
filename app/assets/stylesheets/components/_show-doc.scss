@@ -9,5 +9,29 @@
 }
 
 .add-hashtag {
-  padding: 0 20px 20px 20px;
+  padding: 0 20px;
+}
+
+.tags {
+  padding: 0 16px;
+}
+
+.add-tag {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hash {
+  padding-top: 15px;
+  flex: grow;
+}
+
+#tag-input {
+  width: 70vw;
+  margin: 0 4px;
+}
+
+#delete-btn {
+  text-align: center;
+  margin: 20px 0;
 }
