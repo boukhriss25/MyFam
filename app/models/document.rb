@@ -6,4 +6,9 @@ class Document < ApplicationRecord
   validates :content, presence: true
   # validates :doc_type, presence: true
   mount_uploader :content, DocumentUploader
+  after_create :default_tag
+
+  def default_tag
+    Tag.create(name: "untagged", document: self)
+  end
 end
