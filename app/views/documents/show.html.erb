@@ -1,14 +1,25 @@
 <%= render 'shared/navbarburger'%>
 
-<div class="new-doc">
+<div class="show-doc">
 <%= cl_image_tag @document.content %>
 </div>
 <div class="add-hashtag">
+  <% @document.tags.each do |t| %>
+  <strong>#</strong><%= t.name %>
+      <%# if @document.user == current_user %>
+      <%= link_to tag_path(t), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
+      <% end %>&nbsp
+      <%# end %>
+  <% end %>
+
   <div class="simpleformnew mt-3">
     <%= simple_form_for [@family, @document, @tag] do |f| %>
-    <%= f.input :name, label: "Add a tag to your upload" %>
+    <%= f.input :name, label: "Add tag" %>
     <%= f.button :submit, "Submit", class: "btn btn-info"%>
     <% end %>
   </div>
-
+        <% if @document.user == current_user %>
+        <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+        <% end %>
 </div>

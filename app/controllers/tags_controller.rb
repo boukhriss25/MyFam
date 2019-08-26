@@ -8,6 +8,8 @@ class TagsController < ApplicationController
   end
 
   def new
+    @family = Family.find(params[:family_id])
+    @document = Document.find(params[:document_id])
     @tag = Tag.new
   end
 
@@ -17,10 +19,18 @@ class TagsController < ApplicationController
     @document = Document.find(params[:document_id])
     @tag.document = @document
     if @tag.save
-      redirect_to family_documents_path(@family)
+      redirect_to family_document_path(@family, @document)
     else
       render "documents/show"
     end
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @document = @tag.document
+    @family = @tag.document.family
+    @tag.destroy
+    redirect_to family_document_path(@family, @document)
   end
 
   private

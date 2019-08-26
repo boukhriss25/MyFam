@@ -13,22 +13,10 @@
 
   <div class="container-messages">
     <% @messages.each do |message| %>
-      <% if message.user == current_user %>
-         <div class="my-message">
-          <div class="message-info my-msg-info">
-            <p class="my-msg-username"><strong><%= message.user.username %></strong></p>
-            <p class="my-msg-time"><%= message.created_at.strftime("%I:%M %p") %></p>
-          </div>
-          <%= message.content %>
-        </div>
+       <% if message.user == current_user %>
+        <%= render 'messages/my-message', message: message %>
       <% else %>
-          <div class="other-messages">
-            <div class="message-info">
-              <p><strong><%= message.user.username %></strong></p>
-              <p><%= message.created_at.strftime("%I:%M %p") %></p>
-            </div>
-          <%= message.content %>
-        </div>
+        <%= render 'messages/other-message', message: message %>
       <% end %>
     <% end %>
   </div>
