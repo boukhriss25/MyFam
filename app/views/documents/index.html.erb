@@ -1,9 +1,5 @@
 <%= render 'shared/navbarburger'%>
 
-<div class="container doc">
-  <%= image_tag "comingsoon.jpg"%>
-
-
 <%@documents.each do |doc| %>
 <%= doc.content %>
 <%= doc.doc_type %>
