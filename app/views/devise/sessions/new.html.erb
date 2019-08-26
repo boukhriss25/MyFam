@@ -1,6 +1,14 @@
+<div class="homecontainer">
+<div class="logo-myfam" style="position: center;">
+    <%= image_tag "logomyfam.png", :class=>"icons" %>
+  </div>
+<h1 style="font-size: 36px;">MyFam</h1>
+</div>
+<hr>
+
 <div class="simpleformnew mt-5">
  <div class="container">
-    <div class="wrapper-form p-4 ml-1" style=" width: 400px;">
+    <div class="wrapper-form" style=" width: 400px; padding-right: 15px;">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
