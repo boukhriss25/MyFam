@@ -27,11 +27,19 @@
         <p id="search-message">Results for <%= params[:query] %>...</p>
       <% end %>
   <div class="row">
+    <% @tags.each do |tag| %>
+      <%= link_to tag, %>
+    <% end %>
+    </div>
+    <br>
+    <br>
+    <br>
         <% @documents.each do |doc| %>
           <div class="col-xs-3">
             <%= cl_image_tag doc.content, height: 90, width: 90, crop: :fill, class: "img-fam-index" %>
           </div>
         <% end %>
-  </div>
+
+
 
 </div>
