@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :subscriptions, only: [:index, :new, :create]
       resources :messages, only: [:index, :new, :create]
     end
+    get 'home_media', to: "pages#media_home"
     resources :memberships, only: [:new, :create]
     resources :documents, only: [:new, :create, :index, :show] do
       resources :tags, only: [:index, :show, :new, :create]
