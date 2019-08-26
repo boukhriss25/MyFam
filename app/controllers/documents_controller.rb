@@ -16,8 +16,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @family = Family.find(params[:family_id])
     @document = Document.new(document_params)
+    @family = Family.find(params[:family_id])
     @document.user = current_user
     @document.family = @family
     if @document.save
