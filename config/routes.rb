@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+  # match 'user_root' => 'family#show'
   root to: 'pages#home'
   resources :subscriptions, only:[:destroy]
   resources :families do
