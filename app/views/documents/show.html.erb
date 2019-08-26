@@ -3,7 +3,9 @@
 <div class="show-doc">
 <%= cl_image_tag @document.content %>
 </div>
-<div class="add-hashtag">
+<!-- <div class="doc-manage"> -->
+
+<div class="tags">
   <% @document.tags.each do |t| %>
     <strong>#</strong><%= t.name %>
     <% unless t.name == "untagged" %>
@@ -13,14 +15,25 @@
     <% end %>
     &nbsp
   <% end %>
-
-  <div class="simpleformnew mt-3">
-    <%= simple_form_for [@family, @document, @tag] do |f| %>
-    <%= f.input :name, label: "Add a tag" %>
-    <%= f.button :submit, "Submit", class: "btn btn-info"%>
+</div>
+<!-- </div> -->
+<div class="add-hashtag">
+  <div class="add-tag">
+    <div class="hash">
+      <h2>#</h2>
+    </div>
+    <div id="tag-input" class="simpleformnew mt-3">
+      <%= simple_form_for [@family, @document, @tag] do |f| %>
+      <%= f.input :name, label: false, placeholder: "add a tag" %>
+    </div>
+    <div class="add-btn simpleformnew mt-3">
+      <%= f.button :submit, "Add", class: "btn btn-info"%>
+    </div>
     <% end %>
   </div>
+</div>
+<div class="simpleformghost" id="delete-btn">
   <% if @document.user == current_user %>
-    <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+    <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark" %>
   <% end %>
 </div>
