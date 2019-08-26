@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
+      ActionCable.server.broadcast("conversation_#{@conversation.id}", {
+           message: @message.to_json
+        })
       redirect_to family_conversation_path(@family, @conversation)
     else
       render 'conversations/show'
