@@ -1,6 +1,0 @@
-<div class="message <%= message.from?(current_user) ? "right" : ""%>">
-  <%= message.user.username %>
-  <%= message.user.created_at.strftime("%I:%M %p") %>
-  <%= message.content %>
-
-</div>
