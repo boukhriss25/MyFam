@@ -13,6 +13,7 @@
 
   <div class="container-messages">
     <% @messages.each do |message| %>
+
       <% if message.user == current_user %>
          <div class="my-message">
           <div class="message-info my-msg-info">
@@ -30,6 +31,10 @@
           <%= message.content %>
         </div>
       <% end %>
+
+
+
+
     <% end %>
   </div>
 
