@@ -8,9 +8,17 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
-      redirect_to family_conversation_path(@family, @conversation)
+      respond_to do |format|
+        # HTTP request -> routes -> controller action -> view
+        format.html { redirect_to conversation_path(@conversation) }
+        format.js
+      end
     else
-      render 'conversations/show'
+      respond_to do |format|
+        # This is not an http request -> view
+        format.html { render 'conversations/show' }
+        format.js
+      end
     end
   end
 

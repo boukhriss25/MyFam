@@ -1,0 +1,22 @@
+
+messageForm = document.querySelector(".new_message")
+
+<% if @message.persisted? %>
+// 1. create the html for the new message
+  newMessage = "<%= j render 'messages/my-message', message: @message %>";
+// 2. append the new message to the list
+  messages = document.querySelector(".container-messages");
+  messages.insertAdjacentHTML('beforeend', newMessage);
+// 3. empty out the input box
+  inputBox = document.getElementById("message_content");
+  inputBox.value = "";
+
+<% else %>
+console.log("not working")
+<% end %>
+
+
+// function addMessage(messageHTML) {
+//   const messages = document.querySelectorAll('.container-messages');
+//   messages.insertAdjacentHTML('beforeend', messageHTML);
+// }
