@@ -16,9 +16,9 @@
   <% end %>
   <!-- <div class="subscription-single"> -->
   <% @subscriptions.each do |sub| %>
-          <% message = Message.where(conversation_id: sub.conversation.id).last %>
-          <% all_messages = sub.conversation.messages %>
-          <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+    <% message = Message.where(conversation_id: sub.conversation.id).last %>
+    <% all_messages = sub.conversation.messages %>
+    <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
     <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
       <div class="card-product">
             <!-- <div class="conv-name-inside"> -->
@@ -27,43 +27,34 @@
         </div>
 
         <div class="card-stuff">
-        <div class="conv-top pt-1">
-          <div class="conv-name">
-
-          <h6>
-            <%= sub.conversation.name %>
-          </h6>
-          </div>
-            <div>
+          <div class="conv-top pt-1">
+            <h6 class="conv-name"><%= sub.conversation.name %></h6>
+            <% unless message.nil? %>
               <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
-            </div>
+            <% end %>
           </div>
-        <div class="conv-btm border-bottom pb-1">
-<!-- <p style="margin-bottom: 0px" class=""><i class="arrow right arrow-right"></i></p> -->
+          <div class="conv-btm border-bottom pb-1">
             <div id="message-sample">
-          <% unless message.nil? %>
-              <% if unread.count != 0 %>
-                <p style="color: black" id="bolder"><%= message.user.username %>: <%= message.content %></p>
+              <% if message.nil? %>
+                <p style="color: #979A97">Waiting for messages...</p>
               <% else %>
-                <p style="color: #979A97"><%= message.user.username %>: <%= message.content %></p>
+                <% if unread.count != 0 %>
+                  <p style="color: black" id="bolder"><%= message.user.username %>: <%= message.content %></p>
+                <% else %>
+                  <p style="color: #979A97"><%= message.user.username %>: <%= message.content %></p>
+                <% end %>
               <% end %>
             </div>
-          <div class="conv-unread">
 
-          <% if unread.count != 0 %>
-            <h6 id="unread"><%= unread.count %></h6>
-          <% end %>
-          </div>
-            <% end  %>
+            <div class="conv-unread">
+              <% if unread.count != 0 %>
+                <h6 id="unread"><%= unread.count %></h6>
+              <% end %>
             </div>
-            <!-- </div> -->
           </div>
-
         </div>
-
-      <% end %>
+      </div>
     <% end %>
-    <!-- </div> -->
-  <%# end %>
+  <% end %>
 </div>
 
