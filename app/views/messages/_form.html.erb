@@ -1,6 +1,8 @@
 <div class="simpleform-msg">
-  <%= simple_form_for [@family, @conversation, @message], remote: true do |f| %>
+  <%= simple_form_for [@family, @message], remote: true do |f| %>
     <%= f.input :content  %>
+    <%= f.input :content_type, as: :hidden, value: "text" %>
+    <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id} %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-paper-plane"></i>
     </button>

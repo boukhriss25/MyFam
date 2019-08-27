@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # after_create :broadcast_message
 
   def create
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.find(params[:conversation_id] || params[:message][:conversation_id])
     @family = @conversation.family
     @message = Message.new(message_params)
     @message.conversation = @conversation
@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     # })
       respond_to do |format|
         # HTTP request -> routes -> controller action -> view
-        format.html { redirect_to conversation_path(@conversation) }
+        format.html { redirect_to family_conversation_path(@family, @conversation) }
         format.js
       end
     else
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
  # end
 
   def message_params
-    params.require(:message).permit(:content, :conversation_id, :user_id)
+    params.require(:message).permit(:content, :content_type, :conversation_id, :user_id)
   end
 
 end

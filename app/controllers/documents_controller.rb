@@ -14,6 +14,11 @@ class DocumentsController < ApplicationController
 
   def show
     @tag = Tag.new
+    @message = Message.new
+    @conversations = Conversation.where(family_id: params[:family_id])
+    @subscriptions = Subscription.where(user: current_user).select do |subsc| Conversation.find(subsc.conversation_id).family_id == @family.id
+    @conversation = @subscriptions.to_a.map {|sub| sub = sub.conversation}
+    end
   end
 
   def new
