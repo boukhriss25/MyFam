@@ -32,6 +32,7 @@
     <% end %>
   </div>
 </div>
+
 <div class="simpleformghost" id="delete-btn">
   <% if @document.user == current_user %>
     <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark" %>

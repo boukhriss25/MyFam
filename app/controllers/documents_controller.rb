@@ -34,7 +34,7 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document.destroy
-    redirect_to family_documents_path(@family)
+    redirect_to family_home_media_path(@family)
   end
 
   private

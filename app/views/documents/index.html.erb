@@ -13,26 +13,25 @@
           <% end %>
   </div>
 
+  <div class="upload_doc d-flex">
+    <%= render "shared/document_form" %>
+  </div>
 
-      <div class="simpleformnew mt-3">
-        <%= simple_form_for [@family, @document] do |f| %>
-        <%= f.input :content %>
-        <%= f.input :content_cache, as: :hidden %>
-        <%= f.button :submit, class: "btn btn-info"%>
-        <% end %>
-      </div>
-      <% if @documents.empty? %>
-        <p id="search-message">There are no tags by the name <%= params[:query] %></p>
-      <% elsif params[:query].present? %>
-        <p id="search-message">Results for <%= params[:query] %>...</p>
+  <% if @documents.empty? %>
+    <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+  <% elsif params[:query].present? %>
+    <h5 id="search-message">Results for #<%= params[:query] %> in...</h5>
+  <% end %>
+<h6><%= @family.name %>'s Media</h6>
+  <div class="container">
+    <div class="row">
+      <% @documents.each do |doc| %>
+        <div class="col-xs-3">
+          <%= link_to family_document_path(@family, doc) do %>
+          <%= cl_image_tag doc.content, height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+          <% end %>
+        </div>
       <% end %>
-  <div class="row">
-        <% @documents.each do |doc| %>
-          <div class="col-xs-3">
-            <%= cl_image_tag doc.content, height: 90, width: 90, crop: :fill, class: "img-fam-index" %>
-          </div>
-        <% end %>
-      </div>
-
-
+    </div>
+  </div>
 </div>
