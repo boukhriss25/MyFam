@@ -95,6 +95,6 @@ Rails.application.configure do
 
 
 config.action_cable.url = "wss://www.myfam.live/cable"
-config.action_cable.allowed_request_origins = [ "http://www.myfam.live", "https://www.myfam.live" ]
+config.action_cable.allowed_request_origins = [ "https://myfam-lewagon.herokuapp.com" ]
 
 end
