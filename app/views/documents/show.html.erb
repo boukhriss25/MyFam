@@ -38,3 +38,16 @@
     <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark" %>
   <% end %>
 </div>
+
+
+<div class="send-media-form">
+  <%= simple_form_for [@family, @message] do |f| %>
+    <%= f.input :content, as: :hidden, input_html: { value: @document.content } %>
+    <%= f.input :content_type, as: :hidden, input_html: { value: "media" } %>
+    <%= f.input :conversation_id, collection: @conversations %>
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+
+  <% end %>
+</div>

@@ -36,6 +36,10 @@ class ConversationsController < ApplicationController
     end
   end
 
+  def send_media_to_conversation
+    redirect_to new_family_conversation_message
+  end
+
   def edit
     @users = @conversation.users
     @family = Family.find(params[:family_id])
