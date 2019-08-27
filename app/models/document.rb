@@ -8,6 +8,12 @@ class Document < ApplicationRecord
   mount_uploader :content, DocumentUploader
   after_create :default_tag
 
+  scope :by_tag, ->(tag) { joins(:tags).where("tags.name = ?", tag) }
+
+  # def self.by_tag(tag)
+  #   Document.joins(:tags).where("tags.name = ?", tag)
+  # end
+
   def default_tag
     Tag.create(name: "untagged", document: self)
   end

@@ -6,14 +6,8 @@ class PagesController < ApplicationController
 
   def media_home
     @family = Family.find(params[:family_id])
-    @documents = Document.where(family_id: params[:family_id])
-    @tags = []
-    @documents.each do |doc|
-      doc.tags.each do |tag|
-        @tags.push << tag.name
-      end
-    end
-    @tags = @tags.uniq
+    @documents = @family.documents
+    @tags = @family.tags
     @document = Document.new
   end
 end

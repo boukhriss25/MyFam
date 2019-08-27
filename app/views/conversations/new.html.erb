@@ -9,7 +9,12 @@
     <div class="simpleformnew mt-3">
       <%= simple_form_for [@family, @conversation] do |f| %>
       <%= f.input :name %>
-      <input type="text" name="skipform" value="-2" class="hidden">
+              <div class="carrier-wave-field">
+          <%= f.input :avatar, label: "upload avatar" %>
+        </div>
+
+        <%= f.input :avatar_cache, as: :hidden %>
+       <input type="text" name="skipform" value="-2" class="hidden">
       <%= f.button :submit, class: "btn btn-info btn-block"%>
       <% end %>
     </div>
