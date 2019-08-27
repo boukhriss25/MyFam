@@ -8,11 +8,13 @@
       <h5>Manage - <%= @conversation.name %> </h5>
       <%= simple_form_for [@family, @conversation] do |f| %>
         <%= f.input :name, label: "edit name" %>
-                <div class="carrier-wave-field">
+          <div class="carrier-wave-field">
           <%= f.input :avatar, label: "upload new avatar" %>
         </div>
 
         <%= f.input :avatar_cache, as: :hidden %>
+
+        <input type="text" name="skipform" value="-2" class="hidden">
         <%= f.button :submit, "Update", class: "btn btn-info"%>
       <% end %>
       <br>

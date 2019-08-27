@@ -1,12 +1,6 @@
-<div class="homecontainer">
-<div class="logo-myfam" style="position: center;">
-    <%= image_tag "logomyfam.png", :class=>"icons" %>
-  </div>
-<h1 style="font-size: 36px;">MyFam</h1>
-</div>
-<hr>
+<%= render 'shared/navbarlogo' %>
 
-<div class="simpleformnew mt-5">
+<div class="simpleformnew mt-3">
  <div class="container">
     <div class="wrapper-form" style=" width: 400px; padding-right: 15px;">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,7 +16,7 @@
   </div>
 
 <div class="form-actions btn-block mb-3">
-        <%= f.button :submit, "Log in", class: "btn btn-primary btn-block" %>
+        <%= f.button :submit, "Log in", class: "btn btn-block" %>
       </div>
       <% end %>
 
@@ -33,3 +27,4 @@
     </div>
   </div>
   </div>
+

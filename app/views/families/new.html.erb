@@ -1,4 +1,4 @@
-<%= render 'shared/navbarnew' %>
+<%= render 'shared/navbarburger'%>
 
 <div class="index-wrapper">
   <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
@@ -11,7 +11,8 @@
       <%= f.input :name %>
       <%= f.input :avatar %>
       <%= f.input :avatar_cache, as: :hidden %>
-      <%= f.button :submit, class: "btn btn-info btn-block"%>
+      <input type="text" name="skipform" value="-2" class="hidden">
+      <%= f.button :submit, class: "btn btn-block"%>
       <% end %>
     </div>
   </div>

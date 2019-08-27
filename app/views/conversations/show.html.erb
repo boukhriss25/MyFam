@@ -40,7 +40,6 @@
           if (data.current_user_id !== <%= current_user.id %>) {
             const messagesContainer = document.querySelector('.container-messages');
             messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            scrollLastMessageIntoView();
           }
         }
       }
