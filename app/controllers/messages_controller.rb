@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   # before_action :set_message, only:
+  # after_create :broadcast_message
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -8,6 +9,9 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
+    # ActionCable.server.broadcast("conversation_#{conversation.id}", {
+    #   message: @message.to_json
+    # })
       respond_to do |format|
         # HTTP request -> routes -> controller action -> view
         format.html { redirect_to conversation_path(@conversation) }
@@ -31,4 +35,5 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :conversation_id, :user_id)
   end
+
 end
