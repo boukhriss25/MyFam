@@ -1,40 +1,42 @@
 <nav class="navbarburger d-flex my-auto mb-3 pl-3 pr-3" style="justify-content: space-between;">
 <!--   <span class="navbar-brand mb-0"></span>
- -->
- <div>
-  <div onclick="goBack()"><i class="fas fa-chevron-left"></i></div>
- <script>
-    function goBack() {
-      window.history.back();
+-->
+<div>
+
+  <!--Conditional statement for back btn -->
+  <div onclick="goBack(<%= params[:skipform]&.to_i%>)"><i class="fas fa-chevron-left"></i></div>
+  <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
     }
   </script>
 </div>
 
-  <div class="logo-myfam">
-    <%= link_to families_path do %>
-      <%= image_tag "logomyfam.png", :class=>"icons" %>
-    <% end %>
-  </div>
+<div class="logo-myfam">
+  <%= link_to families_path do %>
+  <%= image_tag "logomyfam.png", :class=>"icons" %>
+  <% end %>
+</div>
 
 
 
-  <div class="btn-group">
-    <button class="navbar-toggler toggler-example burger-nav" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
-    aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
-      class="fas fa-bars fa-1x"></i></span></button>
+<div class="btn-group">
+  <button class="navbar-toggler toggler-example burger-nav" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
+  aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+    class="fas fa-bars fa-1x"></i></span></button>
 
-      <div class="dropdown-menu dropdown-menu-right p-3">
-        <div id="log-bar" class="pb-2">
+    <div class="dropdown-menu dropdown-menu-right p-3">
+      <div id="log-bar" class="pb-2">
         <div id="tools-icon">
-        <%= link_to edit_user_registration_path do %>
+          <%= link_to edit_user_registration_path do %>
           <i class="fas fa-tools"></i>
           <% end %>
         </div>
         <div class="burger-avatar" id="user-avatar">
-            <%= cl_image_tag current_user.avatar %>
-          </div>
-          <div id="log-out">
-            <button id="logout-btn"><p style="font-size: 10px">
+          <%= cl_image_tag current_user.avatar %>
+        </div>
+        <div id="log-out">
+          <button id="logout-btn"><p style="font-size: 10px">
             <%= link_to "logout", destroy_user_session_path, method: :delete, class: ""%></p></button>
           </div>
         </div>
@@ -42,13 +44,23 @@
           <div class="text-align-center">
           </div>
 
-        <% current_user.families.each do |fam| %>
-        <div class="d-flex justify-content-center pt-1 pb-1">
-          <div class="burger-avatar">
-            <%= link_to family_path(fam) do %>
-            <%= cl_image_tag fam.avatar %>
-            <% end %>
+          <% current_user.families.each do |fam| %>
+          <div class="d-flex justify-content-center pt-1 pb-1">
+            <div class="burger-avatar">
+              <%= link_to family_path(fam) do %>
+              <%= cl_image_tag fam.avatar %>
+              <% end %>
+            </div>
+            <div id="burger-fam-name">
+              <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
+            </div>
+            <div class="unread pt-2 pb-2">
+              <p style="color: black; font-size: 16px;"><%= link_to "#{rand(1..28)} unread", family_conversations_path(fam) %></p>
+            </div>
           </div>
+
+          <% end %>
+
           <div id="burger-fam-name">
         <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
           </div>
@@ -67,6 +79,7 @@
           </div>
         </div>
         <% end %>
+
         </div>
 
 
