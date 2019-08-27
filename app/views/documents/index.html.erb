@@ -28,7 +28,7 @@
       <% @documents.each do |doc| %>
         <div class="col-xs-3">
           <%= link_to family_document_path(@family, doc) do %>
-          <%= cl_image_tag doc.content, height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+          <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
           <% end %>
         </div>
       <% end %>
