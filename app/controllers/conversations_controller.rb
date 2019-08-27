@@ -25,7 +25,7 @@ class ConversationsController < ApplicationController
     @conversation.family = @family
     @subscription = Subscription.new(user: current_user, conversation: @conversation)
     if @subscription.save && @conversation.save
-      redirect_to edit_family_conversation_path(@family, @conversation)
+      redirect_to edit_family_conversation_path(@family, @conversation, skipform: params[:skipform])
     else
       render :new
     end
@@ -39,7 +39,7 @@ class ConversationsController < ApplicationController
 
   def update
     @conversation.update(conversation_params)
-    redirect_to family_conversation_path(@conversation)
+    redirect_to family_conversation_path(@conversation, skipform: params[:skipform])
   end
 
   def destroy
