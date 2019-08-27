@@ -1,0 +1,33 @@
+
+.simpleform-msg {
+  .form-control-label {
+    display: none;
+  }
+}
+
+
+
+.message-input form {
+  position: relative;
+
+  textarea {
+    padding-right: 44px;
+    padding-left: 44px;
+  }
+
+  .btn {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+  }
+}
+
+.message-input {
+  position: relative;
+  a {
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    padding: 5px;
+  }
+}

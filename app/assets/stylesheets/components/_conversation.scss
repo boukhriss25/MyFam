@@ -54,6 +54,12 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .my-msg-content-media img {
+    width: 100%;
+    height: 100%;
+  object-fit: cover;
+  }
 }
 
 .conversations-and-icon-new {

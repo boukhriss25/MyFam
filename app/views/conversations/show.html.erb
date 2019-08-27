@@ -26,9 +26,12 @@
 
   <div class="message-input">
       <%= render 'messages/form', message: @message %>
+      <%= link_to family_home_media_path(@family) do %>
+      <i class="fas fa-upload"></i>
+      <% end %>
   </div>
 
-  <%= link_to "Send media", family_home_media_path(@family) %>
+
 
 
 
