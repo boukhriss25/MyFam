@@ -1,6 +1,10 @@
-// Specific CSS for your home-page
+#hr-home{
+  // color: white;
+  // background-color: white;
+}
 
 .homecontainer {
+  //background-color: rgba(255, 71, 71, 0.55);
 
   .icons {
     margin-top: 20px;
@@ -28,16 +32,17 @@
 
   p {
     color: #5A5A5A;
+    //color: #5A5A5A;
   }
 
   .btn {
-    margin-top: 32px;
     color: white;
     background-color: #FF4747;
     border-color: #FF4747;
     border-radius: 5px;
-    margin-top: 72px;
+    margin-top: 52px;
     text-decoration: none;
   }
 }
+
 

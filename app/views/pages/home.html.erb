@@ -1,18 +1,21 @@
-<div class="homecontainer">
-  <div class="logo-myfam" style="position: center;">
-    <%= image_tag "logomyfam.png", :class=>"icons" %>
+  <div class="index-wrapper" style="height: 96vh;">
+  <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
+  <div class="homecontainer">
+    <div class="logo-myfam" style="position: center;">
+      <%= image_tag "logomyfam.png", :class=>"icons" %>
+    </div>
+    <h1 style="font-size: 36px;">MyFam</h1>
+    <hr id="hr-home" style="color: white;">
+
+    <div class="home-content">
+      <h5>Where families unite.</h5>
+      <p style="margin-top: 20px;">With MyFam, each family gets its own digital space for communication, storage and easy file access.</p>
+
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-basic btn-block" %>
+
+      <p style="font-size: 12px; margin-top: 20px;"> ALREADY HAVE AN ACCOUNT? <%= link_to "LOG IN", new_user_session_path%></p>
+
+    </div>
   </div>
-<h1 style="font-size: 36px;">MyFam</h1>
-<hr>
+  </div>
 
-<div class="home-content">
-<h5>Where families unite.</h5>
-<p style="margin-top: 24px;">With MyFam, each family gets its own digital space for communication, storage and easy file access.</p>
-
-<%= link_to "Sign up", new_user_registration_path, class: "btn btn-basic btn-block" %>
-
-<p style="font-size: 12px; margin-top: 20px;"> ALREADY HAVE AN ACCOUNT? <%= link_to "LOG IN", new_user_session_path%></p>
-
-
-</div>
-</div>
