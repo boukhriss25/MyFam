@@ -11,48 +11,59 @@
     </div>
   </div>
 
+  <% if @subscriptions.count.zero? %>
+    <p>You are not subscribed to any conversations</p>
+  <% end %>
+  <!-- <div class="subscription-single"> -->
+  <% @subscriptions.each do |sub| %>
+          <% message = Message.where(conversation_id: sub.conversation.id).last %>
+          <% all_messages = sub.conversation.messages %>
+          <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+    <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
+      <div class="card-product">
+            <!-- <div class="conv-name-inside"> -->
+        <div id="conv-avatar" class="burger-avatar">
+          <%= cl_image_tag sub.conversation.avatar %>
+        </div>
 
+        <div class="card-stuff">
+        <div class="conv-top pt-1">
+          <div class="conv-name">
 
-  <% if @subscriptions.nil? %>
-    <p>No Subscriptions</p>
-  <% else %>
-  <div class="subscription-single">
-    <% @subscriptions.each do |sub| %>
-      <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
-        <div class="card-product">
-          <div class="conv-name pt-2">
-            <div class="conv-name-inside">
-              <img style="" class="avatar" alt="avatar" src="https://cdn3.iconfinder.com/data/icons/toolbar-people/512/user_group_man_people_users_male-512.png" />
-              <%= sub.conversation.name %>
-              <% all_messages = sub.conversation.messages %>
-              <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+          <h6>
+            <%= sub.conversation.name %>
+          </h6>
+          </div>
+            <div>
+              <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
+            </div>
+          </div>
+        <div class="conv-btm border-bottom pb-1">
+<!-- <p style="margin-bottom: 0px" class=""><i class="arrow right arrow-right"></i></p> -->
+            <div id="message-sample">
+          <% unless message.nil? %>
               <% if unread.count != 0 %>
-              <%= unread.count %> unread
+                <p style="color: black" id="bolder"><%= message.user.username %>: <%= message.content %></p>
+              <% else %>
+                <p style="color: #979A97"><%= message.user.username %>: <%= message.content %></p>
               <% end %>
             </div>
+          <div class="conv-unread">
 
-              <%# sum = sub.conversation.messages.where(status: "unread").count %>
-
-<!--             <p style="margin-bottom: 0px" class=""><i class="arrow right arrow-right"></i></p>
- -->
+          <% if unread.count != 0 %>
+            <h6 id="unread"><%= unread.count %></h6>
+          <% end %>
           </div>
-          <div class="card-body">
-            <% message = Message.where(conversation_id: sub.conversation.id).last %>
-            <% unless message.nil? %>
-            <div class="last-msg-convo">
-              <% if unread.count != 0 %>
-                <p style="color: black"><strong><%= message.content %></strong></p>
-              <% else %>
-                <p><%= message.content %></p>
-              <% end %>
-              <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
             <% end  %>
             </div>
+            <!-- </div> -->
           </div>
+
         </div>
+
       <% end %>
     <% end %>
-    </div>
-  <% end %>
+    <!-- </div> -->
+  <%# end %>
 </div>
 
