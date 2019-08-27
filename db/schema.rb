@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_090113) do
+ActiveRecord::Schema.define(version: 2019_08_27_142651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_090113) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content_type", default: "text"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_090113) do
     t.bigint "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "last_seen", default: "2019-08-27 11:38:10"
+    t.datetime "last_seen", default: "2019-08-27 10:52:47"
     t.index ["conversation_id"], name: "index_subscriptions_on_conversation_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
