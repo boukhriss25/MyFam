@@ -51,35 +51,25 @@
               <%= cl_image_tag fam.avatar %>
               <% end %>
             </div>
+
             <div id="burger-fam-name">
               <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
             </div>
             <div class="unread pt-2 pb-2">
-              <p style="color: black; font-size: 16px;"><%= link_to "#{rand(1..28)} unread", family_conversations_path(fam) %></p>
-            </div>
-          </div>
-
-          <% end %>
-
-          <div id="burger-fam-name">
-        <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
-          </div>
-          <div class="unread pt-2 pb-2">
-            <% sum = 0 %>
-            <% convos = current_user.conversations.where(family: fam) %>
-            <% convos.each do |c| %>
+              <% sum = 0 %>
+              <% convos = current_user.conversations.where(family: fam) %>
+              <% convos.each do |c| %>
               <% subs = c.subscriptions.where(user: current_user) %>
               <% subs.each do |sub| %>
-                <% all_messages = sub.conversation.messages %>
-                <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
-                <% sum += unread.count %>
+              <% all_messages = sub.conversation.messages %>
+              <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+              <% sum += unread.count %>
               <% end %>
-            <% end %>
-            <p style="color: black; font-size: 16px;"><%= link_to "#{sum} unread", family_conversations_path(fam) %></p>
+              <% end %>
+              <p style="color: black; font-size: 16px;"><%= link_to "#{sum} unread", family_conversations_path(fam) %></p>
+            </div>
           </div>
-        </div>
-        <% end %>
-
+          <% end %>
         </div>
 
 
