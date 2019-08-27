@@ -1,4 +1,4 @@
-<%= render 'shared/navbarburger'%>
+<%= render 'shared/navbarburger' %>
 <% @families = current_user.families %>
     <div class="container">
       <div class="main-content mt-5">
@@ -11,7 +11,6 @@
             <div class="card">
               <%= link_to family_path(f) do %>
               <%= cl_image_tag f.avatar %>
-              <%#= image_tag("big-happy-family.jpg") %>
               <% end %>
             </div>
             <%= link_to f.name, family_path(f) %>

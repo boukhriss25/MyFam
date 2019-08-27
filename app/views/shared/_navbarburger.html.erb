@@ -4,12 +4,76 @@
 <div>
 
   <!--Conditional statement for back btn -->
-  <div onclick="goBack(<%= params[:skipform]&.to_i%>)"><i class="fas fa-chevron-left"></i></div>
+  <% if current_page?(families_path) %>
+  <div onclick="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
   <script>
     function goBack(amount) {
       window.history.go(amount || -1);
     }
   </script>
+  </div>
+  <% elsif current_page?(new_family_path) %>
+  <%= link_to families_path do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(new_family_conversation_path(@family)) %>
+  <%= link_to family_conversations_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(family_path(@family)) %>
+  <%= link_to families_path do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(edit_family_path(@family)) %>
+  <%= link_to family_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(family_conversations_path(@family)) %>
+  <%= link_to family_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(family_home_media_path(@family)) %>
+  <%= link_to family_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(edit_family_conversation_path(@family, @conversation)) %>
+  <%= link_to family_conversation_path(@family, @conversation) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% elsif current_page?(family_conversation_path(@family, @conversation)) %>
+  <%= link_to family_conversations_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+  <% else %>
+    <div onclick="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
+    }
+  </script>
+  </div>
+  <% end %>
+
+
+
+
+
+
+
+  <!-- <div onclick="goBack(<%#= params[:skipform]&.to_i%>)"> -->
+    <!-- <i class="fas fa-chevron-left"></i> -->
+  <!-- </div> -->
+<!--   <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
+    }
+  </script> -->
+
+
 </div>
 
 <div class="logo-myfam">
@@ -18,66 +82,8 @@
   <% end %>
 </div>
 
+<%= render 'shared/burger-menu' %>
 
 
-<div class="btn-group">
-  <button class="navbar-toggler toggler-example burger-nav" type="button" data-toggle="dropdown" data-target="#navbarSupportedContent1"
-  aria-controls="navbarSupportedContent1" aria-haspopup="true" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
-    class="fas fa-bars fa-1x"></i></span></button>
-
-    <div class="dropdown-menu dropdown-menu-right p-3">
-      <div id="log-bar" class="pb-2">
-        <div id="tools-icon">
-          <%= link_to edit_user_registration_path do %>
-          <i class="fas fa-tools"></i>
-          <% end %>
-        </div>
-        <div class="burger-avatar" id="user-avatar">
-          <%= cl_image_tag current_user.avatar %>
-        </div>
-        <div id="log-out">
-          <button id="logout-btn"><p style="font-size: 10px">
-            <%= link_to "logout", destroy_user_session_path, method: :delete, class: ""%></p></button>
-          </div>
-        </div>
-        <div class="border-top pt-2">
-          <div class="text-align-center">
-          </div>
-
-          <% current_user.families.each do |fam| %>
-          <div class="d-flex justify-content-center pt-1 pb-1">
-            <div class="burger-avatar">
-              <%= link_to family_path(fam) do %>
-              <%= cl_image_tag fam.avatar %>
-              <% end %>
-            </div>
-
-            <div id="burger-fam-name">
-              <p style="color: black; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
-            </div>
-            <div class="unread pt-2 pb-2">
-              <% sum = 0 %>
-              <% convos = current_user.conversations.where(family: fam) %>
-              <% convos.each do |c| %>
-              <% subs = c.subscriptions.where(user: current_user) %>
-              <% subs.each do |sub| %>
-              <% all_messages = sub.conversation.messages %>
-              <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
-              <% sum += unread.count %>
-              <% end %>
-              <% end %>
-              <p style="color: black; font-size: 16px;"><%= link_to "#{sum} unread", family_conversations_path(fam) %></p>
-            </div>
-          </div>
-          <% end %>
-        </div>
-
-
-        <!-- <i class="far fa-copyright d-flex dropdown-item mr-3" style="font-size: 12px;">
-          <p>2019 MyFam, Inc. All rights reserved.</p>
-        </i> -->
-      </div>
-    </div>
-  </div>
 </nav>
 
