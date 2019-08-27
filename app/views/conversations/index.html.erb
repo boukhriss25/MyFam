@@ -14,14 +14,12 @@
   <% if @subscriptions.count.zero? %>
     <p>You are not subscribed to any conversations</p>
   <% end %>
-  <!-- <div class="subscription-single"> -->
   <% @subscriptions.each do |sub| %>
     <% message = Message.where(conversation_id: sub.conversation.id).last %>
     <% all_messages = sub.conversation.messages %>
     <% unread = all_messages.select { |m| m.created_at > sub.last_seen unless m.user == current_user } %>
     <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
       <div class="card-product">
-            <!-- <div class="conv-name-inside"> -->
         <div id="conv-avatar" class="burger-avatar">
           <%= cl_image_tag sub.conversation.avatar %>
         </div>

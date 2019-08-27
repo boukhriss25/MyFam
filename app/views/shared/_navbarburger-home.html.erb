@@ -1,0 +1,23 @@
+<nav class="navbarburger d-flex my-auto mb-3 pl-3 pr-3" style="justify-content: space-between;">
+<!--   <span class="navbar-brand mb-0"></span>
+-->
+<div>
+  <div onclick="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
+    }
+  </script>
+  </div>
+</div>
+
+<div class="logo-myfam">
+  <%= link_to families_path do %>
+  <%= image_tag "logomyfam.png", :class=>"icons" %>
+  <% end %>
+</div>
+
+<%= render 'shared/burger-menu' %>
+</nav>
