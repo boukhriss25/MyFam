@@ -27,15 +27,17 @@
   <div class="container">
     <div class="row">
       <% @tags.each do |tag| %>
-      <%= link_to family_documents_path(@family, query: tag) do %>
-        <div class="col-xs-3">
-          <%= cl_image_tag @documents.to_a.find{ |doc| doc.tags.map{|t| t = t.name}.include?(tag)}.content, height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
-        <br>
-        <p>
-          #<%= tag %>
-        </p>
-        </div>
-      <% end %>
+        <% document = @documents.by_tag(tag.name).sample %>
+        <% next unless document %>
+        <%= link_to family_documents_path(@family, query: tag.name) do %>
+          <div class="col-xs-3">
+            <%= image_tag document.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+          <br>
+          <p>
+            #<%= tag.name %>
+          </p>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
