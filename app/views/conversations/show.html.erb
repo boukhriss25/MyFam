@@ -30,7 +30,6 @@
 
 <% content_for :after_js do %>
   <script>
-   scrollLastMessageIntoView();
     App['conversation_<%= @conversation.id %>'] = App.cable.subscriptions.create(
       { channel: 'ConversationsChannel', conversation_id: <%= @conversation.id %> },
       {
