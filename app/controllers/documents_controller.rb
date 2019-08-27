@@ -1,14 +1,19 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :destroy]
+  before_action :set_family, only: [:index, :show, :create, :destroy]
+
   def index
-    @family = Family.find(params[:family_id])
-    @documents = Document.where(family_id: params[:family_id])
+    if params[:query].present?
+      @tags = Tag.where(name: params[:query])
+      @documents = @tags.map { |t| t.document }
+    else
+      @documents = Document.where(family_id: params[:family_id])
+    end
     @document = Document.new
   end
 
   def show
     @tag = Tag.new
-    @family = Family.find(params[:family_id])
   end
 
   def new
@@ -17,11 +22,10 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(document_params)
-    @family = Family.find(params[:family_id])
     @document.user = current_user
     @document.family = @family
     if @document.save
-      redirect_to family_document_path(@family, @document)
+      redirect_to new_family_document_tag_path(@family, @document)
     else
       @documents = Document.where(family_id: params[:family_id])
       render :index
@@ -29,12 +33,18 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @document.destroy
+    redirect_to family_documents_path(@family)
   end
 
   private
 
   def set_document
     @document = Document.find(params[:id])
+  end
+
+  def set_family
+    @family = Family.find(params[:family_id])
   end
 
   def document_params

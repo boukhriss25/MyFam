@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  # after_create :broadcast_message
   belongs_to :user
   belongs_to :conversation
   validates :content, presence: true

@@ -2,6 +2,10 @@ require 'faker'
 
 avatars = "https://kitt.lewagon.com/placeholder/users/random"
 
+puts 'Cleaning database of all documents...'
+Document.destroy_all
+puts 'Cleaning database of all tags...'
+Tag.destroy_all
 puts 'Cleaning database of all users...'
 User.destroy_all
 puts 'Cleaning database of all families...'

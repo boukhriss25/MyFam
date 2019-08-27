@@ -1,7 +1,6 @@
 <%= render 'shared/navbarburger'%>
 <div class="container">
-
-  <div class="simpleformsearch mt-5">
+    <div class="simpleformsearch mt-5">
     <%= form_tag family_documents_path(@family), method: :get do %>
         <%= text_field_tag :query,
         params[:query],
@@ -26,13 +25,12 @@
       <% elsif params[:query].present? %>
         <p id="search-message">Results for <%= params[:query] %>...</p>
       <% end %>
-  <div class="row">
-        <% @documents.each do |doc| %>
-          <div class="col-xs-3">
-            <%= cl_image_tag doc.content, height: 90, width: 90, crop: :fill, class: "img-fam-index" %>
-          </div>
-        <% end %>
-      </div>
-
-
+  <% @tags.each do |tag| %>
+    <%= link_to family_documents_path(@family, query: tag) do %>
+      <% cl_image_tag  @documents.to_a.find{ |doc| doc.tags.map{|t| t = t.name}.include?(tag)}.content %>
+    <% end %>
+    <br>
+    <%= tag %>
+    <br>
+  <% end %>
 </div>

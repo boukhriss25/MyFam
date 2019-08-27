@@ -2,12 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations' }
   root to: 'pages#home'
-  resources :subscriptions, only:[:destroy]
+  resources :subscriptions, only: [:destroy]
   resources :families do
     resources :conversations do
-      resources :subscriptions, only:[:index, :new, :create]
+      resources :subscriptions, only: [:index, :new, :create]
       resources :messages, only: [:index, :new, :create]
     end
+    get 'home_media', to: "pages#media_home"
     resources :memberships, only: [:new, :create]
     resources :documents, only: [:new, :create, :index, :show] do
       resources :tags, only: [:index, :show, :new, :create]
@@ -15,5 +16,7 @@ Rails.application.routes.draw do
     end
   end
   resources :memberships, only: [:destroy]
+  resources :tags, only: [:destroy]
+  resources :documents, only: [:edit, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
