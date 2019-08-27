@@ -2,14 +2,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  // margin: 8px 0;
+  // padding-top: 8px;
+  margin: 8px 0;
 }
 
 .card-stuff {
   font-size: 16px;
   margin-left: 12px;
-  // padding: 12px;
-  // color: #999999;
   flex-grow: 1;
   align-items: center;
   p {
@@ -20,13 +19,19 @@
   }
 }
 
-.conv-avatar {
-  width: 40px;
+#conv-avatar {
+  img {
+  width: 50px;
+  height: 50px;
+  }
 }
 
 .conv-top {
   display: flex;
   justify-content: space-between;
+  p {
+    font-size: 14px;
+  }
 }
 
 .conv-btm {
@@ -34,22 +39,27 @@
   justify-content: space-between;
 }
 
-// .conv-name-inside {
-//   flex: grow;
-// }
+#message-sample {
+  // max-width: 100%;
+}
 
-.message-sample{
+.trim {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
 
+.name-trim {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 250px;
 }
 
 #bolder {
   font-weight: bolder;
 }
-
-// .title{
-//   margin-top: 20px;
-//   margin-bottom: 15px;
-// }
 
 .join-conv{
   text-decoration: none;
@@ -70,7 +80,3 @@
   -webkit-transform: rotate(-45deg);
 }
 
-// .last-msg-convo {
-//   display: flex;
-//   justify-content: space-between;
-// }
