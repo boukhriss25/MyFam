@@ -1,5 +1,15 @@
 <%= render 'shared/navbarburger'%>
 
+<div class="container">
+
+<div class="delete-btn-form" id="delete-btn">
+  <% if @document.user == current_user %>
+    <%= link_to document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"} do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+  <% end %>
+</div>
+
 <div class="show-doc">
   <% if is_image?(@document.content) %>
     <%= cl_image_tag @document.content %>
@@ -37,11 +47,7 @@
   </div>
 </div>
 
-<div class="simpleformghost" id="delete-btn">
-  <% if @document.user == current_user %>
-    <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark" %>
-  <% end %>
-</div>
+
 
 
 <div class="send-media-form">
@@ -55,3 +61,6 @@
 
   <% end %>
 </div>
+
+</div>
+
