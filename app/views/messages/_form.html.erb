@@ -1,5 +1,5 @@
 <div class="simpleform-msg">
-  <%= simple_form_for [@family, @conversation, @message] do |f| %>
+  <%= simple_form_for [@family, @conversation, @message], remote: true do |f| %>
     <%= f.input :content  %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-paper-plane"></i>
@@ -7,3 +7,4 @@
 
   <% end %>
 </div>
+
