@@ -1,9 +1,12 @@
 .show-doc {
   padding: 4px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
   img {
     border: 1px solid black;
-    height: 75vh;
-    width: 100%;
+    height: auto;
+    max-width: 100%;
     object-fit: cover;
   }
 }

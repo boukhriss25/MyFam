@@ -1,36 +1,42 @@
 <%= render 'shared/navbarburger'%>
 <div class="container">
-    <div class="simpleformsearch mt-5">
-    <%= form_tag family_documents_path(@family), method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "browse"%>
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i> Browse
-          </button>
-          <% end %>
+  <div class="simpleformsearch mt-5">
+  <%= form_tag family_documents_path(@family), method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "browse"%>
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Browse
+        </button>
+        <% end %>
   </div>
 
+  <div class="upload_doc d-flex">
+      <%= render "shared/document_form" %>
+  </div>
 
-      <div class="simpleformnew mt-3">
-        <%= simple_form_for [@family, @document] do |f| %>
-        <%= f.input :content %>
-        <%= f.input :content_cache, as: :hidden %>
-        <%= f.button :submit, class: "btn btn-info"%>
-        <% end %>
-      </div>
-      <% if @documents.empty? %>
-        <p id="search-message">There are no tags by the name <%= params[:query] %></p>
-      <% elsif params[:query].present? %>
-        <p id="search-message">Results for <%= params[:query] %>...</p>
-      <% end %>
-  <% @tags.each do |tag| %>
-    <%= link_to family_documents_path(@family, query: tag) do %>
-      <% cl_image_tag  @documents.to_a.find{ |doc| doc.tags.map{|t| t = t.name}.include?(tag)}.content %>
-    <% end %>
-    <br>
-    <%= tag %>
-    <br>
+  <% if @documents.empty? %>
+    <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+  <% elsif params[:query].present? %>
+    <p id="search-message">Results for <%= params[:query] %>...</p>
   <% end %>
+
+  <h4> <%= @family.name %>'s Media</h4>
+
+  <div class="container">
+    <div class="row">
+      <% @tags.each do |tag| %>
+      <%= link_to family_documents_path(@family, query: tag) do %>
+        <div class="col-xs-3">
+          <%= cl_image_tag @documents.to_a.find{ |doc| doc.tags.map{|t| t = t.name}.include?(tag)}.content, height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+        <br>
+        <p>
+          #<%= tag %>
+        </p>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

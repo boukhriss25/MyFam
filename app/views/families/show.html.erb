@@ -16,11 +16,11 @@
       </div>
       <div>
         <div class="card option">
-          <%= link_to family_documents_path(@family) do %>
+          <%= link_to family_home_media_path(@family) do %>
             <%= image_tag("new-folder-logo.png") %>
           <% end %>
         </div>
-        <%= link_to "Media", family_documents_path(@family) %>
+        <%= link_to "Media", family_home_media_path(@family) %>
       </div>
       <div>
         <div class="card option">
@@ -39,7 +39,7 @@
         class: "form-control",
           placeholder: "browse"%>
           <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i> Browse
+            <i class="fas fa-search"></i> Media Browse
           </button>
           <% end %>
 <!-- <div class="simpleformsearch mt-5">

@@ -4,11 +4,17 @@
 <%= cl_image_tag @document.content %>
 </div>
 <div class="add-hashtag">
-  <div class="simpleformnew mt-3">
-    <%= simple_form_for [@family, @document, @tag] do |f| %>
-    <%= f.input :name, label: "Add a tag to your upload" %>
-    <%= f.button :submit, "Submit", class: "btn btn-info"%>
+  <div class="add-tag">
+    <div class="hash">
+      <h2>#</h2>
+    </div>
+    <div id="tag-input" class="simpleformnew mt-3">
+      <%= simple_form_for [@family, @document, @tag] do |f| %>
+      <%= f.input :name, label: false, placeholder: "add a tag to your upload" %>
+    </div>
+    <div class="add-btn simpleformnew mt-3">
+      <%= f.button :submit, "Add", class: "btn btn-info"%>
+    </div>
     <% end %>
   </div>
-
 </div>

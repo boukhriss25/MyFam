@@ -23,7 +23,15 @@
             <div class="conv-name-inside">
               <img style="" class="avatar" alt="avatar" src="https://cdn3.iconfinder.com/data/icons/toolbar-people/512/user_group_man_people_users_male-512.png" />
               <%= sub.conversation.name %>
+              <% all_messages = sub.conversation.messages %>
+              <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+              <% if unread.count != 0 %>
+              <%= unread.count %> unread
+              <% end %>
             </div>
+
+              <%# sum = sub.conversation.messages.where(status: "unread").count %>
+
 <!--             <p style="margin-bottom: 0px" class=""><i class="arrow right arrow-right"></i></p>
  -->
           </div>
@@ -31,7 +39,11 @@
             <% message = Message.where(conversation_id: sub.conversation.id).last %>
             <% unless message.nil? %>
             <div class="last-msg-convo">
-              <p><%= message.content %></p>
+              <% if unread.count != 0 %>
+                <p style="color: black"><strong><%= message.content %></strong></p>
+              <% else %>
+                <p><%= message.content %></p>
+              <% end %>
               <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
             <% end  %>
             </div>

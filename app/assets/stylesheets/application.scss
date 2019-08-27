@@ -23,3 +23,9 @@
 @import "components/newpagebg";
 @import "pages/home";
 @import "components/navbarlogo";
+
+.hidden{
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
