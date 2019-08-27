@@ -9,6 +9,11 @@
     <div class="simpleformnew mt-3">
       <%= simple_form_for [@family, @conversation] do |f| %>
       <%= f.input :name %>
+              <div class="carrier-wave-field">
+          <%= f.input :avatar, label: "upload avatar" %>
+        </div>
+
+        <%= f.input :avatar_cache, as: :hidden %>
       <%= f.button :submit, class: "btn btn-info btn-block"%>
       <% end %>
     </div>

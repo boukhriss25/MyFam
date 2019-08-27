@@ -59,6 +59,6 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.require(:conversation).permit(:name, :family_id)
+    params.require(:conversation).permit(:name, :family_id, :avatar)
   end
 end

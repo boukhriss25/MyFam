@@ -2,11 +2,14 @@
 
 <div class="container">
   <div class="conv-show-title">
-      <img class="avatar" alt="avatar" src="https://cdn3.iconfinder.com/data/icons/toolbar-people/512/user_group_man_people_users_male-512.png" />
+      <div id="conv-avatar" class="burger-avatar">
+          <%= cl_image_tag @conversation.avatar %>
+        </div>
       <h4 class="conversation-name"><%= @conversation.name %></h4>
     <div>
       <%= link_to edit_family_conversation_path(@family, @conversation) do %>
-       <%= image_tag "settings-icon.png", :class=>"icons" %>
+       <%#= image_tag "settings-icon.png", :class=>"icons" %>
+       <i class="fas fa-tools"></i>
       <% end %>
     </div>
   </div>
