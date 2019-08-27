@@ -1,7 +1,11 @@
 <%= render 'shared/navbarburger'%>
 
 <div class="show-doc">
-<%= cl_image_tag @document.content %>
+  <% if is_image?(@document.content) %>
+    <%= cl_image_tag @document.content %>
+  <% else %>
+    <%= render "documents/document", document: @document %>
+  <% end %>
 </div>
 <!-- <div class="doc-manage"> -->
 

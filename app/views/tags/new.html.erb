@@ -1,8 +1,5 @@
 <%= render 'shared/navbarburger'%>
-
-<div class="show-doc">
-<%= cl_image_tag @document.content %>
-</div>
+<%= render "documents/document", document: @document %>
 <div class="add-hashtag">
   <div class="add-tag">
     <div class="hash">
