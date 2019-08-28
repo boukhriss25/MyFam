@@ -2,14 +2,17 @@
 
 <div class="container">
   <div class="conv-show-title">
-      <div id="conv-avatar" class="burger-avatar">
+      <div class="burger-avatar">
           <%= cl_image_tag @conversation.avatar %>
         </div>
       <h4 class="conversation-name"><%= @conversation.name %></h4>
-    <div>
+    <div class="burger-avatar">
       <%= link_to edit_family_conversation_path(@family, @conversation) do %>
-      <i class="fas fa-ellipsis-v"></i>
+      <!-- <i class="fas fa-ellipsis-v"></i> -->
        <!-- <i class="fas fa-ellipsis-h"></i> -->
+
+      <%= image_tag("new-settings-logo.png") %>
+
       <% end %>
     </div>
   </div>
