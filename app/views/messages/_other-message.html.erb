@@ -8,8 +8,9 @@
       <%= cl_image_tag message.content %>
     </div>
 
-  <% else %>
+  <% elsif url = message.content.match(/(https?:\/\/www\.\w+\.[a-z]{2,3}\/\w*\/?\w*)/) %>
+    <a href="<%= message.content %>" target="_blank" style="color: blue"><%= message.content %></a>
+    <% else %>
     <%= message.content %>
-
   <% end %>
 </div>
