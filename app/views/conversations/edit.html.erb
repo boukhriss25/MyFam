@@ -3,8 +3,8 @@
   <div class="pt-2">
 
   <div class="shares">
-    <h5>Shares - <%= @conversation.name %> </h5>
-    <div class="row">
+    <h5><%= @family.name %> / <%= @conversation.name %> </h5>
+    <div id="share-samples" class="row">
       <% @documents.each do |doc| %>
         <div class="col-xs-3">
           <%= link_to family_document_path(@family, doc) do %>
@@ -15,12 +15,14 @@
     </div>
   </div>
     <div class="simpleformnew">
-      <h5>Manage - <%= @conversation.name %> </h5>
+      <h5 class="pb-1">Manage</h5>
       <%= simple_form_for [@family, @conversation] do |f| %>
-      <%= f.input :name, label: "edit name" %>
-      <div class="carrier-wave-field">
-        <%= f.input :avatar, label: "upload new avatar" %>
-      </div>
+
+        <%= f.input :name, label: false %>
+          <div class="carrier-wave-field">
+          <%= f.input :avatar, label: "upload new avatar" %>
+        </div>
+
 
       <%= f.input :avatar_cache, as: :hidden %>
 
