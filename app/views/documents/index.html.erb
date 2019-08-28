@@ -1,37 +1,41 @@
 <%= render 'shared/navbarburger-docs'%>
 <div class="container">
 
-  <div class="search-media-form mt-5">
-    <%= form_tag family_documents_path(@family), method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "browse"%>
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i>
-          </button>
-          <% end %>
-  </div>
-
-  <div class="upload_doc d-flex">
-    <%= render "shared/document_form" %>
-  </div>
-
-  <% if @documents.empty? %>
-    <p id="search-message">There are no tags by the name <%= params[:query] %></p>
-  <% elsif params[:query].present? %>
-    <h5 id="search-message">Results for #<%= params[:query] %> in...</h5>
-  <% end %>
-<h6><%= @family.name %>'s Media</h6>
-  <div class="container">
-    <div class="row">
-      <% @documents.each do |doc| %>
-        <div class="col-xs-3">
-          <%= link_to family_document_path(@family, doc) do %>
-          <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
-          <% end %>
-        </div>
+  <div class= "container container-upper-media">
+    <div class="search-media-form">
+      <%= form_tag family_documents_path(@family), method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            placeholder: "browse"%>
+            <button name="button" type="submit" class="btn btn-flat">
+              <i class="fas fa-search"></i>
+            </button>
       <% end %>
     </div>
+
+      <div class="upload_doc d-flex">
+          <%= render "shared/document_form" %>
+      </div>
   </div>
+    <% if @family.documents.empty? %>
+      <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+    <% elsif params[:query].present? %>
+      <p id="search-message">Results for <%= params[:query] %>...</p>
+    <% end %>
+</div>
+
+<div class="container media-content">
+  <h4><%= @family.name %>'s Media</h4>
+    <div class="container">
+      <div class="row">
+        <% @documents.each do |doc| %>
+          <div class="col-xs-3">
+            <%= link_to family_document_path(@family, doc) do %>
+            <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 </div>

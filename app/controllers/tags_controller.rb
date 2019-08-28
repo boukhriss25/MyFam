@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
   def index
+    @family = Family.find(params[:family_id])
+    @document = Document.find(params[:document_id])
     @tags = Tag.all
   end
 
