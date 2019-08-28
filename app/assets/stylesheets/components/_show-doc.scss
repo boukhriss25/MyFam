@@ -2,7 +2,7 @@
   padding: 4px;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
   img {
     border: 1px solid black;
     height: auto;
@@ -36,4 +36,16 @@
 
 .delete-btn-form {
   text-align: right;
+}
+
+.send-media-form {
+  width: 80%;
+  padding-left: 40px;
+  position: relative;
+
+  i {
+    position: absolute;
+    top: 5px;
+    right: -40px;
+  }
 }

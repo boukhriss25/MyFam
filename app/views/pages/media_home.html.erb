@@ -1,13 +1,13 @@
 <%= render 'shared/navbarburger'%>
 <div class="container">
-  <div class="simpleformsearch mt-5">
+  <div class="search-media-form mt-5">
   <%= form_tag family_documents_path(@family), method: :get do %>
       <%= text_field_tag :query,
       params[:query],
       class: "form-control",
         placeholder: "browse"%>
         <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Browse
+          <i class="fas fa-search"></i>
         </button>
         <% end %>
   </div>
