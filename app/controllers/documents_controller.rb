@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  include FileHelper
   before_action :set_document, only: [:show, :destroy]
   before_action :set_family, only: [:index, :show, :create, :destroy]
 
@@ -8,6 +9,10 @@ class DocumentsController < ApplicationController
       @documents = @tags.map { |t| t.document }
     else
       @documents = Document.where(family_id: params[:family_id])
+    end
+
+    if params[:type].present?
+      @documents = @family.documents.select { |doc| send("is_#{params[:type]}?", doc.content) }
     end
     @document = Document.new
   end

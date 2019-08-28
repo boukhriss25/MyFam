@@ -36,7 +36,7 @@
         <%= @family.name %>'s Tags
       </h4>
       <div class= "align-self-center">
-        <%= link_to 'See All', family_document_tags_path(@family, @documents)  %>
+        <%= link_to 'See All', tags_family_documents_path(@family)  %>
       </div>
     </div>
     <div class="container media-home">
@@ -64,7 +64,7 @@
         <%= @family.name %>'s Images
       </h4>
       <div class= "align-self-center">
-        <%= link_to 'See All', family_documents_path(@family)  %>
+        <%= link_to 'See All', family_documents_path(@family, type: 'image')  %>
       </div>
     </div>
     <div class="container media-home">
@@ -88,7 +88,7 @@
         <%= @family.name %>'s Documents
       </h4>
       <div class= "align-self-center">
-        <%= link_to 'See All', family_documents_path(@family)  %>
+        <%= link_to 'See All', family_documents_path(@family, type: 'document')  %>
       </div>
     </div>
 
