@@ -27,8 +27,10 @@
       <%= f.input :avatar_cache, as: :hidden %>
 
       <!-- <input type="text" name="skipform" value="-2" class="hidden"> -->
-      <%= f.button :submit, "Update", class: "btn btn-block"%>
+      <div id="btnmedium">
+      <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
       <% end %>
+      </div>
       <br>
       <div class="border p-2 members">
         <h5>members:</h5>
@@ -46,8 +48,10 @@
           class: "form-control",
             placeholder: "email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
-            <button name="button" type="submit" class="btn btn-block mt-3">Add</button>
+            <div id="btnmedium">
+            <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
             <% end %>
+           </div>
           </div>
         </div>
       </div>

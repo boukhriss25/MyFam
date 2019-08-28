@@ -14,8 +14,8 @@
           <%= cl_image_tag current_user.avatar %>
         </div>
         <div id="log-out">
-          <button id="logout-btn"><p style="font-size: 10px">
-            <%= link_to "logout", destroy_user_session_path, method: :delete, class: ""%></p></button>
+          <a id="logout-btn"><p style="font-size: 14px">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %></p></a>
           </div>
         </div>
         <div class="border-top pt-2">
