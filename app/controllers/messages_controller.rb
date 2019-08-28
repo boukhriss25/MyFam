@@ -9,12 +9,10 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
-      # unless @message.content_type == "text"
+      Share.create(conversation: @conversation, document: @message.document) if @message.document.present?
+
       #   content = @message.content.match(/(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/)
       #   document = Document.find_by(content: content[0])
-      #   @share = Share.create(conversation: @conversation, document: document)
-      # end
-
     # regex: /(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/
 
     # ActionCable.server.broadcast("conversation_#{conversation.id}", {
