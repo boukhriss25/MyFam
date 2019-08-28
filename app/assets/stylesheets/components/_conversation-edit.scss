@@ -16,3 +16,26 @@
 #see-all {
   font-weight: lighter;
 }
+
+#media-home-avatar {
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  margin-right: 4px;
+}
+
+.media-home-link {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  h4 {
+    margin: 0;
+    padding: 6px 0 6px 10px;
+  }
+}
+
+#media-home-label {
+  flex-grow: 1;
+  padding: 8px 14px;
+}

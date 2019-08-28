@@ -1,13 +1,22 @@
 <%= render 'shared/navbarburger' %>
 <div class="container pt-4">
-  <h5 class="ml-2"><%= @family.name %> / <%= @conversation.name %> </h5>
-<div class="row m-2">
-  <% @shares.each do |share| %>
+  <div class="media-home-link">
+    <!-- <h6 id="media-home-label">Media Home</h6> -->
+    <h4 class=""><%= @family.name %> / <%= @conversation.name %> </h4>
+    <div id="media-home-avatar">
+      <%= link_to family_home_media_path(@family) do %>
+      <%= image_tag("new-folder-logo.png") %>
+      <% end %>
+    </div>
+  </div>
+    <!-- <h6>Shared media</h6> -->
+  <div class="row m-2">
+    <% @shares.each do |share| %>
     <div class="col-xs-3">
       <%= link_to family_document_path(@family, share.document) do %>
       <%= image_tag share.document.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
       <% end %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>
