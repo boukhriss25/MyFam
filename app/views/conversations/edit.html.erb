@@ -2,15 +2,24 @@
 <div class="container">
   <div class="pt-2">
 
-  <div class="shares">
     <h5><%= @family.name %> / <%= @conversation.name %> </h5>
+  <div class="shares">
+  <div class="share-head">
+    <h6>Shared media</h6>
+    <h6 id="see-all"><%= link_to 'see all', family_conversation_shares_path(@family, @conversation) unless @documents.count.zero? %></h6>
+  </div>
     <div id="share-samples" class="row">
-      <% @documents.each do |doc| %>
+      <% if @documents.count.zero? %>
+      <h6 style="color: #979A97">Nothing has been shared yet</h6>
+      <% else %>
+      <% docs = @documents.last(4) %>
+      <% docs.each do |doc| %>
         <div class="col-xs-3">
           <%= link_to family_document_path(@family, doc) do %>
-          <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+          <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
           <% end %>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>

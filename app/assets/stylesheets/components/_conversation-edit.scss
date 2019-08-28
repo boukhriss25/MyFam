@@ -1,9 +1,18 @@
 .shares {
+}
 
+.share-head {
+  display: flex;
+  justify-content: space-between;
 }
 
 #share-samples {
   padding: 0 15px 15px 15px;
+  .row {
+    width: 100%;
+  }
 }
 
-
+#see-all {
+  font-weight: lighter;
+}
