@@ -38,7 +38,7 @@
         <div id="tag-input" class="simpleformnew mt-3">
             <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
           <%= simple_form_for [@family, @document, @tag] do |f| %>
-          <%= f.input :name, label: false, placeholder: "add tag" %>
+          <%= f.input :name.downcase, label: false, placeholder: "add tag" %>
         </div>
         <div class="add-btn simpleformghost mt-3">
           <%= f.button :submit, "add", class: "btn"%>
