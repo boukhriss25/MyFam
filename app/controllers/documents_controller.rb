@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
 
   def index
     if params[:query].present?
-      @tags = Tag.where(name: params[:query])
+      @tags = Tag.where(name: params[:query].downcase!)
       @documents = @tags.map { |t| t.document }
     else
       @documents = Document.where(family_id: params[:family_id])

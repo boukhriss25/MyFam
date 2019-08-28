@@ -2,17 +2,17 @@
 <div class="container">
 
   <div class= "container container-upper-media">
-    <div class="search-media-form">
-      <%= form_tag family_documents_path(@family), method: :get do %>
-          <%= text_field_tag :query,
+    <!-- <div class="search-media-form">
+      <#%= form_tag family_documents_path(@family), method: :get do %>
+          <#%= text_field_tag :query,
           params[:query],
           class: "form-control",
             placeholder: "browse"%>
             <button name="button" type="submit" class="btn btn-flat">
               <i class="fas fa-search"></i>
             </button>
-      <% end %>
-    </div>
+      <#% end %>
+    </div> -->
 
     <div class="upload_doc d-flex">
         <%= render "shared/document_form" %>
@@ -108,3 +108,16 @@
 
 </div>
 
+<div class="footer">
+  <div class="search-media-fam-show">
+  <%= form_tag family_documents_path(@family), method: :get do %>
+  <%= text_field_tag :query,
+  params[:query],
+  class: "form-control",
+    placeholder: "Browse..."%>
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i>
+    </button>
+    <% end %>
+  </div>
+  </div>
