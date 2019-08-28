@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     get 'home_media', to: "pages#media_home"
     resources :memberships, only: [:new, :create]
     resources :documents, only: [:new, :create, :index, :show] do
-      resources :tags, only: [:index, :show, :new, :create]
+      collection do
+        get "tags", to: 'tags#index'
+      end
+      resources :tags, only: [:show, :new, :create]
       resources :folders
     end
     resources :messages, only: [:create]
