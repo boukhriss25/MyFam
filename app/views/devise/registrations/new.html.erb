@@ -1,8 +1,8 @@
 <%= render 'shared/navbarlogo' %>
 
-<div class="container">
+<div class="container" style="background-color: white; width: 370px; border-radius: 5px;">
 
-<div class="simpleformnew mt-3">
+<div class="simpleformnew mt-3" style="padding: 15px;">
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>

@@ -22,7 +22,7 @@
     <p id="search-message">Results for <%= params[:query] %>...</p>
   <% end %>
 
-  <h4> <%= @family.name %>'s Media</h4>
+  <h4> <%= @family.name %>'s Tags</h4>
 
   <div class="container">
     <div class="row">
@@ -36,6 +36,38 @@
           <p>
             #<%= tag.name %>
           </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <h4> <%= @family.name %>'s Photos</h4>
+
+  <div class="container">
+    <div class="row">
+      <% @documents.each do |doc| %>
+        <% if doc.content.is_image?(doc.content) %>
+          <div class="col-xs-3">
+            <%= link_to family_document_path(@family, doc) do %>
+            <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <h4> <%= @family.name %>'s Documents</h4>
+
+  <div class="container">
+    <div class="row">
+      <% @documents.each do |doc| %>
+        <% unless doc.content.is_image?(doc.content) %>
+          <div class="col-xs-3">
+            <%= link_to family_document_path(@family, doc) do %>
+            <%= image_tag doc.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
+            <% end %>
           </div>
         <% end %>
       <% end %>

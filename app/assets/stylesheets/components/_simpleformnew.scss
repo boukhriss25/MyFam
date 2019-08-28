@@ -3,12 +3,14 @@
   .btn:hover{
     color: white;
     background-color: #FF4747;
-    border-color: #FF4747; /*set the color you want here*/
+    border-color: #FF4747;
+    border-radius: 5px; /*set the color you want here*/
   }
   .btn {
     color: white;
     background-color: #FF4747;
     border-color: #FF4747;
+    border-radius: 5px;
   }
 
   a {

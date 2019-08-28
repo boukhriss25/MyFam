@@ -1,5 +1,4 @@
 <%= render 'shared/navbarburger'%>
-
 <div class="container">
   <div class="pt-2">
 
@@ -18,20 +17,22 @@
     <div class="simpleformnew">
       <h5 class="pb-1">Manage</h5>
       <%= simple_form_for [@family, @conversation] do |f| %>
+
         <%= f.input :name, label: false %>
           <div class="carrier-wave-field">
           <%= f.input :avatar, label: "upload new avatar" %>
         </div>
 
-        <%= f.input :avatar_cache, as: :hidden %>
 
-        <!-- <input type="text" name="skipform" value="-2" class="hidden"> -->
-        <%= f.button :submit, "Update", class: "btn btn-info"%>
+      <%= f.input :avatar_cache, as: :hidden %>
+
+      <!-- <input type="text" name="skipform" value="-2" class="hidden"> -->
+      <%= f.button :submit, "Update", class: "btn btn-block"%>
       <% end %>
       <br>
       <div class="border p-2 members">
-      <h5>members:</h5>
-      <% @users.each do |u| %>
+        <h5>members:</h5>
+        <% @users.each do |u| %>
         <%= u.username %>
         <br>
         <% end %>
@@ -45,21 +46,21 @@
           class: "form-control",
             placeholder: "email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
-            <button name="button" type="submit" class="btn btn-info mt-3 button-add">Add</button>
+            <button name="button" type="submit" class="btn btn-block mt-3">Add</button>
             <% end %>
+          </div>
         </div>
       </div>
       <br>
-      <div class="simpleformghost pb-5">
+
+      <div class="leavedelete">
         <% unless @conversation.users.count == 1 %>
-          <%= link_to 'Leave Conversation', subscription_path(user: current_user),
-           method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-info" %>
+        <%= link_to 'Leave Conversation', subscription_path(user: current_user),
+        method: :delete, data: {confirm: "Are you sure?"}%>
         <% end %>
         <% if @conversation.users.count == 1 %>
-          <%= link_to 'Delete Conversation', family_conversation_path(@family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark mt-4" %>
+        <%= link_to 'Delete Conversation', family_conversation_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
         <% end %>
       </div>
     </div>
-  </div>
-</div>
 
