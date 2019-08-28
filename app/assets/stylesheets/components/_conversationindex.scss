@@ -4,6 +4,11 @@
   align-items: center;
   // padding-top: 8px;
   margin: 8px 0;
+
+  :hover {
+    opacity: 0.8;
+
+  }
 }
 
 .card-stuff {
@@ -11,11 +16,23 @@
   margin-left: 12px;
   flex-grow: 1;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover{
+    text-decoration: none;
+    color: black;
+  }
+
   p {
     margin: 0;
+    text-decoration: none;
   }
   h6 {
     margin: 0;
+    text-decoration: none;
   }
 }
 
@@ -31,6 +48,7 @@
   justify-content: space-between;
   p {
     font-size: 14px;
+    text-decoration: none;
   }
 }
 
@@ -80,3 +98,11 @@
   -webkit-transform: rotate(-45deg);
 }
 
+ a {
+    text-decoration: none;
+  }
+
+  a:hover{
+    text-decoration: none;
+    color: black;
+  }
