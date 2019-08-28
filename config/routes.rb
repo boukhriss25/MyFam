@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :conversations do
       resources :subscriptions, only: [:index, :new, :create]
       resources :messages, only: [:index, :new]
+      resources :shares, only: [:index, :new, :create]
     end
     get 'home_media', to: "pages#media_home"
     resources :memberships, only: [:new, :create]
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
   resources :memberships, only: [:destroy]
   resources :tags, only: [:destroy]
   resources :documents, only: [:edit, :update, :destroy]
+  resources :shares, only: [:destroy]
+
 
   mount ActionCable.server => "/cable"
 
