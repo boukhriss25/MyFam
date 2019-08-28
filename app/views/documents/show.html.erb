@@ -62,4 +62,18 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="send-media-form">
+  <%= simple_form_for [@family, @message] do |f| %>
+    <%= f.input :document_id, as: :hidden, input_html: { value: @document.id } %>
+    <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-arrow-circle-right"></i>
+    </button>
+
+  <% end %>
+</div>
+
+</div>
 

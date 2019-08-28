@@ -9,11 +9,11 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
-      unless @message.content_type == "text"
-        content = @message.content.match(/(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/)
-        document = Document.find_by(content: content[0])
-        @share = Share.create(conversation: @conversation, document: document)
-      end
+      # unless @message.content_type == "text"
+      #   content = @message.content.match(/(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/)
+      #   document = Document.find_by(content: content[0])
+      #   @share = Share.create(conversation: @conversation, document: document)
+      # end
 
     # regex: /(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/
 
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
  # end
 
   def message_params
-    params.require(:message).permit(:content, :content_type, :conversation_id, :user_id)
+    params.require(:message).permit(:content, :content_type, :conversation_id, :user_id, :document_id)
   end
 
 end

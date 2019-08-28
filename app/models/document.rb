@@ -2,6 +2,7 @@ class Document < ApplicationRecord
   belongs_to :family
   belongs_to :user
   belongs_to :folder, optional: true
+  has_many :messages
   has_many :conversations, through: :shares
   has_many :tags, dependent: :destroy
   has_many :shares, dependent: :destroy
