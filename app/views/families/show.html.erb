@@ -5,14 +5,14 @@
     <h6 class="mb-0">welcome to the</h6>
     <h2><%= @family.name %> Fam</h2>
     <br>
-    <div id="fam-av">
+    <!-- <div id="fam-av"> -->
 
-    <div class="card option burger-avatar" id="">
-          <%= link_to edit_family_path(@family) do %>
+    <div class="card option burger-avatar" id="fam-av">
+          <%#= link_to edit_family_path(@family) do %>
           <%= cl_image_tag @family.avatar %>
-          <% end %>
+          <%# end %>
         </div>
-    </div>
+    <!-- </div> -->
     <div id="showcard" class="cards">
       <div>
         <div class="card option">
