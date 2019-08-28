@@ -1,2 +1,50 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+<%= render 'shared/navbarhome'%>
+
+<div class="container">
+  <div class= "container container-upper-media">
+      <div class="search-media-form">
+        <%= form_tag family_documents_path(@family), method: :get do %>
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+              placeholder: "browse"%>
+              <button name="button" type="submit" class="btn btn-flat">
+                <i class="fas fa-search"></i>
+              </button>
+        <% end %>
+      </div>
+
+      <div class="upload_doc d-flex">
+          <%= render "shared/document_form" %>
+      </div>
+
+
+
+    <% if @family.documents.empty? %>
+      <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+    <% elsif params[:query].present? %>
+      <p id="search-message">Results for <%= params[:query] %>...</p>
+    <% end %>
+  </div>
+
+  <h4 class="media-title-tags">
+      All <%= @family.name %>'s Tags
+  </h4>
+
+  <div class="container media-home">
+    <div class="row">
+      <% @tags.each do |tag| %>
+        <% document = @family.documents.by_tag(tag.name).sample %>
+        <% next unless document %>
+        <%= link_to family_documents_path(@family, query: tag.name) do %>
+          <div class="col-xs-3">
+            <%= image_tag document.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
+          <p class= "tag-name">
+            #<%= tag.name %>
+          </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
