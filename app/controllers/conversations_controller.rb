@@ -13,9 +13,6 @@ class ConversationsController < ApplicationController
     @messages = Message.where(conversation_id: params[:id])
     @family = @conversation.family
     @message = Message.new
-    # @messages.each do |m|
-    #   m.status = "read"
-    # end
     @subscription = Subscription.find_by(conversation: @conversation, user: current_user)
     @subscription.update(last_seen: DateTime.now)
   end
@@ -46,6 +43,7 @@ class ConversationsController < ApplicationController
     @users = @conversation.users
     @family = Family.find(params[:family_id])
     @members = @family.users
+    @documents = @conversation.documents
   end
 
   def update
