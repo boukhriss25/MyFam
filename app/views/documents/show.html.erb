@@ -51,7 +51,7 @@
   <%= simple_form_for [@family, @message] do |f| %>
     <%= f.input :content, as: :hidden, input_html: { value: @document.content } %>
     <%= f.input :content_type, as: :hidden, input_html: { value: "media" } %>
-    <%= f.input :conversation_id, collection: @conversations, placeholder: "select a conversation", label: false %>
+    <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-paper-plane"></i>
     </button>
