@@ -5,6 +5,14 @@
     <h6 class="mb-0">welcome to the</h6>
     <h2><%= @family.name %> Fam</h2>
     <br>
+    <div id="fam-av">
+
+    <div class="card option burger-avatar" id="">
+          <%= link_to edit_family_path(@family) do %>
+          <%= cl_image_tag @family.avatar %>
+          <% end %>
+        </div>
+    </div>
     <div id="showcard" class="cards">
       <div>
         <div class="card option">
@@ -22,15 +30,15 @@
         </div>
         <%= link_to "Media", family_home_media_path(@family) %>
       </div>
+    </div>
       <div>
-        <div class="card option">
+        <div class="card option" id="manage-btn">
           <%= link_to edit_family_path(@family) do %>
           <%= image_tag("new-settings-logo.png") %>
           <% end %>
         </div>
         <%= link_to "Manage", edit_family_path(@family) %>
       </div>
-    </div>
 
     <br>
 
