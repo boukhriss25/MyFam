@@ -7,8 +7,13 @@
   <% if message.content_type == "text" %>
     <%= message.content %>
   <% else %>
-  <div class="my-msg-content-media"><%= cl_image_tag message.content %>
+  <div class="my-msg-content-media">
+    <%= link_to family_documents_path(@family) do %>
+      <%= cl_image_tag message.content %>
+        <% end %>
   </div>
+<!--   <%= cl_image_tag message.content %>
+ -->
 
   <% end %>
 </div>
