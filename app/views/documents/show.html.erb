@@ -16,7 +16,7 @@
       <% @document.tags.each do |t| %>
       <strong>#</strong><%= t.name %>
       <% unless t.name == "untagged" %>
-      <%= link_to tag_path(t), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <%= link_to tag_path(t), method: :delete do %>
       <i class="far fa-times-circle" style="color: gray; font-size: 12px"></i>
       <% end %>
       <% end %>
@@ -38,7 +38,7 @@
         <div id="tag-input" class="simpleformnew mt-3">
             <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
           <%= simple_form_for [@family, @document, @tag] do |f| %>
-          <%= f.input :name, label: false, placeholder: "add tag" %>
+          <%= f.input :name.downcase, label: false, placeholder: "add tag" %>
         </div>
         <div class="add-btn simpleformghost mt-3">
           <%= f.button :submit, "add", class: "btn"%>
