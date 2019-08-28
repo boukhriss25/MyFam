@@ -3,10 +3,16 @@
     <p><strong><%= message.user.username %></strong></p>
     <p><%= message.created_at.strftime("%I:%M %p") %></p>
   </div>
-    <% if message.content_type == "text" %>
-    <%= message.content %>
+  <% if message.document? %>
+    <div class="my-msg-content-media">
+      <%= link_to family_document_path(@family, message.document) do %>
+        <%= cl_image_tag message.content %>
+          <% end %>
+    </div>
   <% else %>
-  <div class="content-media"><%= cl_image_tag message.content %>
-  </div>
+    <%= message.content %>
+<!--   <%= cl_image_tag message.content %>
+ -->
+
   <% end %>
 </div>
