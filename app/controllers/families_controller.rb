@@ -21,7 +21,8 @@ class FamiliesController < ApplicationController
     if @family.save && @membership.save
       @conversation = Conversation.create(family: @family, name: "Main chat")
       Subscription.create(user: current_user, conversation: @conversation)
-      redirect_to family_path(@family, skipform: params[:skipform])
+      redirect_to family_path(@family)
+      # skipform: params[:skipform]
     else
       render :new
     end
@@ -34,7 +35,8 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to family_path(@family, skipform: params[:skipform])
+      redirect_to family_path(@family)
+      # skipform: params[:skipform]
     else
       render :edit
     end
