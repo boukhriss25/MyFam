@@ -17,17 +17,15 @@ class TagsController < ApplicationController
 
   def create
     @family = Family.find(params[:family_id])
-    @tag = Tag.new(tag_params)
     @document = Document.find(params[:document_id])
-    @tag.document = @document
-    if @tag.save
-      if @untagged = @document.tags.find_by(name: "untagged")
-        @untagged.destroy
-      end
-      redirect_to family_document_path(@family, @document)
-    else
-      render "documents/show"
+    tags.split.each { |tag_name| Tag.create(name: tag_name, document: @document) }
+    if @document.tags.find_by(name: "untagged").present?
+      @document.tags.find_by(name: "untagged").destroy
     end
+    redirect_to family_document_path(@family, @document)
+    # else
+    #   render "documents/show"
+    # end
   end
 
   def destroy
@@ -41,7 +39,8 @@ class TagsController < ApplicationController
 
   private
 
-  def tag_params
-    params.require(:tag).permit(:name)
+  def tags
+    # params.require(:tag).permit(:name)
+    params[:tag][:name]
   end
 end

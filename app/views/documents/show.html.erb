@@ -16,7 +16,7 @@
       <% @document.tags.each do |t| %>
       <strong>#</strong><%= t.name %>
       <% unless t.name == "untagged" %>
-      <%= link_to tag_path(t), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <%= link_to tag_path(t), method: :delete do %>
       <i class="far fa-times-circle" style="color: gray; font-size: 12px"></i>
       <% end %>
       <% end %>
