@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_142651) do
+ActiveRecord::Schema.define(version: 2019_08_28_082728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,12 +70,23 @@ ActiveRecord::Schema.define(version: 2019_08_27_142651) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "shares", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_shares_on_conversation_id"
+    t.index ["document_id"], name: "index_shares_on_document_id"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.datetime "last_seen", default: "2019-08-27 11:38:10"
+    
     t.index ["conversation_id"], name: "index_subscriptions_on_conversation_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
@@ -110,6 +121,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_142651) do
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "shares", "conversations"
+  add_foreign_key "shares", "documents"
   add_foreign_key "subscriptions", "conversations"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tags", "documents"
