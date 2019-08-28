@@ -5,7 +5,7 @@
     <p class="my-msg-time"><%= message.created_at.strftime("%I:%M %p") %></p>
   </div>
   <% if message.document? %>
-    <div class="my-msg-content-media">
+     <div class="my-msg-content-media">
       <%= link_to family_document_path(@family, message.document) do %>
         <%= cl_image_tag message.content %>
           <% end %>

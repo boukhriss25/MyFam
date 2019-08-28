@@ -5,14 +5,11 @@
   </div>
   <% if message.document? %>
     <div class="content-media">
-      <%= link_to family_document_path(@family, message.document) do %>
-        <%= cl_image_tag message.content %>
-          <% end %>
+      <%= cl_image_tag message.content %>
     </div>
+
   <% else %>
     <%= message.content %>
-<!--   <%= cl_image_tag message.content %>
- -->
 
   <% end %>
 </div>
