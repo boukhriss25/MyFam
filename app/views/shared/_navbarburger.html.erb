@@ -46,6 +46,10 @@
   <%= link_to family_conversations_path(@family) do %>
   <i class="fas fa-chevron-left"></i>
   <% end %>
+  <% elsif current_page?(family_conversation_shares_path(@family, @conversation)) %>
+  <%= link_to edit_family_conversation_path(@family, @conversation) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
   <% else %>
     <div onclick="goBack()">
     <i class="fas fa-chevron-left"></i>

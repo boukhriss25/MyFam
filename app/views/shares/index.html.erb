@@ -1,6 +1,7 @@
-<%= render 'shared/navbarburger-home' %>
-
-<div id="share-samples" class="row">
+<%= render 'shared/navbarburger' %>
+<div class="container pt-4">
+  <h5 class="ml-2"><%= @family.name %> / <%= @conversation.name %> </h5>
+<div class="row m-2">
   <% @shares.each do |share| %>
     <div class="col-xs-3">
       <%= link_to family_document_path(@family, share.document) do %>
@@ -8,4 +9,5 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>
