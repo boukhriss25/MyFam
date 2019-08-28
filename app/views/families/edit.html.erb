@@ -4,9 +4,9 @@
     <div>
 
       <div class="simpleformnew">
-        <h5>Manage the <%= @family.name %> fam</h5>
+        <h5 class="pb-1">Manage the <%= @family.name %> fam</h5>
         <%= simple_form_for @family do |f| %>
-        <%= f.input :name, label: "edit name" %>
+        <%= f.input :name, label: false %>
         <div class="carrier-wave-field">
           <%= f.input :avatar, label: "upload new avatar" %>
         </div>
