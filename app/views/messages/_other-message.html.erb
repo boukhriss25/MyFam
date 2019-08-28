@@ -3,5 +3,10 @@
     <p><strong><%= message.user.username %></strong></p>
     <p><%= message.created_at.strftime("%I:%M %p") %></p>
   </div>
+    <% if message.content_type == "text" %>
     <%= message.content %>
+  <% else %>
+  <div class="content-media"><%= cl_image_tag message.content %>
+  </div>
+  <% end %>
 </div>
