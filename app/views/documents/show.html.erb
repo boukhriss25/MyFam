@@ -2,62 +2,64 @@
 
 <div class="container">
 
-<div class="delete-btn-form" id="delete-btn">
-  <% if @document.user == current_user %>
-    <%= link_to document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"} do %>
-        <i class="far fa-trash-alt" style="font-size:100%"></i>
-      <% end %>
-  <% end %>
-</div>
 
-<div class="show-doc">
-  <% if is_image?(@document.content) %>
+  <div class="show-doc">
+    <% if is_image?(@document.content) %>
     <%= cl_image_tag @document.content %>
-  <% else %>
+    <% else %>
     <%= render "documents/document", document: @document %>
-  <% end %>
-</div>
-<!-- <div class="doc-manage"> -->
-
-<div class="tags">
-  <% @document.tags.each do |t| %>
-    <strong>#</strong><%= t.name %>
-    <% unless t.name == "untagged" %>
-      <%= link_to tag_path(t), method: :delete, data: {confirm: "Are you sure?"} do %>
-        <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
-      <% end %>
-    <% end %>
-    &nbsp
-  <% end %>
-</div>
-<!-- </div> -->
-<div class="add-hashtag">
-  <div class="add-tag">
-    <div class="hash">
-      <h2>#</h2>
-    </div>
-    <div id="tag-input" class="simpleformnew mt-3">
-      <%= simple_form_for [@family, @document, @tag] do |f| %>
-      <%= f.input :name, label: false, placeholder: "add a tag" %>
-    </div>
-    <div class="add-btn simpleformnew mt-3">
-      <%= f.button :submit, "Add", class: "btn btn-info"%>
-    </div>
     <% end %>
   </div>
-</div>
+  <!-- <div class="doc-manage"> -->
 
-<div class="send-media-form">
-  <%= simple_form_for [@family, @message] do |f| %>
-    <%= f.input :content, as: :hidden, input_html: { value: url_for_display(@document.content) } %>
-    <%= f.input :content_type, as: :hidden, input_html: { value: "media" } %>
-    <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-arrow-circle-right"></i>
-    </button>
+    <div class="tags mb-3">
+      <% @document.tags.each do |t| %>
+      <strong>#</strong><%= t.name %>
+      <% unless t.name == "untagged" %>
+      <%= link_to tag_path(t), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <i class="far fa-times-circle" style="color: gray; font-size: 12px"></i>
+      <% end %>
+      <% end %>
+      &nbsp
+      <% end %>
 
-  <% end %>
-</div>
+      <div class="delete-btn-form" id="delete-btn">
+        <% if @document.user == current_user %>
+        <%= link_to document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"} do %>
+        <i class="far fa-trash-alt" style="font-size:100%"></i>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
 
-</div>
+    <!-- </div> -->
+    <div class="add-hashtag">
+      <div class="add-tag">
+        <div id="tag-input" class="simpleformnew mt-3">
+            <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
+          <%= simple_form_for [@family, @document, @tag] do |f| %>
+          <%= f.input :name, label: false, placeholder: "add tag" %>
+        </div>
+        <div class="add-btn simpleformghost mt-3">
+          <%= f.button :submit, "add", class: "btn"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="add-hashtag">
+      <div class="add-tag">
+        <div id="tag-input" class="simpleformnew">
+          <%= simple_form_for [@family, @message] do |f| %>
+          <%= f.input :content, as: :hidden, input_html: { value: url_for_display(@document.content) }%>
+          <%= f.input :content_type, as: :hidden, input_html: { value: "media" } %>
+          <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
+        </div>
+        <div class="add-btn simpleformghost mt-3">
+          <%= f.button :submit, "send", class: "btn"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
