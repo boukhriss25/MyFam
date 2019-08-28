@@ -6,16 +6,17 @@
 .homecontainer {
   //background-color: rgba(255, 71, 71, 0.55);
 
+  h5 {
+    text-align: center;
+  }
+
   .icons {
     margin-top: 20px;
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 52px !important;
-    height: 52px !important;
-  }
-  h1 {
-    text-align: center;
+    width: 44px !important;
+    height: 44px !important;
   }
 }
 
@@ -25,7 +26,8 @@
   margin-left: 20px;
   margin-right: 20px;
 
-  h5 {
+   h3 {
+    text-align: center;
     color: #5A5A5A;
     margin-top: 18px;
   }
