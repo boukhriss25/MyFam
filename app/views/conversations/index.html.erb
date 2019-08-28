@@ -4,9 +4,9 @@
 <div class="container">
   <div class="conversations-and-icon-new">
     <h4 class="title"><%= @family.name %> Conversations</h4>
-    <div class="new-chat">
+    <div class="new-chat burger-avatar">
       <%= link_to new_family_conversation_path(@family, @conversation) do %>
-        <%= image_tag "new_chat.png", :class=>"icons" %>
+        <%= image_tag("new-chat-logo.png") %>
       <% end %>
     </div>
   </div>
