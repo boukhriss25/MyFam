@@ -1,5 +1,15 @@
 <%= render 'shared/navbarburger-docs'%>
 
+<div class="container">
+
+<div class="delete-btn-form" id="delete-btn">
+  <% if @document.user == current_user %>
+    <%= link_to document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"} do %>
+        <i class="far fa-trash-alt" style="font-size:100%"></i>
+      <% end %>
+  <% end %>
+</div>
+
 <div class="show-doc">
   <% if is_image?(@document.content) %>
     <%= cl_image_tag @document.content %>
@@ -37,21 +47,17 @@
   </div>
 </div>
 
-<div class="simpleformghost" id="delete-btn">
-  <% if @document.user == current_user %>
-    <%= link_to 'Delete', document_path(@document, family_id: @family), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-dark" %>
-  <% end %>
-</div>
-
-
 <div class="send-media-form">
   <%= simple_form_for [@family, @message] do |f| %>
     <%= f.input :content, as: :hidden, input_html: { value: @document.content } %>
     <%= f.input :content_type, as: :hidden, input_html: { value: "media" } %>
-    <%= f.input :conversation_id, collection: @conversations %>
+    <%= f.input :conversation_id, collection: @conversations, placeholder: "select a conversation", label: false %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-paper-plane"></i>
     </button>
 
   <% end %>
 </div>
+
+</div>
+

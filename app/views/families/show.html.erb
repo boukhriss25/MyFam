@@ -33,15 +33,6 @@
     </div>
 
     <br>
-    <%= form_tag family_documents_path(@family), method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          placeholder: "browse"%>
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i> Media Browse
-          </button>
-          <% end %>
 <!-- <div class="simpleformsearch mt-5">
   <%#= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -52,6 +43,17 @@
   </div>
 <%# end %>
 </div> -->
+  </div>
 
+  <div class="search-media-form mt-5">
+      <%= form_tag family_documents_path(@family), method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "browse"%>
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i>
+        </button>
+        <% end %>
   </div>
 </div>
