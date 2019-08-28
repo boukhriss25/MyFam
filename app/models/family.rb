@@ -10,7 +10,6 @@ class Family < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   after_create :default_avatar
 
-  # DEFAULT_AVATAR = "f5psjysh6j1nsoxzqgyx"
   def default_avatar
     self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/b_rgb:eefbfc,o_75/v1566486630/f5psjysh6j1nsoxzqgyx.jpg" unless self.avatar.present?
   end

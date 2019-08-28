@@ -4,6 +4,7 @@ class Conversation < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions
   has_many :shares, dependent: :destroy
+  has_many :documents, through: :shares
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
   after_create :default_avatar
