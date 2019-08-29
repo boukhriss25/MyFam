@@ -1,12 +1,18 @@
 .navbarlogocontainer {
-   .icons {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    width: 52px !important;
-    height: 52px !important;
-  }
-  h1 {
+ .icons {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 52px !important;
+  height: 52px !important;
+}
+
+}
+
+.logo {
+  h4 {
     text-align: center;
+    font-size: 16px;
+    padding: 6px 4px 0 3px;
   }
 }
