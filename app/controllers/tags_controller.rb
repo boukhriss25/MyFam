@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   def index
     @family = Family.find(params[:family_id])
     @document = Document.new
-    @tags = Tag.all
+    @tags = @family.tags
   end
 
   def show
