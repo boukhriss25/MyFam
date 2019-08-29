@@ -1,5 +1,4 @@
 <%= render 'shared/navbarburger-docs'%>
-
 <div class="container">
 
 
@@ -49,29 +48,28 @@
 
     <div class="add-hashtag">
       <div class="add-tag">
-        <div id="tag-input" class="simpleformnew">
+        <div id="tag-input" class="simpleformnew send-media-form-real-thistime">
           <%= simple_form_for [@family, @message] do |f| %>
-          <%= f.input :document_id, as: :hidden, input_html: { value: @document.id }%>
-          <%= f.input :conversation_id, collection: @conversations, prompt: "Select a conversation", label: false %>
-        </div>
-        <div class="add-btn simpleformnew mt-3">
-          <%= f.button :submit, "Send", class: "btn"%>
-        </div>
+            <%= f.input :document_id, as: :hidden, input_html: { value: @document.id }%>
+            <%= f.input :conversation_id, collection: @conversations, prompt: "Select a conversation", label: false %>
+          </div>
+          <div class="add-btn simpleformnew mt-3">
+            <%= f.button :submit, "Send", class: "submit-btn btn"%>
+          </div>
         <% end %>
       </div>
     </div>
 </div>
 
-
 <!-- <div class="send-media-form">
-  <%= simple_form_for [@family, @message] do |f| %>
-    <%= f.input :document_id, as: :hidden, input_html: { value: @document.id } %>
-    <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
+  <%#= simple_form_for [@family, @message] do |f| %>
+    <%#= f.input :document_id, as: :hidden, input_html: { value: @document.id } %>
+    <%#= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-arrow-circle-right"></i>
     </button>
 
-  <% end %>
+  <%# end %>
 </div>
 
 </div> -->
