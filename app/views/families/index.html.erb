@@ -3,7 +3,14 @@
     <div class="container">
       <div class="main-content mt-5">
 
-        <h1 class="mb-4">Select a Fam</h1>
+        <h1 class="mb-4">
+        <% if @families.count.zero? %>
+          Create a Fam
+        <% else %>
+        Select a Fam
+        <% end %>
+      </h1>
+
 
         <div id="indexcard" class="cards">
           <% @families.each do |f| %>

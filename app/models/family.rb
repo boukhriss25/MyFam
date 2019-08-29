@@ -11,6 +11,6 @@ class Family < ApplicationRecord
   after_create :default_avatar
 
   def default_avatar
-    self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/b_rgb:eefbfc,o_75/v1566486630/f5psjysh6j1nsoxzqgyx.jpg" unless self.avatar.present?
+    self.remote_avatar_url = "https://res.cloudinary.com/glenwarren/image/upload/v1566916585/nqsmgxawxwk1qirqom3s.jpg" unless self.avatar.present?
   end
 end
