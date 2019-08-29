@@ -22,7 +22,35 @@
           <div class="text-align-center">
           </div>
 
+          <div id="current-family" class="d-flex justify-content-center">
+            <div class="burger-avatar">
+            <% fam = @family %>
+              <%= link_to family_path(fam) do %>
+              <%= cl_image_tag fam.avatar %>
+              <% end %>
+            </div>
+
+            <div id="burger-fam-name">
+              <p style="color: #FF4747; font-size: 22px;"><strong><%= link_to fam.name, family_path(fam) %></strong></p>
+            </div>
+            <div class="unread pt-2 pb-2">
+              <% sum = 0 %>
+              <% convos = current_user.conversations.where(family: fam) %>
+              <% convos.each do |c| %>
+              <% subs = c.subscriptions.where(user: current_user) %>
+              <% subs.each do |sub| %>
+              <% all_messages = sub.conversation.messages %>
+              <% unread = all_messages.select { |m| m.created_at > sub.last_seen } %>
+              <% sum += unread.count %>
+              <% end %>
+              <% end %>
+              <p style="color: #FF4747; font-size: 16px;"><%= link_to "#{sum} unread", family_conversations_path(fam) %></p>
+            </div>
+          </div>
+          <div class="pt-1">
+
           <% current_user.families.each do |fam| %>
+          <% unless fam == @family %>
           <div class="d-flex justify-content-center pt-1 pb-1">
             <div class="burger-avatar">
               <%= link_to family_path(fam) do %>
@@ -48,7 +76,9 @@
             </div>
           </div>
           <% end %>
+        <% end %>
         </div>
+          </div>
 
 
         <!-- <i class="far fa-copyright d-flex dropdown-item mr-3" style="font-size: 12px;">
