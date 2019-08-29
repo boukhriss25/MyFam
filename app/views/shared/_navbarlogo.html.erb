@@ -1,15 +1,19 @@
- <div onclick="goBack()"><i class="fas fa-chevron-left mt-2 ml-2" style="position: center;"></i></div>
- <script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
+ <div class="d-flex justify-content-around mt-2">
 
-<div class="navbarlogocontainer">
-  <div class="logo-myfam" style="position: center;">
-    <%= image_tag "logomyfam.png", :class=>"icons" %>
-  </div>
-<h1 style="font-size: 36px;">MyFam</h1>
-<hr>
+ <div onclick="goBack()"><i class="fas fa-chevron-left" style="margin-left: -3rem !important;" style="position: center;"></i></div>
+ <script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+
+<div class="logo d-flex justify-content-center mb-5" style="margin-right: 100px">
+  <h4>My</h4>
+  <%= link_to families_path do %>
+  <%= image_tag "logomyfam.png", :class=>"icons" %>
+  <% end %>
+  <h4>Fam</h4>
+</div>
+
 </div>
 
