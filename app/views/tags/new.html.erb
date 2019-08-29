@@ -2,15 +2,13 @@
 <%= render "documents/document", document: @document %>
 <div class="add-hashtag">
   <div class="add-tag">
-    <div class="hash">
-      <h2>#</h2>
-    </div>
-    <div id="tag-input" class="simpleformnew mt-3">
+    <div id="tag-input" class="simpleformnew mt-3 ml-4" style="width: 70%;">
+      <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
       <%= simple_form_for [@family, @document, @tag] do |f| %>
       <%= f.input :name, label: false, placeholder: "add a tag to your upload" %>
     </div>
-    <div class="add-btn simpleformnew mt-3">
-      <%= f.button :submit, "Add", class: "btn btn-info"%>
+    <div class="add-btn simpleformnew mt-3 mr-4">
+      <%= f.button :submit, "Add", class: "btn btn"%>
     </div>
     <% end %>
   </div>
