@@ -7,7 +7,7 @@
 
   p {
     margin: auto;
-    color: #5A5A5A;
+    // color: #5A5A5A;
   }
 
   a:hover {
@@ -98,4 +98,15 @@ i {
   h6 {
     padding: 6px 4px 0 3px;
   }
+}
+
+#current-family {
+  a {
+
+  color: #FF4747;
+  }
+}
+
+#gap {
+  width: 14px;
 }

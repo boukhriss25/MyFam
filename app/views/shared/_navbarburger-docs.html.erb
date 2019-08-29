@@ -9,6 +9,10 @@
   <%= link_to family_path(@family) do %>
   <i class="fas fa-chevron-left"></i>
   <% end %>
+  <% elsif current_page?(tags_family_documents_path(@family)) %>
+  <%= link_to family_home_media_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
   <% elsif current_page?(family_documents_path(@family)) %>
   <%= link_to family_home_media_path(@family) do %>
   <i class="fas fa-chevron-left"></i>
