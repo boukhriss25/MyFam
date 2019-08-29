@@ -38,10 +38,10 @@
         <div id="tag-input" class="simpleformnew mt-3">
             <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
           <%= simple_form_for [@family, @document, @tag] do |f| %>
-          <%= f.input :name.downcase, label: false, placeholder: "add tag" %>
+          <%= f.input :name.downcase, label: false, placeholder: "Add a tag" %>
         </div>
         <div class="add-btn simpleformghost mt-3">
-          <%= f.button :submit, "add", class: "btn"%>
+          <%= f.button :submit, "Add", class: "btn"%>
         </div>
         <% end %>
       </div>
@@ -52,10 +52,10 @@
         <div id="tag-input" class="simpleformnew">
           <%= simple_form_for [@family, @message] do |f| %>
           <%= f.input :document_id, as: :hidden, input_html: { value: @document.id }%>
-          <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
+          <%= f.input :conversation_id, collection: @conversations, prompt: "Select a conversation", label: false %>
         </div>
         <div class="add-btn simpleformnew mt-3">
-          <%= f.button :submit, "send", class: "btn"%>
+          <%= f.button :submit, "Send", class: "btn"%>
         </div>
         <% end %>
       </div>
