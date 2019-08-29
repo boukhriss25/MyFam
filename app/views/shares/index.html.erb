@@ -14,7 +14,7 @@
     <% @shares.each do |share| %>
     <div class="col-xs-3">
       <%= link_to family_document_path(@family, share.document) do %>
-      <%= image_tag share.document.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
+      <%= image_tag share.document.content.url(:thumb), height: 80, width: 80, crop: :fill, class: "img-fam-index" %>
       <% end %>
     </div>
     <% end %>

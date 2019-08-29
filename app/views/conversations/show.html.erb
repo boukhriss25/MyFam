@@ -5,7 +5,7 @@
       <div class="burger-avatar">
           <%= cl_image_tag @conversation.avatar %>
         </div>
-      <h4 class="conversation-name"><%= @conversation.name %></h4>
+      <h4 class="conversation-name trim"><%= @conversation.name %></h4>
     <div class="burger-avatar">
       <%= link_to edit_family_conversation_path(@family, @conversation) do %>
       <!-- <i class="fas fa-ellipsis-v"></i> -->
