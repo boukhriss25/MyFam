@@ -1,10 +1,19 @@
   <div class="index-wrapper" style="height: 96vh;">
-  <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
-  <div class="homecontainer">
-    <div class="logo-myfam" style="position: center;">
-      <%= image_tag "logomyfam.png", :class=>"icons" %>
+    <%= image_tag 'indexbg.png', height: "300px", class: "index-background-img" %>
+    <div class="homecontainer">
+    <!-- <div class="logo-myfam" style="position: center;">
+      <#%= image_tag "logomyfam.png", :class=>"icons" %>
     </div>
-    <h5 style="font-size: 24px;">MyFam</h5>
+    <h5 style="font-size: 24px;">MyFam</h5> -->
+    <div class="logo-myfam">
+      <div class="logo d-flex justify-content-center">
+        <h3>My</h3>
+        <%= link_to families_path do %>
+        <%= image_tag "logomyfam.png", :class=>"icons" %>
+        <% end %>
+        <h3>Fam</h3>
+      </div>
+    </div>
     <hr id="hr-home" style="color: white;">
 
     <div class="home-content">
@@ -17,6 +26,6 @@
 
     </div>
   </div>
-  </div>
+</div>
 
 
