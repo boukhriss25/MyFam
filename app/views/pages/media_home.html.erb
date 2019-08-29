@@ -1,111 +1,113 @@
 <%= render 'shared/navbarburger-docs'%>
-<div class="container">
+<div class="container-all">
+  <div class="container">
 
-  <div class= "container container-upper-media">
-    <!-- <div class="search-media-form">
-      <#%= form_tag family_documents_path(@family), method: :get do %>
-          <#%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-            placeholder: "browse"%>
-            <button name="button" type="submit" class="btn btn-flat">
-              <i class="fas fa-search"></i>
-            </button>
-      <#% end %>
-    </div> -->
+    <div class= "container container-upper-media">
+      <!-- <div class="search-media-form">
+        <#%= form_tag family_documents_path(@family), method: :get do %>
+            <#%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+              placeholder: "browse"%>
+              <button name="button" type="submit" class="btn btn-flat">
+                <i class="fas fa-search"></i>
+              </button>
+        <#% end %>
+      </div> -->
 
-    <div class="upload_doc d-flex">
-        <%= render "shared/document_form" %>
+      <div class="upload_doc d-flex">
+          <%= render "shared/document_form" %>
+      </div>
+
     </div>
 
+    <% if @documents.empty? && params[:query].present? %>
+      <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+    <% elsif params[:query].present? %>
+      <p id="search-message">Results for <%= params[:query] %>...</p>
+    <% end %>
   </div>
 
-  <% if @documents.empty? && params[:query].present? %>
-    <p id="search-message">There are no tags by the name <%= params[:query] %></p>
-  <% elsif params[:query].present? %>
-    <p id="search-message">Results for <%= params[:query] %>...</p>
-  <% end %>
-</div>
 
+  <div class="container media-content">
 
-<div class="container media-content">
-
-  <% if @tags.any? %>
-    <div class="container media-heading pr-0 d-flex h-100">
-      <h4 class="media-title">
-        <%= @family.name %>'s Tags
-      </h4>
-      <div class= "align-self-center">
-        <%= link_to 'See All', tags_family_documents_path(@family)  %>
+    <% if @tags.any? %>
+      <div class="container media-heading pr-0 d-flex h-100">
+        <h4 class="media-title">
+          <%= @family.name %>'s Tags
+        </h4>
+        <div class= "align-self-center">
+          <%= link_to 'See All', tags_family_documents_path(@family)  %>
+        </div>
       </div>
-    </div>
-    <div class="container media-home">
-      <div class="row">
-        <% @tags.each do |tag| %>
-          <% document = @family.documents.by_tag(tag.name).sample %>
-          <% next unless document %>
-          <%= link_to family_documents_path(@family, query: tag.name) do %>
+      <div class="container media-home">
+        <div class="row">
+          <% @tags.each do |tag| %>
+            <% document = @family.documents.by_tag(tag.name).sample %>
+            <% next unless document %>
+            <%= link_to family_documents_path(@family, query: tag.name) do %>
+              <div class="col-xs-3">
+                <%= image_tag document.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
+              <p class= "tag-name">
+                #<%= tag.name %>
+              </p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <% if @images.any?  %>
+      <div class="container media-heading pr-0 d-flex h-100">
+        <h4 class="media-title">
+          <%= @family.name %>'s Images
+        </h4>
+        <div class= "align-self-center">
+          <%= link_to 'See All', family_documents_path(@family, type: 'image')  %>
+        </div>
+      </div>
+      <div class="container media-home">
+        <div class="row">
+          <% @images.each do |doc| %>
             <div class="col-xs-3">
-              <%= image_tag document.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
-            <p class= "tag-name">
-              #<%= tag.name %>
-            </p>
+              <%= link_to family_document_path(@family, doc) do %>
+              <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
+              <% end %>
             </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
 
-  <% end %>
+    <% end %>
 
-  <% if @images.any?  %>
-    <div class="container media-heading pr-0 d-flex h-100">
-      <h4 class="media-title">
-        <%= @family.name %>'s Images
-      </h4>
-      <div class= "align-self-center">
-        <%= link_to 'See All', family_documents_path(@family, type: 'image')  %>
+    <% if @documents.any? %>
+
+      <div class="container media-heading d-flex h-100">
+        <h4 class="media-title">
+          <%= @family.name %>'s Documents
+        </h4>
+        <div class= "align-self-center">
+          <%= link_to 'See All', family_documents_path(@family, type: 'document')  %>
+        </div>
       </div>
-    </div>
-    <div class="container media-home">
-      <div class="row">
-        <% @images.each do |doc| %>
-          <div class="col-xs-3">
-            <%= link_to family_document_path(@family, doc) do %>
-            <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
-            <% end %>
-          </div>
-        <% end %>
+
+      <div class="container media-home">
+        <div class="row">
+          <% @documents.each do |doc| %>
+            <div class="col-xs-3">
+              <%= link_to family_document_path(@family, doc) do %>
+              <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
 
-  <% end %>
+    <% end %>
 
-  <% if @documents.any? %>
-
-    <div class="container media-heading d-flex h-100">
-      <h4 class="media-title">
-        <%= @family.name %>'s Documents
-      </h4>
-      <div class= "align-self-center">
-        <%= link_to 'See All', family_documents_path(@family, type: 'document')  %>
-      </div>
-    </div>
-
-    <div class="container media-home">
-      <div class="row">
-        <% @documents.each do |doc| %>
-          <div class="col-xs-3">
-            <%= link_to family_document_path(@family, doc) do %>
-            <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-  <% end %>
-
+  </div>
 </div>
 
 <div class="footer">
@@ -120,4 +122,5 @@
     </button>
     <% end %>
   </div>
-  </div>
+</div>
+
