@@ -42,7 +42,7 @@
       </div>
       <br>
       <div class="border p-2 members">
-        <h5>members:</h5>
+        <h5>Members:</h5>
         <% @users.each do |u| %>
         <%= u.username %>
         <br>
@@ -55,7 +55,7 @@
           <%= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
           <%= select_tag :query, options_from_collection_for_select(@members, "email", "email"),
           class: "form-control",
-            placeholder: "email"%>
+            placeholder: "Email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
             <div id="btnmedium">
             <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>

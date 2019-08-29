@@ -5,11 +5,12 @@
 
         <h1 class="mb-4">
         <% if @families.count.zero? %>
-          Create a fam
+          Create a Fam
         <% else %>
-        Select a fam
+        Select a Fam
         <% end %>
       </h1>
+
 
         <div id="indexcard" class="cards">
           <% @families.each do |f| %>
