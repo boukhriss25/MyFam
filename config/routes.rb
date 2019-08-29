@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   root to: 'pages#home'
   resources :subscriptions, only: [:destroy]
+  resources :documents, only: :show
   resources :families do
     post "send_media", to: "conversations#send_media_to_conversation"
     resources :conversations do

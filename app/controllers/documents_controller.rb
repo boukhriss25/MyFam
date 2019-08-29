@@ -24,7 +24,6 @@ class DocumentsController < ApplicationController
       Conversation.find(subsc.conversation_id).family_id == @family.id
     end
     @conversations = @subscriptions.to_a.map {|sub| sub = sub.conversation}
-
   end
 
   def new
