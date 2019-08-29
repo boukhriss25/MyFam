@@ -18,7 +18,7 @@
 
       <br>
       <div class="border p-2 members">
-        <h5>members:</h5>
+        <h5>Members:</h5>
         <% @users.each do |u| %>
         <%= u.username %>&nbsp&nbsp
         <% if u != current_user %>
@@ -37,7 +37,7 @@
           <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-            placeholder: "email"%>
+            placeholder: "Email"%>
             <div id="btnmedium">
             <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
             <% end %>
