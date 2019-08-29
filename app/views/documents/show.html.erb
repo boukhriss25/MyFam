@@ -54,7 +54,7 @@
           <%= f.input :document_id, as: :hidden, input_html: { value: @document.id }%>
           <%= f.input :conversation_id, collection: @conversations, prompt: "select a conversation", label: false %>
         </div>
-        <div class="add-btn simpleformghost mt-3">
+        <div class="add-btn simpleformnew mt-3">
           <%= f.button :submit, "send", class: "btn"%>
         </div>
         <% end %>
