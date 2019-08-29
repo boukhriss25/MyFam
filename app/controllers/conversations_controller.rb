@@ -15,6 +15,62 @@ class ConversationsController < ApplicationController
     @message = Message.new
     @subscription = Subscription.find_by(conversation: @conversation, user: current_user)
     @subscription.update(last_seen: DateTime.now)
+    @colors = ["lightsalmon",
+               "salmon",
+               "darksalmon",
+               "lightcoral",
+               "indianred",
+               "crimson",
+               "firebrick",
+               "red",
+               "darkred",
+               "coral",
+               "orangered",
+               "darkorange",
+               "darkkhaki",
+               "limegreen",
+               "forestgreen",
+               "darkgreen",
+               "yellowgreen",
+               "lightgreen",
+               "darkseagreen",
+               "mediumseagreen",
+               "seagreen",
+               "olive",
+               "darkolivegreen",
+               "olivedrab",
+               "mediumaquamarine",
+               "mediumturquoise",
+               "darkturquoise",
+               "cadetblue",
+               "darkcyan",
+               "steelblue",
+               "royalblue",
+               "blue",
+               "mediumblue",
+               "darkblue",
+               "midnightblue",
+               "mediumslateblue",
+               "slateblue",
+               "darkslateblue",
+               "mediumorchid",
+               "mediumpurple",
+               "blueviolet",
+               "darkviolet",
+               "darkmagenta",
+               "indigo",
+               "mediumvioletred",
+               "palevioletred",
+               "darkslategray",
+               "lightslategray",
+               "peru",
+               "saddlebrown",
+               "sienna",
+               "maroon"]
+    @conversation.users.each { |u|
+      u.color = @colors.sample
+      u.save
+       }
   end
 
   def new

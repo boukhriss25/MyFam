@@ -18,7 +18,7 @@ class TagsController < ApplicationController
   def create
     @family = Family.find(params[:family_id])
     @document = Document.find(params[:document_id])
-    tags.split.each { |tag_name| Tag.create(name: tag_name, document: @document) }
+    tags[:name].split.each { |tag_name| Tag.create(name: tag_name, document: @document) }
     if @document.tags.find_by(name: "untagged").present?
       @document.tags.find_by(name: "untagged").destroy
     end
@@ -40,7 +40,6 @@ class TagsController < ApplicationController
   private
 
   def tags
-    # params.require(:tag).permit(:name)
-    params[:tag][:name]
+    params.require(:tag).permit(:name)
   end
 end

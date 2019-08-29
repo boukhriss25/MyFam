@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_140238) do
+ActiveRecord::Schema.define(version: 2019_08_29_124553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_140238) do
     t.bigint "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "last_seen", default: "2019-08-28 20:42:01"
+    t.datetime "last_seen", default: "2019-08-28 14:42:35"
     t.index ["conversation_id"], name: "index_subscriptions_on_conversation_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_140238) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "avatar"
+    t.string "color", default: "black"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
