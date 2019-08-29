@@ -3,7 +3,7 @@
 <div class="container">
 
 <div class="simpleformnew">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h4><%= resource_name.to_s.humanize %></h4>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -34,14 +34,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-block" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p class="d-flex" style="margin-top: 10px;">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 </div>
 </div>
