@@ -10,11 +10,12 @@
         <%= cl_image_tag message.content %>
           <% end %>
     </div>
-  <% elsif url = message.content.match(/(https?:\/\/www\.\w+\.[a-z]{2,3}\/\w*\/?\w*)/) %>
-    <a href="<%= message.content %>" target="_blank" style="color: blue"><%= message.content %></a>
-    <% else %>
-<!--   <%= cl_image_tag message.content %> -->
+<!--   <%# elsif url = message.content.match(/(https?:\/\/www\.\w+\.[a-z]{2,3}\/\w*\/?\w*)/) %>
+    <a href="<%#= message.content %>" target="_blank" style="color: blue"><%#= message.content %></a> -->
+  <% else %>
+  <div class="my-msg-content">
     <%= message.content %>
-  <% end %>
+  </div>
+    <% end %>
 </div>
 
