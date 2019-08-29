@@ -14,9 +14,13 @@
 </div>
 
 <div class="logo-myfam">
+ <div class="logo d-flex justify-content-around">
+  <h6>My</h6>
   <%= link_to families_path do %>
   <%= image_tag "logomyfam.png", :class=>"icons" %>
   <% end %>
+  <h6>Fam</h6>
+  </div>
 </div>
 
 <%= render 'shared/burger-menu' %>

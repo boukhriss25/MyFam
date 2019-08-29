@@ -81,8 +81,11 @@
 </div>
 
 <div class="logo-myfam">
+  <div class="logo d-flex justify-content-around">
+
+  <h6>My</h6>
   <%= link_to families_path do %>
-  <%#= image_tag "logomyfam.png", :class=>"icons" %>
+  <%= image_tag "logomyfam.png", :class=>"icons" %>
   <%#= image_tag "tree-silhouette.png", :class=>"icons" %>
   <%#= image_tag "bamboo.png", :class=>"icons" %>
   <%#= image_tag "orange.png", :class=>"icons" %>
@@ -90,13 +93,14 @@
   <%#= image_tag "tree.png", :class=>"icons" %>
   <%#= image_tag "eucalyptus.png", :class=>"icons" %>
   <%#= image_tag "arc-de-triomphe.png", :class=>"icons" %>
-  <%= image_tag "arc-de-triomphe-dark.png", :class=>"icons" %>
+  <%#= image_tag "arc-de-triomphe-dark.png", :class=>"icons" %>
   <!-- <i class="fab fa-pagelines"></i> -->
 <!-- <i class="fas fa-archway"></i> -->
 <!--   <i class="far fa-hand-paper"></i>
   <i class="far fa-hand-peace"></i> -->
-  <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div> -->
   <% end %>
+  <h6>Fam</h6>
+  </div>
 </div>
 
 <%= render 'shared/burger-menu' %>
