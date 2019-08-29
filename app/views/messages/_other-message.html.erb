@@ -1,6 +1,6 @@
 <div class="other-messages">
   <div class="message-info">
-    <p><strong><%= message.user.username %></strong></p>
+    <p style="color: <%= message.user.color %>"><strong><%= message.user.username %></strong></p>
     <p><%= message.created_at.strftime("%I:%M %p") %></p>
   </div>
   <% if message.document? %>
