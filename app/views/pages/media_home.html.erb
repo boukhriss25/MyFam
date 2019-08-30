@@ -24,9 +24,9 @@
 
   <div class="container media-content">
     <% if @documents.empty? && params[:query].present? %>
-      <p id="search-message">There are no tags by the name <%= params[:query] %></p>
+      <p id="search-message">There are no tags by the name #<%= params[:query] %></p>
     <% elsif params[:query].present? %>
-      <p id="search-message">Results for <%= params[:query] %>...</p>
+      <p id="search-message">Results for #<%= params[:query] %>...</p>
     <% end %>
   </div>
 
