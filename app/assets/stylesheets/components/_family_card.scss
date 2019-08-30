@@ -57,6 +57,11 @@ a {
   height: 120px;
 }
 
+#center-card {
+  display: flex;
+  justify-content: center;
+}
+
 #indexcard {
   border: none;
 }
