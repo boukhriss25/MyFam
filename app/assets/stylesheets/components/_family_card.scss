@@ -1,3 +1,9 @@
+#select-fam {
+  font-size: 36px;
+  color: #151515;
+}
+
+
 .main-content img{
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(10%);
@@ -27,7 +33,6 @@
   color: black;
   background-color: transparent;
   border-radius: 5px;
-  // border: none;
 
   img {
     border-radius: 3px;
