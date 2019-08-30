@@ -94,7 +94,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-config.action_cable.url = "wss://myfam-lewagon.herokuapp.com/cable"
-config.action_cable.allowed_request_origins = [ "http://myfam-lewagon.herokuapp.com", "https://myfam-lewagon.herokuapp.com" ]
+config.action_cable.url = "wss://myfam.pro/cable"
+config.action_cable.allowed_request_origins = [ "http://www.myfam.pro/", "https://www.myfam.pro/", "http://myfam-lewagon.herokuapp.com", "https://myfam-lewagon.herokuapp.com" ]
 
 end
