@@ -1,7 +1,7 @@
 <%= render 'shared/navbarburger-docs'%>
 <div class="container">
 
-  <div class= "container container-upper-media">
+  <div class= "container container-upper-media border-bottom">
    <!--  <div class="search-media-form">
       <#%= form_tag family_documents_path(@family), method: :get do %>
           <#%= text_field_tag :query,
@@ -14,14 +14,14 @@
       <#% end %>
     </div> -->
 
-    <div class="upload_doc d-flex">
+  <h4><%= @family.name %> / Media</h4>
+    <div class="upload_doc d-flex mb-2">
         <%= render "shared/document_form" %>
     </div>
   </div>
 </div>
 
 <div class="container media-content">
-  <h4><%= @family.name %>'s Media</h4>
   <% if @documents.empty? && params[:query].present? %>
       <p id="search-message">There are no tags by the name <%= params[:query] %></p>
     <% elsif params[:query].present? %>

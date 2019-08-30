@@ -2,7 +2,7 @@
 <div class="container-all">
   <div class="container">
 
-    <div class= "container container-upper-media">
+    <div class= "container container-upper-media border-bottom">
       <!-- <div class="search-media-form">
         <#%= form_tag family_documents_path(@family), method: :get do %>
             <#%= text_field_tag :query,
@@ -15,12 +15,14 @@
         <#% end %>
       </div> -->
 
-      <div class="upload_doc d-flex">
+  <h4><%= @family.name %> / Media</h4>
+      <div class="upload_doc d-flex mb-2">
           <%= render "shared/document_form" %>
       </div>
 
     </div>
 
+  <div class="container media-content">
     <% if @documents.empty? && params[:query].present? %>
       <p id="search-message">There are no tags by the name <%= params[:query] %></p>
     <% elsif params[:query].present? %>
@@ -29,13 +31,12 @@
   </div>
 
 
-  <div class="container media-content">
-
     <% if @tags.any? %>
       <div class="container media-heading pr-0 d-flex h-100">
-        <h4 class="media-title">
-          <%= @family.name %>'s Tags
-        </h4>
+        <p class="media-title">
+          <%#= @family.name %>
+          Tags
+        </p>
         <div class= "align-self-center">
           <%= link_to 'See All', tags_family_documents_path(@family)  %>
         </div>
@@ -61,9 +62,10 @@
 
     <% if @images.any?  %>
       <div class="container media-heading pr-0 d-flex h-100">
-        <h4 class="media-title">
-          <%= @family.name %>'s Images
-        </h4>
+        <p class="media-title">
+          <%#= @family.name %>
+          Images
+        </p>
         <div class= "align-self-center">
           <%= link_to 'See All', family_documents_path(@family, type: 'image')  %>
         </div>
@@ -85,9 +87,10 @@
     <% if @documents.any? %>
 
       <div class="container media-heading d-flex h-100">
-        <h4 class="media-title">
-          <%= @family.name %>'s Documents
-        </h4>
+        <p class="media-title">
+          <%#= @family.name %>
+          Documents
+        </p>
         <div class= "align-self-center">
           <%= link_to 'See All', family_documents_path(@family, type: 'document')  %>
         </div>
