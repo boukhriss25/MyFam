@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     families_path(current_user) #your path
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end

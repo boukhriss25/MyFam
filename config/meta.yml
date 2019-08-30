@@ -1,0 +1,5 @@
+meta_product_name: "MyFam"
+meta_title: "MyFam - Where families unite"
+meta_description: "Give your family its own digital space for communication, storage and easy file access."
+meta_image: "logomyfam.png" # should exist in `app/assets/images/`
+twitter_account: "@myfam"   # required for Twitter Cards
