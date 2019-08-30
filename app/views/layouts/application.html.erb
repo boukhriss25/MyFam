@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="icon" href="<%= image_path 'logomyfam.png' %>">
 
     <title>MyFam - Where families unite</title>
+
+    <%= favicon_link_tag 'myfamlogo.ico', rel: 'apple-touch-icon', type: 'image/png' %>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
