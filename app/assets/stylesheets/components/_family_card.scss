@@ -10,12 +10,6 @@
   grid-gap: 24px;
   background-color: transparent;
 
-  #addfam {
-    border-style: solid 1px;
-    border-color: #FF4747;
-    width: 120px;
-    height: 120px;
-
     h1 {
       color: #FF4747;
       font-size: 62px;
@@ -23,7 +17,7 @@
       text-decoration: none;
     }
   }
-}
+
 
 .option {
   border-style: none;
@@ -33,6 +27,7 @@
   color: black;
   background-color: transparent;
   border-radius: 5px;
+  // border: none;
 
   img {
     border-radius: 3px;
@@ -48,4 +43,15 @@
 
 a {
   color: black;
+}
+
+#addfam {
+  border-style: solid 1px #FF4747;
+  border-color: #FF4747;
+  width: 120px;
+  height: 120px;
+}
+
+#indexcard {
+  border: none;
 }

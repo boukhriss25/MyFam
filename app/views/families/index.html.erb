@@ -12,10 +12,10 @@
       </h1>
 
 
-        <div id="indexcard" class="cards">
+        <div class="cards">
           <% @families.each do |f| %>
           <div>
-            <div class="card">
+            <div id="indexcard" class="card">
               <%= link_to family_path(f) do %>
               <%= cl_image_tag f.avatar %>
               <% end %>
