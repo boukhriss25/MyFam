@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="<%= image_path 'logomyfam.png' %>">
-
+    <%= favicon_link_tag 'myfamlogo.ico', rel: 'apple-touch-icon', type: 'image/png' %>
     <title>MyFam</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
