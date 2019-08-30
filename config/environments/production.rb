@@ -94,7 +94,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-config.action_cable.url = "wss://myfam.pro/cable"
+config.action_cable.url = "wss://www.myfam.pro/cable"
 config.action_cable.allowed_request_origins = [ "http://www.myfam.pro", "https://www.myfam.pro" ]
 
 end
