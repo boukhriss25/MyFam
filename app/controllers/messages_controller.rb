@@ -1,3 +1,5 @@
+# require 'rinku'
+
 class MessagesController < ApplicationController
   # before_action :set_message, only:
   # after_create :broadcast_message

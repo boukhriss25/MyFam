@@ -3,42 +3,38 @@
   <div class="pt-2">
 
     <h5><%= @family.name %> / <%= @conversation.name %> </h5>
-  <div class="shares">
-  <div class="share-head">
-    <h6>Shared media</h6>
-    <h6 id="see-all"><%= link_to 'see all', family_conversation_shares_path(@family, @conversation) unless @documents.count.zero? %></h6>
-  </div>
-    <div id="share-samples" class="row">
-      <% if @documents.count.zero? %>
-      <p style="color: #979A97">Nothing has been shared yet</p>
-      <% else %>
-      <% docs = @documents.last(4) %>
-      <% docs.each do |doc| %>
+    <div class="shares">
+      <div class="share-head">
+        <h6>Shared media</h6>
+        <h6 id="see-all"><%= link_to 'see all', family_conversation_shares_path(@family, @conversation) unless @documents.count.zero? %></h6>
+      </div>
+      <div id="share-samples" class="row">
+        <% if @documents.count.zero? %>
+        <p style="color: #979A97">Nothing has been shared yet</p>
+        <% else %>
+        <% docs = @documents.last(4) %>
+        <% docs.each do |doc| %>
         <div class="col-xs-3">
           <%= link_to family_document_path(@family, doc) do %>
           <%= image_tag doc.content.url(:thumb), height: 82, width: 82, crop: :fill, class: "img-fam-index" %>
           <% end %>
         </div>
-      <% end %>
-      <% end %>
+        <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
     <div class="simpleformnew">
       <h5 class="pb-1">Manage</h5>
       <%= simple_form_for [@family, @conversation] do |f| %>
-
-        <%= f.input :name, label: false %>
-          <div class="carrier-wave-field">
-          <%= f.input :avatar, label: "Upload new avatar" %>
-        </div>
-
-
+      <%= f.input :name, label: false %>
+      <div class="carrier-wave-field">
+        <%= f.input :avatar, label: "Upload new avatar" %>
+      </div>
       <%= f.input :avatar_cache, as: :hidden %>
-
       <!-- <input type="text" name="skipform" value="-2" class="hidden"> -->
       <div id="btnmedium">
-      <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
-      <% end %>
+        <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
+        <% end %>
       </div>
       <br>
       <div class="border p-2 members">
@@ -58,14 +54,13 @@
             placeholder: "Email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
             <div id="btnmedium">
-            <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
-            <% end %>
-           </div>
+              <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
       <br>
-
       <div class="leavedelete">
         <% unless @conversation.users.count == 1 %>
         <%= link_to 'Leave Conversation', subscription_path(user: current_user),
