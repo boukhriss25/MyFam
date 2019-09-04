@@ -6,53 +6,53 @@
     <p class="title mb-0 ml-1" style="font-size: 24px"><strong><%= @family.name %> Conversations</strong></p>
     <div class="new-chat burger-avatar">
       <%= link_to new_family_conversation_path(@family, @conversation) do %>
-        <%= image_tag("new-chat-logo.png") %>
+      <%= image_tag("new-chat-logo.png") %>
       <% end %>
     </div>
   </div>
 
   <% if @subscriptions.count.zero? %>
-    <p>You are not subscribed to any conversations</p>
+  <p>You are not subscribed to any conversations</p>
   <% end %>
   <% @subscriptions.each do |sub| %>
-    <% message = Message.where(conversation_id: sub.conversation.id).last %>
-    <% all_messages = sub.conversation.messages %>
-    <% unread = all_messages.select { |m| m.created_at > sub.last_seen unless m.user == current_user } %>
-    <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
-      <div class="card-product">
-        <div id="conv-avatar" class="burger-avatar">
-          <%= cl_image_tag sub.conversation.avatar %>
+  <% message = Message.where(conversation_id: sub.conversation.id).last %>
+  <% all_messages = sub.conversation.messages %>
+  <% unread = all_messages.select { |m| m.created_at > sub.last_seen unless m.user == current_user } %>
+  <%= link_to family_conversation_path(@family.id, sub.conversation.id) do %>
+  <div class="card-product">
+    <div id="conv-avatar" class="burger-avatar">
+      <%= cl_image_tag sub.conversation.avatar %>
+    </div>
+
+    <div class="card-stuff">
+      <div class="conv-top pt-1">
+        <h6 class="conv-name name-trim"><%= sub.conversation.name %></h6>
+        <% unless message.nil? %>
+        <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
+        <% end %>
+      </div>
+      <div class="conv-btm pb-1">
+        <div id="message-sample">
+          <% if message.nil? %>
+          <p class="trim" style="color: #979A97">Waiting for messages...</p>
+          <% else %>
+          <% if unread.count != 0 %>
+          <p class="trim" style="color: black" id="bolder"><%= message.user.username %>: <%= message.content %></p>
+          <% else %>
+          <p class="trim" style="color: #979A97"><%= message.user.username %>: <%= message.content %></p>
+          <% end %>
+          <% end %>
         </div>
 
-        <div class="card-stuff">
-          <div class="conv-top pt-1">
-            <h6 class="conv-name name-trim"><%= sub.conversation.name %></h6>
-            <% unless message.nil? %>
-              <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
-            <% end %>
-          </div>
-          <div class="conv-btm pb-1">
-            <div id="message-sample">
-              <% if message.nil? %>
-                <p class="trim" style="color: #979A97">Waiting for messages...</p>
-              <% else %>
-                <% if unread.count != 0 %>
-                  <p class="trim" style="color: black" id="bolder"><%= message.user.username %>: <%= message.content %></p>
-                <% else %>
-                  <p class="trim" style="color: #979A97"><%= message.user.username %>: <%= message.content %></p>
-                <% end %>
-              <% end %>
-            </div>
-
-            <div class="conv-unread">
-              <% if unread.count != 0 %>
-                <h6 id="unread"><%= unread.count %></h6>
-              <% end %>
-            </div>
-          </div>
+        <div class="conv-unread">
+          <% if unread.count != 0 %>
+          <h6 id="unread"><%= unread.count %></h6>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  </div>
+  <% end %>
   <% end %>
 </div>
 
