@@ -43,6 +43,22 @@
     <br>
 
   </div>
+    <p>Recent <%= @family.name %> Activity</p>
+  <% @shares.each do |sh| %>
+  <div class="card">
+    <%= sh.user.username %> =>
+    <%= sh.conversation.family.name %> /
+    <%= sh.conversation.name %> /
+    at <%= sh.created_at.strftime("%I:%M %p") %>
+    <%= cl_image_tag sh.document.content %>
+    <% sh.document.tags.each do |tag| %>
+    #<%= tag.name %>
+    <% end %>
+  </div>
+  <br>
+  <% end %>
+  <br>
+  <br>
 <!-- <div class="simpleformsearch mt-5">
   <%#= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -79,6 +95,7 @@
     </button>
     <% end %>
   </div>
+
   </div>
 
 

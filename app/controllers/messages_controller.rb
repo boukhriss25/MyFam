@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
     @message.user = current_user
     if @message.save
-      Share.create(conversation: @conversation, document: @message.document) if @message.document.present?
+      Share.create(conversation: @conversation, document: @message.document, user: current_user) if @message.document.present?
 
       #   content = @message.content.match(/(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/)
       #   document = Document.find_by(content: content[0])

@@ -6,6 +6,7 @@ class Family < ApplicationRecord
   has_many :unique_tags, -> { select('distinct name') }, through: :documents, source: :tags
   has_many :users, through: :memberships
   has_many :shares, through: :conversations
+  has_many :messages, through: :conversations
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
   after_create :default_avatar

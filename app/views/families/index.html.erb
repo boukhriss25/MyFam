@@ -33,6 +33,20 @@
           </div>
         </div>
       </div>
+      <p>Recent Activity</p>
+  <% @shares.each do |sh| %>
+  <div class="card">
+    <%= sh.user.username %> =>
+    <%= sh.conversation.family.name %> /
+    <%= sh.conversation.name %> /
+    at <%= sh.created_at.strftime("%I:%M %p") %>
+    <%= cl_image_tag sh.document.content %>
+    <% sh.document.tags.each do |tag| %>
+    #<%= tag.name %>
+    <% end %>
+  </div>
+  <br>
+  <% end %>
     </div>
 
 <%#= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
