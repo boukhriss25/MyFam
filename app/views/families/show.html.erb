@@ -46,7 +46,12 @@
     <p>Recent <%= @family.name %> Activity</p>
   <% @shares.each do |sh| %>
   <div class="card">
-    <%= sh.user.username %> =>
+    <% if sh.user == current_user %>
+    Me
+    <% else %>
+    <%= sh.user.username %>
+    <% end %>
+    ==>
     <%= sh.conversation.family.name %> /
     <%= sh.conversation.name %> /
     at <%= sh.created_at.strftime("%I:%M %p") %>
@@ -57,6 +62,9 @@
   </div>
   <br>
   <% end %>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
 <!-- <div class="simpleformsearch mt-5">
