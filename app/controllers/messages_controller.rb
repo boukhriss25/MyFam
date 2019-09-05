@@ -9,12 +9,14 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.conversation = @conversation
     @message.user = current_user
+
+    # @message.content_type = "url" if Rinku.auto_link(@message.content, :all, 'target="_blank"').html_safe
+
+    array = URI.extract(@message.content)
+    @message.content_type = "url" if array[0].present?
+
     if @message.save
       Share.create(conversation: @conversation, document: @message.document, user: current_user) if @message.document.present?
-
-      #   content = @message.content.match(/(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/)
-      #   document = Document.find_by(content: content[0])
-    # regex: /(image\/upload\/v\d{10}\/\w{20}.[a-z]{3,4})$/
 
     # ActionCable.server.broadcast("conversation_#{conversation.id}", {
     #   message: @message.to_json

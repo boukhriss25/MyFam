@@ -61,6 +61,13 @@
 .feed-header {
   text-align: center;
   font-size: 30px;
+  border-top: 1px solid red;
+  border-bottom: 1px solid #FF4747;
+  margin-bottom: 32px;
+  // background-color: #ECF6FE;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .activity-details {
