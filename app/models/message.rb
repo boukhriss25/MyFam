@@ -4,7 +4,6 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :document, optional: true
   validates :content, presence: true
-
   after_create :broadcast_message
 
   def broadcast_message
