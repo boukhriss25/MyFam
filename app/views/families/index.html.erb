@@ -56,7 +56,7 @@
       </div>
     <% else %>
       <%= link_to family_document_path(sh.document.family, sh.document) do %>
-      <%= cl_image_tag sh.document.content %>
+      <%= cl_image_tag sh.content %>
       <% end %>
       <p class="activity-details mb-0">
       <% sh.document.tags.each do |tag| %>
