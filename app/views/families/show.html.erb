@@ -39,10 +39,38 @@
         </div>
         <%= link_to "Manage", edit_family_path(@family) %>
       </div>
-
-    <br>
-
   </div>
+  </div>
+  <div class="feed-header">
+    <h2>Recent Activity</h2>
+  </div>
+  <% @shares.each do |sh| %>
+  <div class="card activity">
+    <div class="activity-details d-flex justify-content-between">
+
+    <p style="color: <%= sh.user.color %>">
+      <% if sh.user == current_user %>
+    Me
+    <% else %>
+    <%= sh.user.username %>
+    <% end %>
+    <%= link_to "- #{sh.conversation.family.name} / #{sh.conversation.name}", family_conversation_path(sh.conversation.family, sh.conversation) %></p>
+    <p>at <%= sh.created_at.strftime("%I:%M %p") %></p>
+    </div>
+    <%= link_to family_document_path(sh.document.family, sh.document) do %>
+    <%= cl_image_tag sh.document.content %>
+    <% end %>
+    <% sh.document.tags.each do |tag| %>
+    #<%= tag.name %>
+    <% end %>
+  </div>
+  <br>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 <!-- <div class="simpleformsearch mt-5">
   <%#= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
@@ -79,6 +107,7 @@
     </button>
     <% end %>
   </div>
+
   </div>
 
 

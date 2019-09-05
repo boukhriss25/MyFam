@@ -1,27 +1,23 @@
 <%= render 'shared/navbarburger-home' %>
 <% @families = current_user.families %>
-    <div class="container">
-      <div class="main-content mt-5">
-
-        <p id="select-fam" class="mb-4"><strong>
-        <% if @families.count.zero? %>
-          Create a Family
-        <% else %>
-        Select a Family
-        <% end %></strong>
-        </p>
-
-
-        <div class="cards">
-          <% @families.each do |f| %>
-          <div>
-            <div id="indexcard" class="card">
-              <%= link_to family_path(f) do %>
+<div class="container">
+  <div class="main-content mt-5">
+    <p id="select-fam" class="mb-4"><strong>
+    <% if @families.count.zero? %>
+      Create a Family
+    <% else %>
+      Select a Family
+    <% end %></strong></p>
+    <div class="cards">
+      <% @families.each do |f| %>
+        <div>
+          <div id="indexcard" class="card">
+            <%= link_to family_path(f) do %>
               <%= cl_image_tag f.avatar %>
-              <% end %>
-            </div>
-            <%= link_to f.name, family_path(f) %>
+            <% end %>
           </div>
+          <%= link_to f.name, family_path(f) %>
+        </div>
           <% end %>
           <div id="center-card">
             <div id="addfam" class="card">
@@ -33,6 +29,32 @@
           </div>
         </div>
       </div>
+</div>
+  <div class="feed-header">
+    <p>Recent Activity</p>
+  </div>
+  <% @shares.each do |sh| %>
+  <div class="card activity">
+    <div class="activity-details d-flex justify-content-between">
+
+    <p style="color: <%= sh.user.color %>"><strong>
+      <% if sh.user == current_user %>
+    Me
+    <% else %>
+    <%= sh.user.username %>
+    <% end %>
+    <%= link_to "- #{sh.conversation.family.name} / #{sh.conversation.name}", family_conversation_path(sh.conversation.family, sh.conversation) %></strong></p>
+    <p>at <%= sh.created_at.strftime("%I:%M %p") %></p>
     </div>
+    <%= link_to family_document_path(sh.document.family, sh.document) do %>
+    <%= cl_image_tag sh.document.content %>
+    <% end %>
+    <p class="activity-details mb-0">
+    <% sh.document.tags.each do |tag| %>
+    #<%= tag.name %>
+    <% end %></p>
+  </div>
+  <br>
+  <% end %>
 
 <%#= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>

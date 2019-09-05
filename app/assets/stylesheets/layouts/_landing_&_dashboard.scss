@@ -9,6 +9,7 @@
 .main-content {
   padding: 12px 60px;
   text-align: center;
+  min-height: 92vh;
   h2 {
     margin-bottom: 0;
   }
@@ -49,4 +50,22 @@
     object-fit: cover;
   }
   margin-bottom: 12px;
+}
+
+.activity {
+  // background-color: #ECF6FE;
+  // background-color: #edfcf5;
+  border: none;
+}
+
+.feed-header {
+  text-align: center;
+  font-size: 30px;
+}
+
+.activity-details {
+  padding: 4px;
+  p {
+    margin-bottom: 0;
+  }
 }

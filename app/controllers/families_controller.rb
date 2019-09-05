@@ -3,12 +3,28 @@ class FamiliesController < ApplicationController
 
   def index
     @families = current_user.families
+    shares_array = []
+    current_user.conversations.each do |convo|
+      convo.shares.each do |sh|
+        shares_array << sh
+      end
+    end
+    sorted_shares = shares_array.sort_by &:created_at
+    @shares = sorted_shares.reverse
   end
 
   def show
     @users = @family.users
     @user_convos = current_user.conversations.where(family: @family)
-    @all_convos = @family.conversations
+    # @all_convos = @family.conversations
+    shares_array = []
+    @user_convos.each do |convo|
+      convo.shares.each do |sh|
+        shares_array << sh
+      end
+    end
+    sorted_shares = shares_array.sort_by &:created_at
+    @shares = sorted_shares.reverse
   end
 
   def new
