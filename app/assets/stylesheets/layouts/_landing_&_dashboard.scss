@@ -61,7 +61,7 @@
 .feed-header {
   text-align: center;
   font-size: 30px;
-  border-top: 1px solid red;
+  border-top: 1px solid #FF4747;
   border-bottom: 1px solid #FF4747;
   margin-bottom: 32px;
   // background-color: #ECF6FE;
@@ -75,4 +75,23 @@
   p {
     margin-bottom: 0;
   }
+}
+
+.activity-message {
+  // background-color: #ECF6FE;
+  a {
+    color: #17A589;
+  }
+}
+
+.me {
+  background-color: #edfcf5;
+}
+
+.them {
+  background-color: #ECF6FE;
+}
+
+#timestamp {
+  width: 100px;
 }
