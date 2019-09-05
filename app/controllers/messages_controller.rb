@@ -11,9 +11,11 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     # @message.content_type = "url" if Rinku.auto_link(@message.content, :all, 'target="_blank"').html_safe
+    # array = URI.extract(@message.content)
+    # @message.content_type = "url" if array[0].present?
 
-    array = URI.extract(@message.content)
-    @message.content_type = "url" if array[0].present?
+    regexp = /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/
+    @message.content_type = "url" if @message.content.scan(regexp).present?
 
     if @message.save
       Share.create(conversation: @conversation, document: @message.document, user: current_user) if @message.document.present?
