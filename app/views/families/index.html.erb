@@ -30,22 +30,29 @@
         </div>
       </div>
 </div>
-      <p>Recent Activity</p>
+  <div class="feed-header">
+    <p>Recent Activity</p>
+  </div>
   <% @shares.each do |sh| %>
-  <div class="card">
-    <% if sh.user == current_user %>
+  <div class="card activity">
+    <div class="activity-details d-flex justify-content-between">
+
+    <p style="color: <%= sh.user.color %>"><strong>
+      <% if sh.user == current_user %>
     Me
     <% else %>
     <%= sh.user.username %>
     <% end %>
-    ==>
-    <%= sh.conversation.family.name %> /
-    <%= sh.conversation.name %> /
-    at <%= sh.created_at.strftime("%I:%M %p") %>
+    <%= link_to "- #{sh.conversation.family.name} / #{sh.conversation.name}", family_conversation_path(sh.conversation.family, sh.conversation) %></strong></p>
+    <p>at <%= sh.created_at.strftime("%I:%M %p") %></p>
+    </div>
+    <%= link_to family_document_path(sh.document.family, sh.document) do %>
     <%= cl_image_tag sh.document.content %>
+    <% end %>
+    <p class="activity-details mb-0">
     <% sh.document.tags.each do |tag| %>
     #<%= tag.name %>
-    <% end %>
+    <% end %></p>
   </div>
   <br>
   <% end %>
