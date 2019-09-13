@@ -52,18 +52,18 @@
     <% end %>
     <div class="activity-details d-flex justify-content-between">
 
-    <p style="color: <%= sh.user.color %>"><strong>
+    <p><strong>
       <% if sh.user == current_user %>
-    I posted
+    <span style="color: <%= sh.user.color %>">You </span>posted in
     <% else %>
-    <%= sh.user.username %> posted
+    <span style="color: <%= sh.user.color %>"><%= sh.user.username %> </span>posted in
     <% end %>
-    <%= link_to "in #{sh.conversation.family.name} / #{sh.conversation.name}", family_conversation_path(sh.conversation.family, sh.conversation) %></strong></p>
+    <%= link_to "#{sh.conversation.family.name} / #{sh.conversation.name}", family_conversation_path(sh.conversation.family, sh.conversation) %></strong></p>
     <p id="timestamp" style="text-align: right">at <%= sh.created_at.strftime("%I:%M %p") %></p>
     </div>
     <% if sh.document.nil? %>
       <div class="activity-message activity-details">
-        "<%= Rinku.auto_link(sh.content, :all, 'target="_blank"').html_safe %>"
+        <%= Rinku.auto_link(sh.content, :all, 'target="_blank"').html_safe %>
       </div>
     <% else %>
       <%= link_to family_document_path(sh.document.family, sh.document) do %>
