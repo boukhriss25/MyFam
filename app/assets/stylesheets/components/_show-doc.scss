@@ -1,19 +1,28 @@
 .show-doc {
-  padding: 4px;
+  padding: 4px 0;
   display: flex;
   justify-content: center;
   margin-top: 5px;
   img {
     height: auto;
-    max-width: 100%;
+    // max-width: 100%;
+    width: 100vw;
     object-fit: cover;
+    margin-bottom: 8px;
   }
 }
 
 .tags {
+  display: flex;
+  justify-content: space-between;
   padding: 0 8px;
   line-height: 0.8;
   margin-bottom: 10px;
+}
+
+.delete-btn-form {
+  text-align: right;
+  margin-left: 8px;
 }
 
 .add-tag {
@@ -37,9 +46,6 @@
   }
 }
 
-.delete-btn-form {
-  text-align: right;
-}
 
 .add-btn {
   .btn {

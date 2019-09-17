@@ -1,5 +1,4 @@
 <%= render 'shared/navbarburger-docs'%>
-<div class="container">
 
 
   <div class="show-doc">
@@ -9,9 +8,10 @@
     <%= render "documents/document", document: @document %>
     <% end %>
   </div>
-  <!-- <div class="doc-manage"> -->
+<div class="container">
 
     <div class="tags mb-3">
+      <div>
       <% @document.tags.each do |t| %>
       <strong>#</strong><%= t.name %>
       <% unless t.name == "untagged" %>
@@ -21,6 +21,7 @@
       <% end %>
       &nbsp
       <% end %>
+      </div>
 
       <div class="delete-btn-form" id="delete-btn">
         <% if @document.user == current_user %>
@@ -31,7 +32,6 @@
       </div>
     </div>
 
-    <!-- </div> -->
     <div class="add-hashtag">
       <div class="add-tag">
         <div id="tag-input" class="simpleformnew mt-3">

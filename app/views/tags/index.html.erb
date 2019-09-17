@@ -1,7 +1,6 @@
 <%= render 'shared/navbarburger-docs'%>
 
 <div class="container container-all">
-  <div class= "container container-upper-media">
      <!--  <div class="search-media-form">
         <#%= form_tag family_documents_path(@family), method: :get do %>
             <#%= text_field_tag :query,
@@ -13,8 +12,12 @@
               </button>
         <#% end %>
       </div> -->
+  <div class= "container container-upper-media border-bottom mb-3">
 
-      <div class="upload_doc d-flex">
+  <h4 class="">
+      <%= @family.name %> / Tags
+  </h4>
+      <div class="upload_doc d-flex mb-2">
         <%= render "shared/document_form" %>
       </div>
 
@@ -27,9 +30,6 @@
     <% end %>
   </div>
 
-  <h4 class="media-title-tags">
-      All <%= @family.name %>'s Tags
-  </h4>
 
   <div class="container media-home">
     <div class="row">
