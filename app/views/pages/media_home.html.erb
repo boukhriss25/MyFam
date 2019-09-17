@@ -2,7 +2,6 @@
 <div class="container-all">
   <div class="container">
 
-    <div class= "container container-upper-media border-bottom">
       <!-- <div class="search-media-form">
         <#%= form_tag family_documents_path(@family), method: :get do %>
             <#%= text_field_tag :query,
@@ -15,6 +14,7 @@
         <#% end %>
       </div> -->
 
+    <div class= "container container-upper-media border-bottom">
   <h4><%= @family.name %> / Media</h4>
       <div class="upload_doc d-flex mb-2">
           <%= render "shared/document_form" %>
