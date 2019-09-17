@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
   # after_create :broadcast_message
 
   def create
-
     @conversation = Conversation.find(params[:conversation_id] || params[:message][:conversation_id])
     @family = @conversation.family
     @message = Message.new(message_params)

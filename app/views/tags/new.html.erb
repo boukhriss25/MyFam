@@ -1,6 +1,11 @@
 <%= render 'shared/navbarburger-docs'%>
-<%= render "documents/document", document: @document %>
-<div class="add-hashtag">
+<div class="show-doc">
+    <% if is_image?(@document.content) %>
+    <%= cl_image_tag @document.content %>
+    <% else %>
+    <%= render "documents/document", document: @document %>
+    <% end %>
+  </div><div class="add-hashtag">
   <div class="add-tag">
     <div id="tag-input" class="simpleformnew mt-3 ml-4" style="width: 70%;">
       <div id="btnGroupAddon" style="color: black;"><strong>#</strong></div>
