@@ -30,7 +30,6 @@
         </div>
         <%= link_to "Media", family_home_media_path(@family) %>
       </div>
-    </div>
       <div>
         <div class="card option" id="manage-btn">
           <%= link_to edit_family_path(@family) do %>
@@ -39,6 +38,15 @@
         </div>
         <%= link_to "Manage", edit_family_path(@family) %>
       </div>
+      <div>
+        <div class="card option" id="manage-btn">
+          <%= link_to family_notes_path(@family) do %>
+          <%= image_tag("new-notes-logo.png") %>
+          <% end %>
+        </div>
+        <%= link_to "Notes", edit_family_path(@family) %>
+      </div>
+    </div>
   </div>
   </div>
   <div class="feed-header">
