@@ -1,8 +1,17 @@
 <div class="my-message">
   <div class="message-info">
-    <p class="my-msg-username" style="color: <%= message.user.color %>"><strong>Me</strong></p>
-    <p class="my-msg-time"><%= message.created_at.strftime("%I:%M %p") %></p>
-  </div>
+    <p style="color: <%= message.user.color %>"><strong>Me</strong></p>
+    <p style="color: #979A97">
+        <% if Time.now - message.created_at > 432000 %>
+        <%= message.created_at.strftime("%d/%m/%y %H:%M") %>
+        <% elsif Time.now - message.created_at > 172800 %>
+        <%= message.created_at.strftime("%a %H:%M") %>
+        <% elsif Time.now - message.created_at > 86400 %>
+        <%= message.created_at.strftime("%a %H:%M") %>
+        <% else %>
+        <%= message.created_at.strftime("%H:%M") %>
+        <% end %>
+      </p>  </div>
   <% if message.document? %>
      <div class="my-msg-content-media">
       <%= link_to family_document_path(message.document.family, message.document) do %>

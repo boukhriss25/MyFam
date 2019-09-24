@@ -1,7 +1,17 @@
 <div class="other-messages">
   <div class="message-info">
-    <p style="color: <%= message.user.color %>"><strong><%= message.user.username %></strong></p>
-    <p><%= message.created_at.strftime("%I:%M %p") %></p>
+    <p class="trim" style="color: <%= message.user.color %>"><strong><%= message.user.username %></strong></p>
+    <p style="color: #979A97">
+        <% if Time.now - message.created_at > 432000 %>
+        <%= message.created_at.strftime("%d/%m/%y %H:%M") %>
+        <% elsif Time.now - message.created_at > 172800 %>
+        <%= message.created_at.strftime("%a %H:%M") %>
+        <% elsif Time.now - message.created_at > 86400 %>
+        <%= message.created_at.strftime("%a %H:%M") %>
+        <% else %>
+        <%= message.created_at.strftime("%H:%M") %>
+        <% end %>
+      </p>
   </div>
   <% if message.document? %>
     <div class="content-media">
