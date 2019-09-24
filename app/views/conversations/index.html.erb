@@ -28,7 +28,17 @@
       <div class="conv-top pt-1">
         <h6 class="conv-name name-trim"><%= sub.conversation.name %></h6>
         <% unless message.nil? %>
-        <p style="text-align: right"><%= message.created_at.strftime("%I:%M %p") %></p>
+        <p style="text-align: right">
+        <% if Time.now - message.created_at > 432000 %>
+        <%= message.created_at.strftime("%d/%m/%y") %>
+        <% elsif Time.now - message.created_at > 172800 %>
+        <%= message.created_at.strftime("%A") %>
+        <% elsif Time.now - message.created_at > 86400 %>
+        a day ago
+        <% else %>
+        <%= message.created_at.strftime("%I:%M %p") %>
+        <% end %>
+        </p>
         <% end %>
       </div>
       <div class="conv-btm pb-1">
