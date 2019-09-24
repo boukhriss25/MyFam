@@ -21,11 +21,16 @@ Rails.application.routes.draw do
       resources :folders
     end
     resources :messages, only: [:create]
+    resources :notes, only: [:new, :create, :index, :show] do
+      resources :collaborations, only: [:index, :new, :create]
+    end
   end
   resources :memberships, only: [:destroy]
   resources :tags, only: [:destroy]
   resources :documents, only: [:edit, :update, :destroy]
   resources :shares, only: [:destroy]
+  resources :notes, only: [:edit, :update, :destroy]
+  resources :collaborations, only: [:destroy]
 
 
   mount ActionCable.server => "/cable"

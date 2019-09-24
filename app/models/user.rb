@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :memberships, dependent: :destroy
+  has_many :collaborations, dependent: :destroy
+  has_many :notes, through: :collaborations
   has_many :families, through: :memberships
   has_many :conversations, through: :subscriptions
   mount_uploader :avatar, AvatarUploader
