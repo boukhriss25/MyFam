@@ -27,10 +27,24 @@
       window.history.go(amount || -1);
     }
   </script>
+
+
+
+
   <% elsif current_page?(family_document_path(@family, @document)) %>
-  <%= link_to family_home_media_path(@family) do %>
-  <i class="fas fa-chevron-left"></i>
-  <% end %>
+<div onclick="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
+    }
+  </script>
+  <%#= link_to family_home_media_path(@family) do %>
+  <!-- <i class="fas fa-chevron-left"></i> -->
+  <%# end %>
+
+
   <% elsif current_page?(new_family_document_tag_path(@family, @document)) %>
   <%= link_to family_home_media_path(@family) do %>
   <i class="fas fa-chevron-left"></i>
