@@ -14,9 +14,8 @@ class CollaborationsController < ApplicationController
       @collaboration = Collaboration.new(user: User.find_by_email(params[:query]))
     end
     @collaboration.note = @note
-    if @collaboration.save
-      redirect_to edit_family_note_path(@family, @note)
-    end
+    @collaboration.save
+    redirect_to edit_family_note_path(@family, @note)
   end
 
   def destroy

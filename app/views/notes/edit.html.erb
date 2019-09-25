@@ -1,16 +1,21 @@
 <%= render 'shared/navbarburger-notes'%>
-
-<p class="conversation-name trim"><strong><%= @family.name %> / <%= @note.title %></strong></p>
-<div class="container">
-  <div class="border p-2 members">
-
-    <%= @note.content %>
-
+<div class="container-note">
+  <p class="conversation-name"><strong><%= @family.name %> / <%= @note.title %></strong></p>
+  <div class="container">
+    <div class="simpleformnew">
+      <%= simple_form_for [@family, @note] do |f| %>
+      <%= f.input :content, label: false, :input_html => {:rows => 22} %>
+      <div id="btnmedium">
+        <%= f.button :submit, "Save", class: "btn btnmedium btn-block"%>
+        <% end %>
+      </div>
+      </div>
+    <div id="btnmedium" class="p-3">
+      <%= link_to 'Done', family_note_path(@family, @note) %>
+    </div>
   </div>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+</div>
+<div class="container">
 
 <div class="simpleformnew">
       <h5 class="pb-1">Manage</h5>
@@ -44,8 +49,6 @@
           </div>
         </div>
       </div>
-
-<br><br>
 <div class="leavedelete">
   <% unless @note.users.count == 1 %>
   <%= link_to 'Leave Note', collaboration_path(user: current_user),
@@ -54,5 +57,6 @@
   <% if @note.users.count == 1 %>
   <%= link_to 'Delete Note', family_note_path(@family, @note), method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
+</div>
 </div>
 </div>

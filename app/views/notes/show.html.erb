@@ -1,14 +1,14 @@
 <%= render 'shared/navbarburger-notes'%>
-
-<p class="conversation-name trim"><strong><%= @family.name %> / <%= @note.title %></strong></p>
-<div class="container">
-  <div class="border p-2 members">
-
-    <%= @note.content %>
+<div class="container-note">
+  <p class="conversation-name"><strong><%= @family.name %> / <%= @note.title %></strong></p>
+  <div class="container">
+    <div class="border p-2 members note-content">
+      <%= @note.content %>
+    </div>
+  </div>
 </div>
-<br>
-<br>
-<br>
+<div class="container">
+
 <div class="border p-2 members">
         <h5>Collaborators:</h5>
         <% @users.each do |u| %>
@@ -18,3 +18,4 @@
         <br>
       </div>
 
+</div>
