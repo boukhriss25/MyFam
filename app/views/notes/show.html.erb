@@ -5,11 +5,16 @@
     <div class="border p-2 members note-content">
       <%= @note.content %>
     </div>
+    <div class="leavedelete">
+    <div id="btnmedium" class="p-3">
+      <%= link_to 'Edit', edit_family_note_path(@family, @note) %>
+    </div>
+    </div>
   </div>
 </div>
 <div class="container">
 
-<div class="border p-2 members">
+<div class="border p-2 members mb-4">
         <h5>Collaborators:</h5>
         <% @users.each do |u| %>
         <%= u.username %>

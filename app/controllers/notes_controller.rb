@@ -35,9 +35,14 @@ class NotesController < ApplicationController
   end
 
   def update
+    # break
     @note = Note.find(params[:id])
     @note.update(note_params)
-    redirect_to edit_family_note_path(@family, @note)
+    if params[:content].present?
+      redirect_to family_note_path(@family, @note)
+    else
+      redirect_to edit_family_note_path(@family, @note)
+    end
   end
 
   def destroy

@@ -4,15 +4,20 @@
   <div class="container">
     <div class="simpleformnew">
       <%= simple_form_for [@family, @note] do |f| %>
-      <%= f.input :content, label: false, :input_html => {:rows => 22} %>
+      <%= f.input :content, label: false, :input_html => {:rows => 21} %>
+      <div class="note-buttons">
+
       <div id="btnmedium">
         <%= f.button :submit, "Save", class: "btn btnmedium btn-block"%>
         <% end %>
       </div>
-      </div>
-    <div id="btnmedium" class="p-3">
-      <%= link_to 'Done', family_note_path(@family, @note) %>
+    <div id="btnmedium" class="back-to-view">
+      <%= link_to 'View note', family_note_path(@family, @note) %>
     </div>
+      </div>
+      </div>
+  </div>
+  <div class="leavedelete">
   </div>
 </div>
 <div class="container">
