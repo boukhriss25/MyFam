@@ -30,15 +30,21 @@
         <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
         <% end %>
       </div>
+
       <br>
       <div class="border p-2 members">
         <h5>Collaborators:</h5>
         <% @users.each do |u| %>
-        <%= u.username %>
-        <br>
+        <%= u.username %>&nbsp&nbsp
+        <% if u != current_user %>
+        <%= link_to collaboration_path(user: u), method: :delete, data: {confirm: "Are you sure?"} do %>
+        <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
+        <% end %>
         <% end %>
         <br>
+        <% end %>
       </div>
+
       <div class="mt-4">
         <h6>Add collaborators</h6>
         <div class="form-group">
