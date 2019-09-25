@@ -4,7 +4,7 @@
   <div class="conversations-and-icon-new">
     <p class="title mb-0 ml-1" style="font-size: 24px"><strong><%= @family.name %> Notes</strong></p>
     <div class="new-chat burger-avatar">
-      <%= link_to new_family_note_path(@family, @note) do %>
+      <%= link_to new_family_note_path(@family) do %>
         <%= image_tag("new-notes-logo.png") %>
       <% end %>
     </div>
@@ -13,13 +13,19 @@
 
 <div class="container">
   <% @collaborations.each do |coll| %>
-    <%= link_to family_note_path(@family, coll.note.id) do %>
+    <%= link_to edit_family_note_path(@family, coll.note.id) do %>
       <div class="card-product">
         <div id="conv-avatar" class="burger-avatar">
           <%= image_tag("new-notes-logo.png") %>
         </div>
         <div class="card-stuff">
           <h6 class="conv-name name-trim"><%= coll.note.title %></h6>
+        </div>
+         <div class="card-stuff">
+          <h6>View</h6>
+        </div>
+        <div class="card-stuff">
+          <h6>Edit</h6>
         </div>
       </div>
     <% end %>

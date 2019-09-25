@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :folders
     end
     resources :messages, only: [:create]
-    resources :notes, only: [:new, :create, :index, :show] do
+    resources :notes, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :collaborations, only: [:index, :new, :create]
     end
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:destroy]
   resources :documents, only: [:edit, :update, :destroy]
   resources :shares, only: [:destroy]
-  resources :notes, only: [:edit, :update, :destroy]
+  # resources :notes, only: [:destroy]
   resources :collaborations, only: [:destroy]
 
 

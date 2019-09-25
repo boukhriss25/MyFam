@@ -1,2 +1,58 @@
-<h1>Notes#edit</h1>
-<p>Find me in app/views/notes/edit.html.erb</p>
+<%= render 'shared/navbarburger-notes'%>
+
+<p class="conversation-name trim"><strong><%= @family.name %> / <%= @note.title %></strong></p>
+<div class="container">
+  <div class="border p-2 members">
+
+    <%= @note.content %>
+
+  </div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<div class="simpleformnew">
+      <h5 class="pb-1">Manage</h5>
+      <%= simple_form_for [@family, @note] do |f| %>
+      <%= f.input :title, label: false %>
+      <div id="btnmedium">
+        <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
+        <% end %>
+      </div>
+      <br>
+      <div class="border p-2 members">
+        <h5>Collaborators:</h5>
+        <% @users.each do |u| %>
+        <%= u.username %>
+        <br>
+        <% end %>
+        <br>
+      </div>
+      <div class="mt-4">
+        <h6>Add collaborators</h6>
+        <div class="form-group">
+          <%= form_tag family_note_collaborations_path(@family, @note), method: :post do %>
+          <%= select_tag :query, options_from_collection_for_select(@members, "email", "email"),
+          class: "form-control",
+            placeholder: "Email"%>
+            <%= hidden_field_tag :add_user, value:  1 %>
+            <div id="btnmedium">
+              <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<br><br>
+<div class="leavedelete">
+  <% unless @note.users.count == 1 %>
+  <%= link_to 'Leave Note', collaboration_path(user: current_user),
+  method: :delete, data: {confirm: "Are you sure?"}%>
+  <% end %>
+  <% if @note.users.count == 1 %>
+  <%= link_to 'Delete Note', family_note_path(@family, @note), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
+</div>
+</div>

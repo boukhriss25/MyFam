@@ -9,6 +9,8 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    @users = @note.users
+    @members = @family.users
   end
 
   def new
@@ -20,19 +22,26 @@ class NotesController < ApplicationController
     @note.family = @family
     @collaboration = Collaboration.new(user: current_user, note: @note)
     if @note.save && @collaboration.save
-      redirect_to family_note_path(@family, @note)
+      redirect_to edit_family_note_path(@family, @note)
     else
       render :new
     end
   end
 
   def edit
+    @note = Note.find(params[:id])
+    @users = @note.users
+    @members = @family.users
   end
 
   def update
+    @note = Note.find(params[:id])
+    @note.update(note_params)
+    redirect_to edit_family_note_path(@family, @note)
   end
 
   def destroy
+    @note = Note.find(params[:id])
     @note.destroy
     redirect_to family_notes_path(@family)
   end

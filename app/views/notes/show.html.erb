@@ -1,14 +1,20 @@
 <%= render 'shared/navbarburger-notes'%>
 
 <p class="conversation-name trim"><strong><%= @family.name %> / <%= @note.title %></strong></p>
-<br><br>
-<div class="leavedelete">
-  <%# unless @note.users.count == 1 %>
-  <%= link_to 'Leave Note', collaboration_path(user: current_user),
-  method: :delete, data: {confirm: "Are you sure?"}%>
-  <%# end %>
-  <br><br>
-  <%# if @note.content.nil? %>
-  <%= link_to 'Delete Note', family_note_path(@note), method: :delete, data: {confirm: "Are you sure?"} %>
-  <%# end %>
+<div class="container">
+  <div class="border p-2 members">
+
+    <%= @note.content %>
 </div>
+<br>
+<br>
+<br>
+<div class="border p-2 members">
+        <h5>Collaborators:</h5>
+        <% @users.each do |u| %>
+        <%= u.username %>
+        <br>
+        <% end %>
+        <br>
+      </div>
+
