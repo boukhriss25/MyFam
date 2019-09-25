@@ -13,21 +13,22 @@
 
 <div class="container">
   <% @collaborations.each do |coll| %>
-    <%= link_to edit_family_note_path(@family, coll.note.id) do %>
       <div class="card-product">
         <div id="conv-avatar" class="burger-avatar">
           <%= image_tag("new-notes-logo.png") %>
         </div>
         <div class="card-stuff">
-          <h6 class="conv-name name-trim"><%= coll.note.title %></h6>
+          <h6 class="conv-name name-trim"><%= link_to coll.note.title, family_note_path(@family, coll.note.id)%></h6>
         </div>
-         <div class="card-stuff">
-          <h6>View</h6>
+        <div class="view-edit">
+        <div class="card-stuff">
+        <h6><%= link_to "View", family_note_path(@family, coll.note.id) %></h6>
         </div>
         <div class="card-stuff">
-          <h6>Edit</h6>
+        <h6><%= link_to "Edit", edit_family_note_path(@family, coll.note.id) %></h6>
         </div>
+        </div>
+
       </div>
-    <% end %>
   <% end %>
 </div>

@@ -19,7 +19,6 @@
 .edit-note-button {
   a {
     color: white;
-    // width: 150px;
     padding: 10px 44px;
     border-radius: 5px;
     background-color: #EA4244;
@@ -27,4 +26,9 @@
   margin: 24px 0;
   // text-align: center;
   // vertical-align: middle;
+}
+
+.view-edit {
+  display: flex;
+  justify-content: space-between;
 }
