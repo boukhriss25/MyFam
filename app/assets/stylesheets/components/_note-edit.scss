@@ -49,6 +49,10 @@
 
 .note-updated {
   display: flex;
-  // flex-direction: column;
   align-items: flex-end;
+}
+
+.notes-list-item {
+  // background-color: #F8F2AC;
+  padding: 8px 12px 8px 0;
 }
