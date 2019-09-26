@@ -21,6 +21,10 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.family = @family
     @collaboration = Collaboration.new(user: current_user, note: @note)
+    # if @note.title == Note.find_by(title: @note.title).title
+    #   n = Note.where(title: "new list").count + 1
+    #   @note.title = "#{@note.title} (#{n})"
+    # end
     if @note.save && @collaboration.save
       redirect_to edit_family_note_path(@family, @note)
     else
