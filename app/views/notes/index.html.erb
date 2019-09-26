@@ -13,7 +13,7 @@
 
 <div class="container">
   <% @collaborations.each do |coll| %>
-  <% colour = ["#F8F2AC", "#ECF6FE", "#EDFCF5", "#F8E7E1", "#f6d592", "#E7DAF8"] %>
+  <% colour = ["#F8F2AC", "#ECF6FE", "#EDFCF5", "#F8E7E1", "#E7DAF8"] %>
       <div class="card-product notes-list-item border mb-3" style="background-color: <%= colour.sample %>">
 <!--         <div id="conv-avatar" class="burger-avatar">
           <%#= image_tag("new-notes-logo.png") %>
@@ -21,7 +21,7 @@
         <!-- <div class="note-index-top"> -->
         <div class="card-stuff">
           <div class="conv-top">
-            <h6 class="conv-name name-trim"><%= link_to coll.note.title, family_note_path(@family, coll.note.id)%></h6>
+            <h6 class="conv-name name-trim mb-2"><%= link_to coll.note.title, family_note_path(@family, coll.note.id)%></h6>
             <div class="view-edit">
 <!--               <div class="card-stuff">
                 <h6><%#= link_to "View", family_note_path(@family, coll.note.id) %></h6>
@@ -49,7 +49,7 @@
                   <%= coll.note.updated_at.strftime("%d/%m/%y") %>
                   <% elsif Time.now - coll.note.updated_at > 172800 %>
                   <%= coll.note.updated_at.strftime("%A") %>
-                  <% elsif Time.now - coll.note.updated_at > 8#6400 %>
+                  <% elsif Time.now - coll.note.updated_at > 86400 %>
                   <%= coll.note.updated_at.strftime("%a %H:%M") %>
                   <% else %>
                   <%= coll.note.updated_at.strftime("%H:%M") %>
