@@ -32,3 +32,23 @@
   display: flex;
   justify-content: space-between;
 }
+
+.note-trim {
+  overflow: hidden;
+  // white-space: nowrap;
+  max-width: 240px;
+  max-height: 72px;
+  text-overflow: ellipsis;
+}
+
+#note-sample {
+  p {
+    vertical-align: middle;
+  }
+}
+
+.note-updated {
+  display: flex;
+  // flex-direction: column;
+  align-items: flex-end;
+}

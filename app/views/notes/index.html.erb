@@ -13,20 +13,49 @@
 
 <div class="container">
   <% @collaborations.each do |coll| %>
-      <div class="card-product">
+      <div class="card-product mb-3">
         <div id="conv-avatar" class="burger-avatar">
           <%= image_tag("new-notes-logo.png") %>
         </div>
+        <!-- <div class="note-index-top"> -->
         <div class="card-stuff">
-          <h6 class="conv-name name-trim"><%= link_to coll.note.title, family_note_path(@family, coll.note.id)%></h6>
-        </div>
-        <div class="view-edit">
-        <div class="card-stuff">
-        <h6><%= link_to "View", family_note_path(@family, coll.note.id) %></h6>
-        </div>
-        <div class="card-stuff">
-        <h6><%= link_to "Edit", edit_family_note_path(@family, coll.note.id) %></h6>
-        </div>
+          <div class="conv-top pt-1">
+            <h6 class="conv-name name-trim"><%= link_to coll.note.title, family_note_path(@family, coll.note.id)%></h6>
+            <div class="view-edit">
+<!--               <div class="card-stuff">
+                <h6><%#= link_to "View", family_note_path(@family, coll.note.id) %></h6>
+              </div> -->
+              <div class="card-stuff">
+                <h6><%= link_to "Edit", edit_family_note_path(@family, coll.note.id) %></h6>
+              </div>
+            </div>
+          </div>
+          <div class="conv-btm">
+            <div id="note-sample">
+              <%= link_to family_note_path(@family, coll.note.id) do %>
+              <% if coll.note.content.nil? %>
+                <p class="note-trim" style="color: #979A97">[empty]</p>
+              <% else %>
+                <p class="note-trim" style="color: #979A97"><%= coll.note.content %></p>
+              <% end %>
+              <% end %>
+            </div>
+
+            <div class="note-updated">
+              <p style="color: #979A97" id="unread">
+                <%#= coll.note.updated_at.strftime("%d/%m/%y") %>
+                <% if Time.now - coll.note.updated_at > 432000 %>
+                  <%= coll.note.updated_at.strftime("%d/%m/%y") %>
+                  <% elsif Time.now - coll.note.updated_at > 172800 %>
+                  <%= coll.note.updated_at.strftime("%A") %>
+                  <% elsif Time.now - coll.note.updated_at > 6#86400 %>
+                  <%= coll.note.updated_at.strftime("%a %H:%M") %>
+                  <% else %>
+                  <%= coll.note.updated_at.strftime("%H:%M") %>
+                <% end %></p>
+            </div>
+          </div>
+
         </div>
 
       </div>
