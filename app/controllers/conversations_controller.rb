@@ -69,10 +69,10 @@ class ConversationsController < ApplicationController
                "saddlebrown",
                "sienna",
                "maroon"]
-    @conversation.users.each { |u|
+    @conversation.users.each do |u|
       u.color = @colors.sample
       u.save
-       }
+    end
   end
 
   def new

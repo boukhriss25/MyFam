@@ -31,12 +31,37 @@
   }
 }
 
-#manage-btn {
+#dashboard-icon-chat {
   img {
-    width: 50px;
-    height: 50px;
+    width: 88px;
+    height: 88px;
   }
 }
+#dashboard-icon-media {
+  img {
+    width: 88px;
+    height: 88px;
+  }
+}
+#dashboard-icon-notes {
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+#dashboard-icon-manage {
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+// #manage-btn {
+//   img {
+//     width: 80px;
+//     height: 80px;
+//   }
+// }
 
 #fam-av {
   // display: flex;

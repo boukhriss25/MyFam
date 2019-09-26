@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_212952) do
+ActiveRecord::Schema.define(version: 2019_09_24_162938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collaborations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_collaborations_on_note_id"
+    t.index ["user_id"], name: "index_collaborations_on_user_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.string "name"
@@ -72,6 +81,15 @@ ActiveRecord::Schema.define(version: 2019_09_04_212952) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_notes_on_family_id"
+  end
+
   create_table "shares", force: :cascade do |t|
     t.bigint "conversation_id"
     t.bigint "document_id"
@@ -116,6 +134,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_212952) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "collaborations", "notes"
+  add_foreign_key "collaborations", "users"
   add_foreign_key "conversations", "families"
   add_foreign_key "documents", "families"
   add_foreign_key "documents", "folders"
@@ -124,6 +144,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_212952) do
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "notes", "families"
   add_foreign_key "shares", "conversations"
   add_foreign_key "shares", "documents"
   add_foreign_key "subscriptions", "conversations"

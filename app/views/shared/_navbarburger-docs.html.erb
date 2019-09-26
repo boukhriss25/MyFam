@@ -28,9 +28,6 @@
     }
   </script>
 
-
-
-
   <% elsif current_page?(family_document_path(@family, @document)) %>
 <div onclick="goBack()">
     <i class="fas fa-chevron-left"></i>
@@ -43,7 +40,6 @@
   <%#= link_to family_home_media_path(@family) do %>
   <!-- <i class="fas fa-chevron-left"></i> -->
   <%# end %>
-
 
   <% elsif current_page?(new_family_document_tag_path(@family, @document)) %>
   <%= link_to family_home_media_path(@family) do %>

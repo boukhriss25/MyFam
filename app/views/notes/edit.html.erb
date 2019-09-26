@@ -1,0 +1,73 @@
+<%= render 'shared/navbarburger-notes'%>
+<div class="container-note">
+  <p class="conversation-name"><strong><%= @family.name %> / <%= @note.title %></strong></p>
+  <div class="container">
+    <div class="simpleformnew">
+      <%= simple_form_for [@family, @note] do |f| %>
+      <%= f.input :content, label: false, :input_html => {:rows => 22} %>
+      <div class="note-buttons">
+
+      <div id="btnmedium">
+        <%= f.button :submit, "Save", class: "btn btnmedium btn-block"%>
+        <% end %>
+      </div>
+    <div id="btnmedium" class="back-to-view">
+      <%= link_to 'View note', family_note_path(@family, @note) %>
+    </div>
+      </div>
+      </div>
+  </div>
+  <div class="leavedelete">
+  </div>
+</div>
+<div class="container">
+
+<div class="simpleformnew">
+      <h5 class="pb-1">Settings</h5>
+      <%= simple_form_for [@family, @note] do |f| %>
+      <%= f.input :title, label: false %>
+      <div id="btnmedium">
+        <%= f.button :submit, "Update", class: "btn btnmedium btn-block"%>
+        <% end %>
+      </div>
+
+      <br>
+      <div class="border p-2 members">
+        <h5>Collaborators:</h5>
+        <% @users.each do |u| %>
+        <%= u.username %>&nbsp&nbsp
+        <% if u != current_user %>
+        <%= link_to collaboration_path(user: u), method: :delete, data: {confirm: "Are you sure?"} do %>
+        <i class="far fa-times-circle" style="color: lightgrey; font-size: 12px"></i>
+        <% end %>
+        <% end %>
+        <br>
+        <% end %>
+      </div>
+
+      <div class="mt-4">
+        <h6>Add collaborators</h6>
+        <div class="form-group">
+          <%= form_tag family_note_collaborations_path(@family, @note), method: :post do %>
+          <%= select_tag :query, options_from_collection_for_select(@members, "email", "email"),
+          class: "form-control",
+            placeholder: "Email"%>
+            <%= hidden_field_tag :add_user, value:  1 %>
+            <div id="btnmedium">
+              <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class="leavedelete">
+  <% unless @note.users.count == 1 %>
+  <%= link_to 'Leave Note', collaboration_path(user: current_user),
+  method: :delete, data: {confirm: "Are you sure?"}%>
+  <% end %>
+  <% if @note.users.count == 1 %>
+  <%= link_to 'Delete Note', family_note_path(@family, @note), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
+</div>
+</div>
+</div>

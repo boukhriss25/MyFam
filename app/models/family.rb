@@ -1,7 +1,8 @@
 class Family < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :conversations, dependent: :destroy
-  has_many :documents
+  has_many :documents, dependent: :destroy
+  has_many :notes, dependent: :destroy
   has_many :tags, through: :documents
   has_many :unique_tags, -> { select('distinct name') }, through: :documents, source: :tags
   has_many :users, through: :memberships

@@ -1,0 +1,26 @@
+<%= render 'shared/navbarburger-notes'%>
+<div class="container-note">
+  <p class="conversation-name"><strong><%= @family.name %> / <%= @note.title %></strong></p>
+  <div class="container">
+    <div class="border p-2 members note-content">
+      <pre><%= @note.content %></pre>
+    </div>
+    <!-- <div class="leavedelete"> -->
+    <div id="btnmedium" class="edit-note-button">
+      <%= link_to 'Edit', edit_family_note_path(@family, @note) %>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>
+<div class="container">
+
+<div class="border p-2 members mb-4 mt-3">
+        <h5>Collaborators:</h5>
+        <% @users.each do |u| %>
+        <%= u.username %>
+        <br>
+        <% end %>
+        <br>
+      </div>
+
+</div>

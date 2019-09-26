@@ -1,0 +1,47 @@
+<nav class="navbarburger d-flex my-auto mb-3 pl-3 pr-3" style="justify-content: space-between;">
+
+<div>
+  <% if current_page?(family_notes_path(@family)) %>
+  <%= link_to family_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <% elsif current_page?(new_family_note_path(@family)) %>
+  <%= link_to family_notes_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <% elsif current_page?(edit_family_note_path(@family, @note)) %>
+  <%= link_to family_notes_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <% elsif current_page?(family_note_path(@family, @note)) %>
+  <%= link_to family_notes_path(@family) do %>
+  <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <% else %>
+  <div onclick="goBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  <script>
+    function goBack(amount) {
+      window.history.go(amount || -1);
+    }
+  </script>
+<% end %>
+</div>
+
+<div class="logo-myfam">
+  <div class="logo d-flex justify-content-around">
+  <h6>My</h6>
+  <%= link_to families_path do %>
+  <%= image_tag "logomyfam.png", :class=>"icons" %>
+  <% end %>
+  <h6>Fam</h6>
+  </div>
+</div>
+
+<%= render 'shared/burger-menu' %>
+</nav>
