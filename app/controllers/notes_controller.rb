@@ -2,9 +2,11 @@ class NotesController < ApplicationController
   before_action :set_family, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @collaborations = Collaboration.where(user: current_user).select do |collab|
+    collaborations = Collaboration.where(user: current_user).select do |collab|
       Note.find(collab.note_id).family_id == @family.id
     end
+    sorted_colls = collaborations.sort_by { |coll| coll.note.updated_at }
+    @collaborations = sorted_colls.reverse
   end
 
   def show
