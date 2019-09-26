@@ -49,7 +49,7 @@
                   <%= coll.note.updated_at.strftime("%d/%m/%y") %>
                   <% elsif Time.now - coll.note.updated_at > 172800 %>
                   <%= coll.note.updated_at.strftime("%A") %>
-                  <% elsif Time.now - coll.note.updated_at > 86400 %>
+                  <% elsif Time.now - coll.note.updated_at > 8#6400 %>
                   <%= coll.note.updated_at.strftime("%a %H:%M") %>
                   <% else %>
                   <%= coll.note.updated_at.strftime("%H:%M") %>
