@@ -15,8 +15,8 @@
   }
 
   img {
-    width: 88px;
-    height: 88px;
+    width: 120px;
+    height: 120px;
   }
   a {
     text-decoration: none;
@@ -28,6 +28,31 @@
   }
   a:active {
     color: #FF4747;
+  }
+}
+
+#dashboard-icon-chat {
+  img {
+    width: 88px;
+    height: 88px;
+  }
+}
+#dashboard-icon-media {
+  img {
+    width: 88px;
+    height: 88px;
+  }
+}
+#dashboard-icon-notes {
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}
+#dashboard-icon-manage {
+  img {
+    width: 60px;
+    height: 60px;
   }
 }
 

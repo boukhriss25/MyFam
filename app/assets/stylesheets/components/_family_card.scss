@@ -15,15 +15,27 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
   background-color: transparent;
-
-    h1 {
-      color: #FF4747;
-      font-size: 62px;
-      margin-top: 16px;
-      text-decoration: none;
-    }
+  h1 {
+    color: #FF4747;
+    font-size: 62px;
+    margin-top: 16px;
+    text-decoration: none;
   }
+}
 
+.showcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  background-color: transparent;
+  border-style: none;
+  h1 {
+    color: #FF4747;
+    font-size: 62px;
+    margin-top: 16px;
+    text-decoration: none;
+  }
+}
 
 .option {
   border-style: none;
@@ -41,9 +53,10 @@
     height: 100%;
   }
 
-  #showcard {
-    border-style: none;
-  }
+  // #showcard {
+  //   border-style: none;
+  //   grid-gap: 16px;
+  // }
 }
 
 a {
