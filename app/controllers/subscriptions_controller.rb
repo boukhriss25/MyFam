@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
     @members = @family.users
     if params[:add_all]
       @members.each do |m|
-        subs = Subscription.create(user: m, conversation: @conversation)
+        Subscription.create(user: m, conversation: @conversation)
         # redirect_to edit_family_conversation_path(@family, @conversation)
       end
     elsif params[:add_user].nil?

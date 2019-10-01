@@ -53,10 +53,20 @@
           class: "form-control",
             placeholder: "Email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
+
+            <div class="note-buttons">
+
             <div id="btnmedium">
               <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
               <% end %>
             </div>
+
+            <div id="btnmedium" class="back-to-view pt-4">
+              <!-- <div id="btnmedium" class="edit-convo-button"> -->
+                <%= link_to 'Add All', family_note_collaborations_path(@family, @note, :add_all => @members), method: :post %>
+            </div>
+
+          </div>
           </div>
         </div>
       </div>
