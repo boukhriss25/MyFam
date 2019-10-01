@@ -17,9 +17,9 @@ class MessagesController < ApplicationController
     @message.content_type = "url" if @message.content.scan(regexp).present?
 
     if @message.save
-      Share.create(conversation: @conversation, document: @message.document, user: current_user)
-      # @conversation.updated_at = DateTime.now
-      if @message.document.present?
+      Share.create(conversation: @conversation, document: @message.document, user: current_user) if @message.document.present?
+      @conversation.updated_at = DateTime.now
+      @conversation.save
 
     # ActionCable.server.broadcast("conversation_#{conversation.id}", {
     #   message: @message.to_json
