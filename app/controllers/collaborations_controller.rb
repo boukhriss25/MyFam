@@ -8,13 +8,20 @@ class CollaborationsController < ApplicationController
   def create
     @family = Family.find(params[:family_id])
     @note = Note.find(params[:note_id])
-    if params[:add_user].nil?
+    @members = @family.users
+    if params[:add_all]
+      @members.each do |m|
+        Collaboration.create(user: m, note: @note)
+      end
+    elsif params[:add_user].nil?
       @collaboration = Collaboration.new(user: current_user)
     else
       @collaboration = Collaboration.new(user: User.find_by_email(params[:query]))
     end
-    @collaboration.note = @note
-    @collaboration.save
+    unless @collaboration.nil?
+      @collaboration.note = @note
+      @collaboration.save
+    end
     redirect_to edit_family_note_path(@family, @note)
   end
 

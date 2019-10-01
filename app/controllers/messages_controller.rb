@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
 
     if @message.save
       Share.create(conversation: @conversation, document: @message.document, user: current_user) if @message.document.present?
+      @conversation.updated_at = DateTime.now
+      @conversation.save
 
     # ActionCable.server.broadcast("conversation_#{conversation.id}", {
     #   message: @message.to_json

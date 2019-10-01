@@ -2,15 +2,22 @@ class SubscriptionsController < ApplicationController
   def create
     @family = Family.find(params[:family_id])
     @conversation = Conversation.find(params[:conversation_id])
-    if params[:add_user].nil?
+    @members = @family.users
+    if params[:add_all]
+      @members.each do |m|
+        Subscription.create(user: m, conversation: @conversation)
+        # redirect_to edit_family_conversation_path(@family, @conversation)
+      end
+    elsif params[:add_user].nil?
       @subscription = Subscription.new(user: current_user)
     else
       @subscription = Subscription.new(user: User.find_by_email(params[:query]))
     end
-    @subscription.conversation = @conversation
-    if @subscription.save
-      redirect_to edit_family_conversation_path(@family, @conversation)
+    unless @subscription.nil?
+      @subscription.conversation = @conversation
+      @subscription.save
     end
+    redirect_to edit_family_conversation_path(@family, @conversation)
   end
 
   def destroy
