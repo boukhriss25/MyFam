@@ -31,20 +31,20 @@
         <%= link_to "Media", family_home_media_path(@family) %>
       </div>
       <div>
-        <div id="dashboard-icon-manage" class="card option" id="manage-btn">
+        <div id="dashboard-icon-manage" class="card option ml-5" id="manage-btn">
           <%= link_to edit_family_path(@family) do %>
           <%= image_tag("new-settings-logo.png") %>
           <% end %>
         </div>
-        <%= link_to "Manage", edit_family_path(@family) %>
+        <%= link_to "Manage", edit_family_path(@family), class: "ml-5" %>
       </div>
       <div>
-        <div id="dashboard-icon-notes" class="card option" id="manage-btn">
+        <div id="dashboard-icon-notes" class="card option mr-5" id="manage-btn">
           <%= link_to family_notes_path(@family) do %>
           <%= image_tag("new-notes-logo.png") %>
           <% end %>
         </div>
-        <%= link_to "Notes", family_notes_path(@family) %>
+        <%= link_to "Notes", family_notes_path(@family), class: "mr-5" %>
       </div>
     </div>
   </div>
