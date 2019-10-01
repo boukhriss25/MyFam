@@ -61,18 +61,18 @@
                 <% end %>
               </div>
 
-              <div class="form-group">
-                <%= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
-                <%= hidden_field_tag :add_all %>
+<!--               <div class="form-group">
+                <%#= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
+                <%#= hidden_field_tag :add_all %>
                 <div id="btnmedium">
-                  <button name="button" type="submit" class="back-to-view">Add All</button>
-                  <% end %>
+                  <button name="button" type="submit" class="edit-note-button" style="width: 100px">Add All</button>
+                  <%# end %>
                 </div>
-              </div>
-
-<!--               <div id="btnmedium" class="back-to-view">
-                <%#= link_to 'Add All', edit_family_conversation_path(@family, @conversation) %>
               </div> -->
+
+              <div id="btnmedium" class="back-to-view">
+                <%= link_to 'Add All', family_conversation_subscriptions_path(@family, @conversation, :add_all => @members), method: :post %>
+              </div>
 
             </div>
 
@@ -82,11 +82,11 @@
       <br>
       <div class="leavedelete">
         <% unless @conversation.users.count == 1 %>
-        <%= link_to 'Leave Conversation', subscription_path(user: current_user),
-        method: :delete, data: {confirm: "Are you sure?"}%>
+          <%= link_to 'Leave Conversation', subscription_path(user: current_user),
+          method: :delete, data: {confirm: "Are you sure?"}%>
         <% end %>
         <% if @conversation.users.count == 1 %>
-        <%= link_to 'Delete Conversation', family_conversation_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to 'Delete Conversation', family_conversation_path(@family), method: :delete, data: {confirm: "Are you sure?"} %>
         <% end %>
       </div>
     </div>

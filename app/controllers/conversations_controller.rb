@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
     subscriptions = Subscription.where(user: current_user).select do |subsc|
       Conversation.find(subsc.conversation_id).family_id == @family.id
     end
-    sorted_subs = subscriptions.sort_by { |subs| subs.conversation.messages.last.created_at }
+    sorted_subs = subscriptions.sort_by { |subs| subs.conversation.updated_at }
     @subscriptions = sorted_subs.reverse
   end
 
