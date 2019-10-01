@@ -53,10 +53,29 @@
           class: "form-control",
             placeholder: "Email"%>
             <%= hidden_field_tag :add_user, value:  1 %>
-            <div id="btnmedium">
-              <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
-              <% end %>
+
+            <div class="note-buttons">
+
+              <div id="btnmedium">
+                <button name="button" type="submit" class="btn btnmedium btn-block mt-3">Add</button>
+                <% end %>
+              </div>
+
+              <div class="form-group">
+                <%= form_tag family_conversation_subscriptions_path(@family, @conversation), method: :post do %>
+                <%= hidden_field_tag :add_all %>
+                <div id="btnmedium">
+                  <button name="button" type="submit" class="back-to-view">Add All</button>
+                  <% end %>
+                </div>
+              </div>
+
+<!--               <div id="btnmedium" class="back-to-view">
+                <%#= link_to 'Add All', edit_family_conversation_path(@family, @conversation) %>
+              </div> -->
+
             </div>
+
           </div>
         </div>
       </div>
