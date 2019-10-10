@@ -33,12 +33,15 @@
   <div class="feed-header">
     <p>Recent Activity</p>
   </div>
+  <!-- <div class="container"> -->
+
   <% @activities.each do |sh| %>
     <% if sh.user == current_user %>
-      <div class="card activity border-top border-bottom me">
+      <div class="card activity border me">
     <% else %>
-      <div class="card activity border-top border-bottom them">
+      <div class="card activity border them">
     <% end %>
+    <!-- <div class="card activity border them"> -->
     <div class="activity-details d-flex justify-content-between">
 
     <p><strong>
@@ -68,3 +71,5 @@
   <% end %>
 
 <%#= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %>
+
+  <!-- </div> -->
