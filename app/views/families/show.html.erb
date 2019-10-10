@@ -54,9 +54,9 @@
   </div>
   <% @activities.each do |sh| %>
   <% if sh.user == current_user %>
-      <div class="card activity border-top border-bottom me">
+      <div class="card activity border me">
     <% else %>
-      <div class="card activity border-top border-bottom them">
+      <div class="card activity border them">
     <% end %>
     <div class="activity-details d-flex justify-content-between">
 
